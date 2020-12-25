@@ -12,6 +12,6 @@ import it.univpm.CovidForecast.model.MeteoCitta;
  * @author emanuelefrisi
  *
  */
-public interface MeteoCittaRepository extends JpaRepository<MeteoCitta, Integer>{
+public interface MeteoCittaRepository extends JpaRepository<MeteoCitta, Long>{
 	
 }

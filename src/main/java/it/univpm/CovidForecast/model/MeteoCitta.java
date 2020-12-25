@@ -35,7 +35,7 @@ public class MeteoCitta {
 	/**
 	 * Pressione atmosferica(misurata in ettopascal)
 	 */
-	private int pressione;
+	private long pressione;
 	/**
 	 * Temperatura(misurata in Celsius)
 	 */
@@ -55,7 +55,7 @@ public class MeteoCitta {
 	/**
 	 * Umidità in percentuale
 	 */
-	private int umidita;
+	private long umidita;
 	
 	/**
 	 * 
@@ -73,7 +73,7 @@ public class MeteoCitta {
 	 * @param u umidita
 	 * 
 	 */
-	public MeteoCitta(int i, String c, long d, String n, int p, double t, double tM, double tm, double tP, int u) {
+	public MeteoCitta(long i, String c, long d, String n, long p, double t, double tM, double tm, double tP, long u) {
 		this.id=i;
 		this.citta=c;
 		this.data=d;
@@ -163,7 +163,7 @@ public class MeteoCitta {
 	 * 
 	 * @return pressione
 	 */
-	public int getPressione() {
+	public long getPressione() {
 		return pressione;
 	}
 
@@ -172,7 +172,7 @@ public class MeteoCitta {
 	 * 
 	 * @param pressione
 	 */
-	public void setPressione(int pressione) {
+	public void setPressione(long pressione) {
 		this.pressione = pressione;
 	}
 
@@ -253,7 +253,7 @@ public class MeteoCitta {
 	 * 
 	 * @return umidita
 	 */
-	public int getUmidita() {
+	public long getUmidita() {
 		return umidita;
 	}
 
@@ -262,7 +262,7 @@ public class MeteoCitta {
 	 * 
 	 * @param umidita
 	 */
-	public void setUmidita(int umidita) {
+	public void setUmidita(long umidita) {
 		this.umidita = umidita;
 	}
 	
