@@ -6,7 +6,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import it.univpm.CovidForecast.api.OpenWeatherCurrentData;
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.service.MeteoCittaService;
 
@@ -59,17 +58,13 @@ public class ParsingCurrentData {
 	 */
 	private long umidita;
 	
-	private OpenWeatherCurrentData oW = new OpenWeatherCurrentData();
-	Vector<String> chiamate = new Vector<String>();
 	MeteoCitta mC;
 	MeteoCittaService mCS;
 	
-	public void parsing() {
-		
-		chiamate = oW.getCurrentData();
+	public void parsing(Vector<String> cittaCurrentData) {
 		
 		try {		
-				for(String s : chiamate) {
+				for(String s : cittaCurrentData) {
 				JSONParser jP = new JSONParser();
 				JSONObject jO = (JSONObject) jP.parse(s);
 				JSONObject jOMain = (JSONObject) jO.get("main");

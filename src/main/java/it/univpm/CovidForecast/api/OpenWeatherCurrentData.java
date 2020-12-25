@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Vector;
 
+import it.univpm.CovidForecast.Parsing.ParsingCurrentData;
 import it.univpm.CovidForecast.Scanner.CittaScanner;
 
 /**
@@ -21,9 +22,10 @@ import it.univpm.CovidForecast.Scanner.CittaScanner;
 public class OpenWeatherCurrentData {
 
 	private CittaScanner cS = new CittaScanner();
+	private ParsingCurrentData parsingCD = new ParsingCurrentData();
 	private Vector<String> citta;
 
-	public Vector<String> getCurrentData() {
+	public void getCurrentData() {
 
 		citta = cS.getCitta();
 		BufferedReader input = null;
@@ -41,6 +43,7 @@ public class OpenWeatherCurrentData {
 				while((s = input.readLine()) != null) {
 				cittaCurrentData.add(s);
 				}
+				parsingCD.parsing(cittaCurrentData);
 			}
 
 		}catch (MalformedURLException m) {
@@ -48,8 +51,5 @@ public class OpenWeatherCurrentData {
 		}catch (IOException i) {
 			// eccezione da scrivere
 		}
-
-		return cittaCurrentData;
-
 	}
 }
