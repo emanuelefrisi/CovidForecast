@@ -8,6 +8,7 @@ import org.json.simple.parser.ParseException;
 
 import it.univpm.CovidForecast.api.OpenWeatherCurrentData;
 import it.univpm.CovidForecast.model.MeteoCitta;
+import it.univpm.CovidForecast.service.MeteoCittaService;
 
 /**
  * 
@@ -61,6 +62,7 @@ public class ParsingCurrentData {
 	private OpenWeatherCurrentData oW = new OpenWeatherCurrentData();
 	Vector<String> chiamate = new Vector<String>();
 	MeteoCitta mC;
+	MeteoCittaService mCS;
 	
 	public void parsing() {
 		
@@ -83,6 +85,7 @@ public class ParsingCurrentData {
 				id = (long) jO.get("id");
 				citta = (String) jO.get("name");
 				mC = new MeteoCitta(id, citta, data, nazione, pressione, temp, tempMax, tempMin, tempPercepita, umidita);
+				mCS.salvaRecord(mC);
 				}
 		} catch (ParseException p) {
 			// eccezione da scrivere
