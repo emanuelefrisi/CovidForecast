@@ -13,21 +13,21 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "MeteoCitta")
+@Table(name = "meteo_citta")
 public class MeteoCitta {
 	/**
-	 * Id della città
+	 * Data nella quale sono state fatte le misurazioni(Unix Time Stamp)
 	 */
 	@Id
-	private long id;
+	private long data;
+	/**
+	 * Ora di riferimento
+	 */
+	private int ora;
 	/**
 	 * Nome della città
 	 */
 	private String citta;
-	/**
-	 * Data nella quale sono state fatte le misurazioni da OpenWeather(Unix Time Stamp)
-	 */
-	private long data;
 	/**
 	 * Prefisso internazionale
 	 */
@@ -57,13 +57,17 @@ public class MeteoCitta {
 	 */
 	private long umidita;
 	
+	public MeteoCitta() {
+		
+	}
+	
 	/**
 	 * 
 	 * Costruttore che prende in ingresso tutti i parametri di questa classe
 	 * 
-	 * @param i id
-	 * @param c citta
+	 * @param o ora
 	 * @param d data
+	 * @param c citta
 	 * @param n nazione
 	 * @param p pressione
 	 * @param t temp
@@ -73,10 +77,10 @@ public class MeteoCitta {
 	 * @param u umidita
 	 * 
 	 */
-	public MeteoCitta(long i, String c, long d, String n, long p, double t, double tM, double tm, double tP, long u) {
-		this.id=i;
-		this.citta=c;
+	public MeteoCitta(long d, int o, String c, String n, long p, double t, double tM, double tm, double tP, long u) {
+		this.setOra(o);
 		this.data=d;
+		this.citta=c;
 		this.nazione=n;
 		this.pressione=p;
 		this.temp=t;
@@ -87,21 +91,29 @@ public class MeteoCitta {
 	}
 
 	/**
-	 * Metodo getter dell'attributo id
+	 * Metodo getter dell'attributo citta
 	 * 
-	 * @return id
+	 * @return citta
 	 */
-	public long getId() {
-		return id;
+	public long getData() {
+		return data;
+	}
+	
+	/**
+	 * Metodo setter dell'attributo data
+	 * 
+	 * @param data
+	 */
+	public void setData(long d) {
+		this.data = d;
 	}
 
-	/**
-	 * Metodo setter dell'attributo id
-	 * 
-	 * @param id
-	 */
-	public void setId(long id) {
-		this.id = id;
+	public int getOra() {
+		return ora;
+	}
+
+	public void setOra(int o) {
+		this.ora = o;
 	}
 
 	/**
@@ -118,26 +130,8 @@ public class MeteoCitta {
 	 * 
 	 * @param citta
 	 */
-	public void setCitta(String citta) {
-		this.citta = citta;
-	}
-
-	/**
-	 * Metodo getter dell'attributo citta
-	 * 
-	 * @return citta
-	 */
-	public long getData() {
-		return data;
-	}
-
-	/**
-	 * Metodo setter dell'attributo data
-	 * 
-	 * @param data
-	 */
-	public void setData(long data) {
-		this.data = data;
+	public void setCitta(String c) {
+		this.citta = c;
 	}
 
 	/**
@@ -154,8 +148,8 @@ public class MeteoCitta {
 	 * 
 	 * @param nazione
 	 */
-	public void setNazione(String nazione) {
-		this.nazione = nazione;
+	public void setNazione(String n) {
+		this.nazione = n;
 	}
 
 	/**
@@ -172,8 +166,8 @@ public class MeteoCitta {
 	 * 
 	 * @param pressione
 	 */
-	public void setPressione(long pressione) {
-		this.pressione = pressione;
+	public void setPressione(long p) {
+		this.pressione = p;
 	}
 
 	/**
@@ -190,8 +184,8 @@ public class MeteoCitta {
 	 * 
 	 * @param temp
 	 */
-	public void setTemp(double temp) {
-		this.temp = temp;
+	public void setTemp(double t) {
+		this.temp = t;
 	}
 
 	/**
@@ -208,8 +202,8 @@ public class MeteoCitta {
 	 * 
 	 * @param tempMax
 	 */
-	public void setTempMax(double tempMax) {
-		this.tempMax = tempMax;
+	public void setTempMax(double tM) {
+		this.tempMax = tM;
 	}
 
 	/**
@@ -226,8 +220,8 @@ public class MeteoCitta {
 	 * 
 	 * @param tempMin
 	 */
-	public void setTempMin(double tempMin) {
-		this.tempMin = tempMin;
+	public void setTempMin(double tm) {
+		this.tempMin = tm;
 	}
 
 	/**
@@ -244,8 +238,8 @@ public class MeteoCitta {
 	 * 
 	 * @param tempPercepita
 	 */
-	public void setTempPercepita(double tempPercepita) {
-		this.tempPercepita = tempPercepita;
+	public void setTempPercepita(double tP) {
+		this.tempPercepita = tP;
 	}
 
 	/**

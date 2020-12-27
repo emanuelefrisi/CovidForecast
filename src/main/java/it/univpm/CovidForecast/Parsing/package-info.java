@@ -5,4 +5,4 @@
  * @author emanuelefrisi&domenicolaporta00
  *
  */
-package it.univpm.CovidForecast.Parsing;
+package it.univpm.CovidForecast.parsing;

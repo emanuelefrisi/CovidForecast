@@ -8,8 +8,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Vector;
 
-import it.univpm.CovidForecast.Parsing.ParsingCurrentData;
-import it.univpm.CovidForecast.Scanner.CittaScanner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import it.univpm.CovidForecast.parsing.ParsingCurrentData;
+import it.univpm.CovidForecast.scanner.CittaScanner;
+import it.univpm.CovidForecast.service.ApiKeyService;
 
 /**
  * 
@@ -19,23 +23,28 @@ import it.univpm.CovidForecast.Scanner.CittaScanner;
  * @author emanuelefrisi
  *
  */
+@Service
 public class OpenWeatherCurrentData {
 
 	private CittaScanner cS = new CittaScanner();
+	@Autowired
 	private ParsingCurrentData parsingCD = new ParsingCurrentData();
+	@Autowired
+	private ApiKeyService aK = new ApiKeyService();
 	private Vector<String> citta;
+	private String apiKey;
 
 	public void getCurrentData() {
 
 		citta = cS.getCitta();
+		apiKey = aK.getApiKeyFromDB();
 		BufferedReader input = null;
 		Vector<String> cittaCurrentData = new Vector<String>();
-
 		try{
 
 			for(String c : citta) {
 				String url = "http://api.openweathermap.org/data/2.5/weather?q=" + c
-						+ "&appid=6f02b4af6340b065f7602022c775c531";
+						+ "&appid=" + apiKey + "&units=metric&lang=it";
 				URL apiUrl = new URL(url);
 				HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();
 				input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -43,8 +52,8 @@ public class OpenWeatherCurrentData {
 				while((s = input.readLine()) != null) {
 				cittaCurrentData.add(s);
 				}
-				parsingCD.parsing(cittaCurrentData);
 			}
+			parsingCD.parsing(cittaCurrentData);
 
 		}catch (MalformedURLException m) {
 			// eccezione da scrivere

@@ -1,10 +1,12 @@
-package it.univpm.CovidForecast.Parsing;
+package it.univpm.CovidForecast.parsing;
 
 import java.util.Vector;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.service.MeteoCittaService;
@@ -14,21 +16,21 @@ import it.univpm.CovidForecast.service.MeteoCittaService;
  * @author emanuelefrisi
  *
  */
-
+@Service
 public class ParsingCurrentData {
 
 	/**
-	 * Id della città
+	 * Ora di riferimento
 	 */
-	private long id;
-	/**
-	 * Nome della città
-	 */
-	private String citta;
+	private static int ora;
 	/**
 	 * Data nella quale sono state fatte le misurazioni da OpenWeather(Unix Time Stamp)
 	 */
 	private long data;
+	/**
+	 * Nome della città
+	 */
+	private String citta;
 	/**
 	 * Prefisso internazionale
 	 */
@@ -40,51 +42,56 @@ public class ParsingCurrentData {
 	/**
 	 * Temperatura(misurata in Celsius)
 	 */
-	private double temp;
+	private Double temp;
 	/**
 	 * Temperatura massima(misurata in Celsius)
 	 */
-	private double tempMax;
+	private Double tempMax;
 	/**
 	 * Temperatura minima(misurata in Celsius)
 	 */
-	private double tempMin;
+	private Double tempMin;
 	/**
 	 * Temperatura perpepita(misurata in Celsius)
 	 */
-	private double tempPercepita;
+	private Double tempPercepita;
 	/**
 	 * Umidità in percentuale
 	 */
-	private long umidita;
+	private long umidita;	
 	
-	MeteoCitta mC;
-	MeteoCittaService mCS;
+	private MeteoCitta mC;
+	@Autowired
+	private MeteoCittaService mCS = new MeteoCittaService();
 	
 	public void parsing(Vector<String> cittaCurrentData) {
 		
-		try {		
+		ora++;
+		
+		try {	
 				for(String s : cittaCurrentData) {
 				JSONParser jP = new JSONParser();
 				JSONObject jO = (JSONObject) jP.parse(s);
 				JSONObject jOMain = (JSONObject) jO.get("main");
-				temp = (double) jOMain.get("temp");
-				tempPercepita = (double) jOMain.get("feels_like");
-				tempMin = (double) jOMain.get("temp_min");
-				tempMax = (double) jOMain.get("temp_max");
+				temp = Double.parseDouble(jOMain.get("temp").toString());
+				tempPercepita = Double.parseDouble(jOMain.get("feels_like").toString());
+				tempMin = Double.parseDouble(jOMain.get("temp_min").toString());
+				tempMax = Double.parseDouble(jOMain.get("temp_max").toString());
 				pressione = (long) jOMain.get("pressure");
-				umidita = (long) jOMain.get("umidity");
-				data = (long) jO.get("dt");
+				umidita = (long) jOMain.get("humidity");
 				JSONObject jOSys = (JSONObject) jO.get("sys");
 				nazione = (String) jOSys.get("country");
-				id = (long) jO.get("id");
 				citta = (String) jO.get("name");
-				mC = new MeteoCitta(id, citta, data, nazione, pressione, temp, tempMax, tempMin, tempPercepita, umidita);
+				data = System.currentTimeMillis()/1000;
+				mC = new MeteoCitta(data, ora, citta, nazione, pressione, temp, tempMax, tempMin, tempPercepita, umidita);
 				mCS.salvaRecord(mC);
+				Thread.sleep(700);
 				}
 		} catch (ParseException p) {
 			// eccezione da scrivere
-		}
+		} catch(InterruptedException ex) {
+	        Thread.currentThread().interrupt();
+	    }
 	}
 
 }

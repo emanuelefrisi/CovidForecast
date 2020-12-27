@@ -1,4 +1,4 @@
-package it.univpm.CovidForecast.Scanner;
+package it.univpm.CovidForecast.scanner;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -19,7 +19,6 @@ public class CittaScanner {
 		citta = new Vector<String>();
 		
 		input = getClass().getResourceAsStream("Città Covid.csv");
-//		InputStreamReader input = new InputStreamReader(file);
 		inputCitta = new Scanner(new BufferedReader(new InputStreamReader(input)));
 		
 		inputCitta.nextLine();
@@ -27,7 +26,6 @@ public class CittaScanner {
 		while(inputCitta.hasNext()) {
 			citta.add(inputCitta.nextLine());
 		}
-		
 		return citta;
 		
 	}
