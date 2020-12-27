@@ -78,8 +78,8 @@ public class MeteoCitta {
 	 * 
 	 */
 	public MeteoCitta(long d, int o, String c, String n, long p, double t, double tM, double tm, double tP, long u) {
-		this.setOra(o);
 		this.data=d;
+		this.ora=o;
 		this.citta=c;
 		this.nazione=n;
 		this.pressione=p;
@@ -107,15 +107,15 @@ public class MeteoCitta {
 	public void setData(long d) {
 		this.data = d;
 	}
-
+	
 	public int getOra() {
 		return ora;
 	}
 
 	public void setOra(int o) {
-		this.ora = o;
+		this.ora=o;
 	}
-
+	
 	/**
 	 * Metodo getter dell'attributo citta
 	 * 
