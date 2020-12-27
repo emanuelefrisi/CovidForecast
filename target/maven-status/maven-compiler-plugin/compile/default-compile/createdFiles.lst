@@ -1,0 +1,8 @@
+it\univpm\CovidForecast\CovidForecastApplication.class
+it\univpm\CovidForecast\scheduler\Scheduler.class
+it\univpm\CovidForecast\api\OpenWeatherCurrentData.class
+it\univpm\CovidForecast\Parsing\ParsingCurrentData.class
+it\univpm\CovidForecast\repository\MeteoCittaRepository.class
+it\univpm\CovidForecast\service\MeteoCittaService.class
+it\univpm\CovidForecast\Scanner\CittaScanner.class
+it\univpm\CovidForecast\model\MeteoCitta.class
