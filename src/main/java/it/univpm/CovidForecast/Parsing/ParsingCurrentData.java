@@ -22,7 +22,7 @@ public class ParsingCurrentData {
 	/**
 	 * Ora di riferimento
 	 */
-	private static int ora;
+	private static int ora = 0;
 	/**
 	 * Data nella quale sono state fatte le misurazioni da OpenWeather(Unix Time Stamp)
 	 */
@@ -70,22 +70,22 @@ public class ParsingCurrentData {
 		
 		try {	
 				for(String s : cittaCurrentData) {
-				JSONParser jP = new JSONParser();
-				JSONObject jO = (JSONObject) jP.parse(s);
-				JSONObject jOMain = (JSONObject) jO.get("main");
-				temp = Double.parseDouble(jOMain.get("temp").toString());
-				tempPercepita = Double.parseDouble(jOMain.get("feels_like").toString());
-				tempMin = Double.parseDouble(jOMain.get("temp_min").toString());
-				tempMax = Double.parseDouble(jOMain.get("temp_max").toString());
-				pressione = (long) jOMain.get("pressure");
-				umidita = (long) jOMain.get("humidity");
-				JSONObject jOSys = (JSONObject) jO.get("sys");
-				nazione = (String) jOSys.get("country");
-				citta = (String) jO.get("name");
-				data = System.currentTimeMillis()/1000;
-				mC = new MeteoCitta(data, ora, citta, nazione, pressione, temp, tempMax, tempMin, tempPercepita, umidita);
-				mCS.salvaRecord(mC);
-				Thread.sleep(700);
+					JSONParser jP = new JSONParser();
+					JSONObject jO = (JSONObject) jP.parse(s);
+					JSONObject jOMain = (JSONObject) jO.get("main");
+					temp = Double.parseDouble(jOMain.get("temp").toString());
+					tempPercepita = Double.parseDouble(jOMain.get("feels_like").toString());
+					tempMin = Double.parseDouble(jOMain.get("temp_min").toString());
+					tempMax = Double.parseDouble(jOMain.get("temp_max").toString());
+					pressione = (long) jOMain.get("pressure");
+					umidita = (long) jOMain.get("humidity");
+					JSONObject jOSys = (JSONObject) jO.get("sys");
+					nazione = (String) jOSys.get("country");
+					citta = (String) jO.get("name");
+					data = System.currentTimeMillis()/1000;
+					mC = new MeteoCitta(data, citta, nazione, ora, pressione, temp, tempMax, tempMin, tempPercepita, umidita);
+					mCS.salvaRecord(mC);
+					Thread.sleep(1000);
 				}
 		} catch (ParseException p) {
 			// eccezione da scrivere

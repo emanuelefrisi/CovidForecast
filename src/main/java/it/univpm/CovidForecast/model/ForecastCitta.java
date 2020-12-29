@@ -4,81 +4,40 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * 
- * Classe che descrive i valori che vengono salvati sul database
- * 
- * @author emanuelefrisi
- *
- */
-
 @Entity
-@Table(name = "meteo_citta")
-public class MeteoCitta {
-	/**
-	 * Data nella quale sono state fatte le misurazioni(Unix Time Stamp)
-	 */
+@Table(name = "forecast_citta")
+public class ForecastCitta {
+
 	@Id
 	private long data;
-	/**
-	 * Nome della città
-	 */
+	
+	private String dataTxt;
+	
 	private String citta;
-	/**
-	 * Prefisso internazionale
-	 */
+	
 	private String nazione;
-	/**
-	 * Ora di riferimento
-	 */
+	
 	private int ora;
-	/**
-	 * Pressione atmosferica(misurata in ettopascal)
-	 */
+	
 	private long pressione;
-	/**
-	 * Temperatura(misurata in Celsius)
-	 */
+	
 	private double temp;
-	/**
-	 * Temperatura massima(misurata in Celsius)
-	 */
+	
 	private double tempMax;
-	/**
-	 * Temperatura minima(misurata in Celsius)
-	 */
+	
 	private double tempMin;
-	/**
-	 * Temperatura perpepita(misurata in Celsius)
-	 */
+	
 	private double tempPercepita;
-	/**
-	 * Umidità in percentuale
-	 */
+	
 	private long umidita;
 	
-	public MeteoCitta() {
+	public ForecastCitta() {
 		
 	}
 	
-	/**
-	 * 
-	 * Costruttore che prende in ingresso tutti i parametri di questa classe
-	 * 
-	 * @param o ora
-	 * @param d data
-	 * @param c citta
-	 * @param n nazione
-	 * @param p pressione
-	 * @param t temp
-	 * @param tM tempMax
-	 * @param tm tempMin
-	 * @param tP tempPercepita
-	 * @param u umidita
-	 * 
-	 */
-	public MeteoCitta(long d, String c, String n, int o, long p, double t, double tM, double tm, double tP, long u) {
+	public ForecastCitta(long d, String dT, String c, String n, int o, long p, double t, double tM, double tm, double tP, long u) {
 		this.data=d;
+		this.dataTxt=dT;
 		this.citta=c;
 		this.nazione=n;
 		this.ora=o;
@@ -89,7 +48,7 @@ public class MeteoCitta {
 		this.tempPercepita=tP;
 		this.umidita=u;
 	}
-
+	
 	/**
 	 * Metodo getter dell'attributo citta
 	 * 
@@ -106,6 +65,14 @@ public class MeteoCitta {
 	 */
 	public void setData(long d) {
 		this.data = d;
+	}
+	
+	public String getDataTxt() {
+		return dataTxt;
+	}
+	
+	public void setDataTxt(String dT) {
+		this.dataTxt = dT;
 	}
 	
 	/**
@@ -258,6 +225,10 @@ public class MeteoCitta {
 	 */
 	public void setUmidita(long umidita) {
 		this.umidita = umidita;
+	}
+	
+	public String toString() {
+		return temp + " e " + tempMax;
 	}
 	
 }
