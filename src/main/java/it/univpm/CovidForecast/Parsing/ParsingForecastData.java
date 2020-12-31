@@ -6,11 +6,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.ForecastCitta;
-import it.univpm.CovidForecast.service.ForecastCittaService;
 
 /**
  * 
@@ -18,38 +16,12 @@ import it.univpm.CovidForecast.service.ForecastCittaService;
  *
  */
 @Service
-public class ParsingForecastData {
-
-private long data;
+public class ParsingForecastData extends ParsingData{
 	
-	private String dataTxt;
-	
-	private String citta;
-	
-	private String nazione;
-	
-	private static int ora = 0;
-	
-	private long pressione;
-	
-	private Double temp;
-	
-	private Double tempMax;
-	
-	private Double tempMin;
-	
-	private Double tempPercepita;
-	
-	private long umidita;
-	
-	private ForecastCitta fC;
-	private Vector<ForecastCitta> fCVector = new Vector<ForecastCitta>();
-	@Autowired
-	private ForecastCittaService fCS = new ForecastCittaService();
-	
+	@Override
 	public void parsing(Vector<String> cittaForecastData) {
 		
-		ora++;
+		ora = oS.getOra().getOra();
 		
 		try {
 			
@@ -81,7 +53,7 @@ private long data;
 			fCS.salvaRecord(fCVector);
 			
 		} catch(ParseException p) {
-			
+			System.out.println("Eccezione ParseException");
 		} catch(InterruptedException ex) {
 	        Thread.currentThread().interrupt();
 	    }

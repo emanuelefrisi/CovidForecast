@@ -12,51 +12,56 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.parsing.ParsingCurrentData;
+import it.univpm.CovidForecast.parsing.ParsingForecastData;
 import it.univpm.CovidForecast.scanner.CittaScanner;
 import it.univpm.CovidForecast.service.ApiKeyService;
 
 /**
  * 
  * Classe che esegue la chiamata all'API di OpenWeather riguardante i dati
- * attuali di una città
+ * attuali e previsionali per ogni città che viene letta dallo scanner
  * 
  * @author emanuelefrisi
  *
  */
 @Service
-public class OpenWeatherCurrentData {
+public class OpenWeatherData {
 
 	private CittaScanner cS = new CittaScanner();
 	@Autowired
+	private ApiKeyService aKS = new ApiKeyService();
+	@Autowired
 	private ParsingCurrentData parsingCD = new ParsingCurrentData();
 	@Autowired
-	private ApiKeyService aK = new ApiKeyService();
+	private ParsingForecastData parsingFD = new ParsingForecastData();
 	private Vector<String> citta;
 	private String apiKey;
-
-	public void getCurrentData() {
-
+	
+	public void getData(String tipo) {
+		Vector<String> cittaData = new Vector<String>();
 		citta = cS.getCitta();
-		apiKey = aK.getApiKeyFromDB();
-		BufferedReader input;
-		Vector<String> cittaCurrentData = new Vector<String>();
-		try{
+		apiKey = aKS.getApiKeyFromDB();
+		try {
 			for(String c : citta) {
-				String url = "http://api.openweathermap.org/data/2.5/weather?q=" + c
+				String url = "http://api.openweathermap.org/data/2.5/" + tipo + "?q=" + c
 						+ "&appid=" + apiKey + "&units=metric&lang=it";
 				URL apiUrl = new URL(url);
 				HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();
-				input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+				BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 				String s;
 				while((s = input.readLine()) != null) {
-				cittaCurrentData.add(s);
+				cittaData.add(s);
 				}
 			}
-			parsingCD.parsing(cittaCurrentData);
+			if(tipo.equals("weather"))
+				parsingCD.parsing(cittaData);
+			else
+				parsingFD.parsing(cittaData);
 		}catch (MalformedURLException m) {
-			// eccezione da scrivere
-		}catch (IOException i) {
-			// eccezione da scrivere
+			System.out.println("Eccezione MalformedURLException");
+		} catch (IOException i) {
+			System.out.println("Eccezione IOException");
 		}
 	}
+	
 }

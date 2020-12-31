@@ -8,11 +8,11 @@ import java.util.Vector;
 
 public class CittaScanner {
 
-	Vector<String> citta;
+	private Vector<String> citta;
 	
-	InputStream input;
+	private InputStream input;
 	
-	Scanner inputCitta;
+	private Scanner inputCitta;
 	
 	public Vector<String> getCitta(){
 		

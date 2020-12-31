@@ -21,13 +21,13 @@ public class ForecastCitta {
 	
 	private long pressione;
 	
-	private double temp;
+	private Double temp;
 	
-	private double tempMax;
+	private Double tempMax;
 	
-	private double tempMin;
+	private Double tempMin;
 	
-	private double tempPercepita;
+	private Double tempPercepita;
 	
 	private long umidita;
 	
@@ -35,7 +35,7 @@ public class ForecastCitta {
 		
 	}
 	
-	public ForecastCitta(long d, String dT, String c, String n, int o, long p, double t, double tM, double tm, double tP, long u) {
+	public ForecastCitta(long d, String dT, String c, String n, int o, long p, Double t, Double tM, Double tm, Double tP, long u) {
 		this.data=d;
 		this.dataTxt=dT;
 		this.citta=c;
@@ -142,7 +142,7 @@ public class ForecastCitta {
 	 * 
 	 * @return temp
 	 */
-	public double getTemp() {
+	public Double getTemp() {
 		return temp;
 	}
 
@@ -151,7 +151,7 @@ public class ForecastCitta {
 	 * 
 	 * @param temp
 	 */
-	public void setTemp(double t) {
+	public void setTemp(Double t) {
 		this.temp = t;
 	}
 
@@ -160,7 +160,7 @@ public class ForecastCitta {
 	 * 
 	 * @return temp
 	 */
-	public double getTempMax() {
+	public Double getTempMax() {
 		return tempMax;
 	}
 
@@ -169,7 +169,7 @@ public class ForecastCitta {
 	 * 
 	 * @param tempMax
 	 */
-	public void setTempMax(double tM) {
+	public void setTempMax(Double tM) {
 		this.tempMax = tM;
 	}
 
@@ -178,7 +178,7 @@ public class ForecastCitta {
 	 * 
 	 * @return tempMin
 	 */
-	public double getTempMin() {
+	public Double getTempMin() {
 		return tempMin;
 	}
 
@@ -187,7 +187,7 @@ public class ForecastCitta {
 	 * 
 	 * @param tempMin
 	 */
-	public void setTempMin(double tm) {
+	public void setTempMin(Double tm) {
 		this.tempMin = tm;
 	}
 
@@ -196,7 +196,7 @@ public class ForecastCitta {
 	 * 
 	 * @return tempPerpepita
 	 */
-	public double getTempPercepita() {
+	public Double getTempPercepita() {
 		return tempPercepita;
 	}
 
@@ -205,7 +205,7 @@ public class ForecastCitta {
 	 * 
 	 * @param tempPercepita
 	 */
-	public void setTempPercepita(double tP) {
+	public void setTempPercepita(Double tP) {
 		this.tempPercepita = tP;
 	}
 
@@ -225,10 +225,6 @@ public class ForecastCitta {
 	 */
 	public void setUmidita(long umidita) {
 		this.umidita = umidita;
-	}
-	
-	public String toString() {
-		return temp + " e " + tempMax;
 	}
 	
 }

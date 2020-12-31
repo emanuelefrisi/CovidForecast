@@ -39,19 +39,19 @@ public class MeteoCitta {
 	/**
 	 * Temperatura(misurata in Celsius)
 	 */
-	private double temp;
+	private Double temp;
 	/**
 	 * Temperatura massima(misurata in Celsius)
 	 */
-	private double tempMax;
+	private Double tempMax;
 	/**
 	 * Temperatura minima(misurata in Celsius)
 	 */
-	private double tempMin;
+	private Double tempMin;
 	/**
 	 * Temperatura perpepita(misurata in Celsius)
 	 */
-	private double tempPercepita;
+	private Double tempPercepita;
 	/**
 	 * Umidità in percentuale
 	 */
@@ -77,7 +77,7 @@ public class MeteoCitta {
 	 * @param u umidita
 	 * 
 	 */
-	public MeteoCitta(long d, String c, String n, int o, long p, double t, double tM, double tm, double tP, long u) {
+	public MeteoCitta(long d, String c, String n, int o, long p, Double t, Double tM, Double tm, Double tP, long u) {
 		this.data=d;
 		this.citta=c;
 		this.nazione=n;
@@ -175,7 +175,7 @@ public class MeteoCitta {
 	 * 
 	 * @return temp
 	 */
-	public double getTemp() {
+	public Double getTemp() {
 		return temp;
 	}
 
@@ -184,7 +184,7 @@ public class MeteoCitta {
 	 * 
 	 * @param temp
 	 */
-	public void setTemp(double t) {
+	public void setTemp(Double t) {
 		this.temp = t;
 	}
 
@@ -193,7 +193,7 @@ public class MeteoCitta {
 	 * 
 	 * @return temp
 	 */
-	public double getTempMax() {
+	public Double getTempMax() {
 		return tempMax;
 	}
 
@@ -202,7 +202,7 @@ public class MeteoCitta {
 	 * 
 	 * @param tempMax
 	 */
-	public void setTempMax(double tM) {
+	public void setTempMax(Double tM) {
 		this.tempMax = tM;
 	}
 
@@ -211,7 +211,7 @@ public class MeteoCitta {
 	 * 
 	 * @return tempMin
 	 */
-	public double getTempMin() {
+	public Double getTempMin() {
 		return tempMin;
 	}
 
@@ -220,7 +220,7 @@ public class MeteoCitta {
 	 * 
 	 * @param tempMin
 	 */
-	public void setTempMin(double tm) {
+	public void setTempMin(Double tm) {
 		this.tempMin = tm;
 	}
 
@@ -229,7 +229,7 @@ public class MeteoCitta {
 	 * 
 	 * @return tempPerpepita
 	 */
-	public double getTempPercepita() {
+	public Double getTempPercepita() {
 		return tempPercepita;
 	}
 
@@ -238,7 +238,7 @@ public class MeteoCitta {
 	 * 
 	 * @param tempPercepita
 	 */
-	public void setTempPercepita(double tP) {
+	public void setTempPercepita(Double tP) {
 		this.tempPercepita = tP;
 	}
 

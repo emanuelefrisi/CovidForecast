@@ -5,11 +5,10 @@ import java.util.Vector;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
-import it.univpm.CovidForecast.service.MeteoCittaService;
+import it.univpm.CovidForecast.model.Ora;
 
 /**
  * 
@@ -17,56 +16,14 @@ import it.univpm.CovidForecast.service.MeteoCittaService;
  *
  */
 @Service
-public class ParsingCurrentData {
-
-	/**
-	 * Ora di riferimento
-	 */
-	private static int ora = 0;
-	/**
-	 * Data nella quale sono state fatte le misurazioni da OpenWeather(Unix Time Stamp)
-	 */
-	private long data;
-	/**
-	 * Nome della città
-	 */
-	private String citta;
-	/**
-	 * Prefisso internazionale
-	 */
-	private String nazione;
-	/**
-	 * Pressione atmosferica(misurata in ettopascal)
-	 */
-	private long pressione;
-	/**
-	 * Temperatura(misurata in Celsius)
-	 */
-	private Double temp;
-	/**
-	 * Temperatura massima(misurata in Celsius)
-	 */
-	private Double tempMax;
-	/**
-	 * Temperatura minima(misurata in Celsius)
-	 */
-	private Double tempMin;
-	/**
-	 * Temperatura perpepita(misurata in Celsius)
-	 */
-	private Double tempPercepita;
-	/**
-	 * Umidità in percentuale
-	 */
-	private long umidita;	
+public class ParsingCurrentData extends ParsingData{
 	
-	private MeteoCitta mC;
-	@Autowired
-	private MeteoCittaService mCS = new MeteoCittaService();
-	
+	@Override
 	public void parsing(Vector<String> cittaCurrentData) {
 		
-		ora++;
+		ora = oS.getOra().getOra()+1;
+		o = new Ora(oS.getOra().getId(), ora);
+		oS.salvaRecord(o);
 		
 		try {	
 				for(String s : cittaCurrentData) {
@@ -88,7 +45,7 @@ public class ParsingCurrentData {
 					Thread.sleep(1000);
 				}
 		} catch (ParseException p) {
-			// eccezione da scrivere
+			System.out.println("Eccezione ParseException");
 		} catch(InterruptedException ex) {
 	        Thread.currentThread().interrupt();
 	    }
