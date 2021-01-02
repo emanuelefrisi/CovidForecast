@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: it.univpm.CovidForecast.CovidForecastApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.753 s - in it.univpm.CovidForecast.CovidForecastApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.057 s - in it.univpm.CovidForecast.CovidForecastApplicationTests
