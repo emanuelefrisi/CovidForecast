@@ -223,8 +223,8 @@ public class ForecastCitta {
 	 * 
 	 * @param umidita
 	 */
-	public void setUmidita(long umidita) {
-		this.umidita = umidita;
+	public void setUmidita(long u) {
+		this.umidita = u;
 	}
 	
 }
