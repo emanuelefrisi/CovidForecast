@@ -14,8 +14,8 @@ public class Scheduler {
 	
 	@Scheduled(fixedRate=3600000)
 	public void scheduler() {
-		oWD.getData("weather");
-		oWD.getData("forecast");
+//		oWD.getData("weather");
+//		oWD.getData("forecast");
 	}
 	
 }

@@ -4619,7 +4619,7 @@
 											"top": 30,
 											"width": 495,
 											"height": 13,
-											"text": "it.univpm.CovidForecast.Parsing"
+											"text": "it.univpm.CovidForecast.parsing"
 										},
 										{
 											"_type": "LabelView",
@@ -4848,7 +4848,7 @@
 											"top": 446,
 											"width": 207,
 											"height": 13,
-											"text": "it.univpm.CovidForecast.Scanner"
+											"text": "it.univpm.CovidForecast.scanner"
 										},
 										{
 											"_type": "LabelView",
@@ -5207,7 +5207,7 @@
 											"top": 175,
 											"width": 193.62890625,
 											"height": 13,
-											"text": "OpenWeatherCurrentData"
+											"text": "OpenWeatherData"
 										},
 										{
 											"_type": "LabelView",
@@ -5419,8 +5419,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 24,
-									"top": -112,
+									"left": 16,
+									"top": -120,
 									"width": 10,
 									"height": 10
 								},
@@ -5435,8 +5435,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 24,
-									"top": -112,
+									"left": 16,
+									"top": -120,
 									"width": 10,
 									"height": 10
 								}
@@ -5955,6 +5955,23 @@
 									"subViews": [
 										{
 											"_type": "UMLOperationView",
+											"_id": "AAAAAAF2w7JsvG/c6UM=",
+											"_parent": {
+												"$ref": "AAAAAAF2qoazVWormwE="
+											},
+											"model": {
+												"$ref": "AAAAAAF2w7JrYm/ZlQM="
+											},
+											"font": "Arial;13;0",
+											"left": 37,
+											"top": 652,
+											"width": 629.02099609375,
+											"height": 13,
+											"text": "+MeteoCitta()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
 											"_id": "AAAAAAF2qpDmwWq5x6c=",
 											"_parent": {
 												"$ref": "AAAAAAF2qoazVWormwE="
@@ -5964,7 +5981,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 652,
+											"top": 667,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+MeteoCitta(i: long, c: String, d: long, n: String, p: long, t: Double, tM: Double, tm: Double, tp: Double, u: long)",
@@ -5981,7 +5998,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 667,
+											"top": 682,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getId(): long",
@@ -5998,7 +6015,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 682,
+											"top": 697,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+setId(id: long)",
@@ -6015,7 +6032,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 697,
+											"top": 712,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getCitta(): String",
@@ -6032,7 +6049,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 712,
+											"top": 727,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+setCitta(citta: String)",
@@ -6049,7 +6066,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 727,
+											"top": 742,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getData(): long",
@@ -6066,7 +6083,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 742,
+											"top": 757,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+setData(data: long)",
@@ -6083,7 +6100,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 757,
+											"top": 772,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getNazione(): String",
@@ -6100,7 +6117,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 772,
+											"top": 787,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+setNazione(nazione: String)",
@@ -6117,7 +6134,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 787,
+											"top": 802,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getPressione(): long",
@@ -6134,7 +6151,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 802,
+											"top": 817,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+setPressione(pressione: long)",
@@ -6151,7 +6168,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 817,
+											"top": 832,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getTemp(): Double",
@@ -6168,7 +6185,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 832,
+											"top": 847,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+setTemp(temp: Double)",
@@ -6185,7 +6202,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 847,
+											"top": 862,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getTempMax(): Double",
@@ -6202,7 +6219,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 862,
+											"top": 877,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+setTempMax(tempMax: Double)",
@@ -6219,7 +6236,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 877,
+											"top": 892,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getTempMin(): Double",
@@ -6236,7 +6253,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 892,
+											"top": 907,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+setTempMin(tempMIn: Double)",
@@ -6253,7 +6270,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 907,
+											"top": 922,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getTempPercepita(): Double",
@@ -6270,7 +6287,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 922,
+											"top": 937,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+setTempPercepita(tempPercepita: Double)",
@@ -6287,7 +6304,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 937,
+											"top": 952,
 											"width": 629.02099609375,
 											"height": 13,
 											"text": "+getUmidita(): long",
@@ -6304,27 +6321,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 952,
-											"width": 629.02099609375,
-											"height": 13,
-											"text": "+setUmidita(umidita: long)",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF2w7JsvG/c6UM=",
-											"_parent": {
-												"$ref": "AAAAAAF2qoazVWormwE="
-											},
-											"model": {
-												"$ref": "AAAAAAF2w7JrYm/ZlQM="
-											},
-											"font": "Arial;13;0",
-											"left": 37,
 											"top": 967,
 											"width": 629.02099609375,
 											"height": 13,
-											"text": "+MeteoCitta()",
+											"text": "+setUmidita(u: long)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6446,7 +6446,7 @@
 											"top": -344,
 											"width": 225.39892578125,
 											"height": 13,
-											"text": "(from it.univpm.CovidForecast.Parsing)"
+											"text": "(from it.univpm.CovidForecast.parsing)"
 										},
 										{
 											"_type": "LabelView",
@@ -6492,6 +6492,23 @@
 									"subViews": [
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF2qrEzFGwu5mc=",
+											"_parent": {
+												"$ref": "AAAAAAF2qrAps2v3eWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF2qrEy42wrOGc="
+											},
+											"font": "Arial;13;0",
+											"left": 285,
+											"top": 78,
+											"width": 203.41064453125,
+											"height": 13,
+											"text": "#data: long",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAF2qrCI9mwcxbY=",
 											"_parent": {
 												"$ref": "AAAAAAF2qrAps2v3eWI="
@@ -6501,10 +6518,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 285,
-											"top": 78,
+											"top": 93,
 											"width": 203.41064453125,
 											"height": 13,
-											"text": "-dataTxt: String",
+											"text": "#dataTxt: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6518,27 +6535,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 285,
-											"top": 93,
-											"width": 203.41064453125,
-											"height": 13,
-											"text": "-citta: String",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2qrEzFGwu5mc=",
-											"_parent": {
-												"$ref": "AAAAAAF2qrAps2v3eWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF2qrEy42wrOGc="
-											},
-											"font": "Arial;13;0",
-											"left": 285,
 											"top": 108,
 											"width": 203.41064453125,
 											"height": 13,
-											"text": "-data: long",
+											"text": "#citta: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6555,143 +6555,7 @@
 											"top": 123,
 											"width": 203.41064453125,
 											"height": 13,
-											"text": "-nazione: String",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2qrHBjWxAHvE=",
-											"_parent": {
-												"$ref": "AAAAAAF2qrAps2v3eWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF2qrHBW2w9bDs="
-											},
-											"font": "Arial;13;0",
-											"left": 285,
-											"top": 138,
-											"width": 203.41064453125,
-											"height": 13,
-											"text": "-pressione: long",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2qrIME2xJ8iI=",
-											"_parent": {
-												"$ref": "AAAAAAF2qrAps2v3eWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF2qrIL3mxGL6A="
-											},
-											"font": "Arial;13;0",
-											"left": 285,
-											"top": 153,
-											"width": 203.41064453125,
-											"height": 13,
-											"text": "-temp: Double",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2qrJZQmxSVC0=",
-											"_parent": {
-												"$ref": "AAAAAAF2qrAps2v3eWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF2qrJZC2xPAQc="
-											},
-											"font": "Arial;13;0",
-											"left": 285,
-											"top": 168,
-											"width": 203.41064453125,
-											"height": 13,
-											"text": "-tempMax: Double",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2qrKtl2xbK5A=",
-											"_parent": {
-												"$ref": "AAAAAAF2qrAps2v3eWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF2qrKta2xYaM8="
-											},
-											"font": "Arial;13;0",
-											"left": 285,
-											"top": 183,
-											"width": 203.41064453125,
-											"height": 13,
-											"text": "-tempMin: Double",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2qrLqr2xk3zI=",
-											"_parent": {
-												"$ref": "AAAAAAF2qrAps2v3eWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF2qrLqdWxh1Q4="
-											},
-											"font": "Arial;13;0",
-											"left": 285,
-											"top": 198,
-											"width": 203.41064453125,
-											"height": 13,
-											"text": "-tempPercepita: Double",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2qrM9fGxtAUE=",
-											"_parent": {
-												"$ref": "AAAAAAF2qrAps2v3eWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF2qrM9P2xqUzc="
-											},
-											"font": "Arial;13;0",
-											"left": 285,
-											"top": 213,
-											"width": 203.41064453125,
-											"height": 13,
-											"text": "-umidita: long",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2qrXuZWx38dg=",
-											"_parent": {
-												"$ref": "AAAAAAF2qrAps2v3eWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF2qrXuAWx0Ap8="
-											},
-											"font": "Arial;13;0",
-											"left": 285,
-											"top": 228,
-											"width": 203.41064453125,
-											"height": 13,
-											"text": "#mC: MeteoCitta",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2qrZ9qWyAoOs=",
-											"_parent": {
-												"$ref": "AAAAAAF2qrAps2v3eWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF2qrZ9Y2x9M/0="
-											},
-											"font": "Arial;13;0",
-											"left": 285,
-											"top": 243,
-											"width": 203.41064453125,
-											"height": 13,
-											"text": "#mCS: MeteoCittaService",
+											"text": "#nazione: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6705,10 +6569,112 @@
 											},
 											"font": "Arial;13;0",
 											"left": 285,
-											"top": 258,
+											"top": 138,
 											"width": 203.41064453125,
 											"height": 13,
-											"text": "-ora: int",
+											"text": "#ora: int",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF2qrHBjWxAHvE=",
+											"_parent": {
+												"$ref": "AAAAAAF2qrAps2v3eWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF2qrHBW2w9bDs="
+											},
+											"font": "Arial;13;0",
+											"left": 285,
+											"top": 153,
+											"width": 203.41064453125,
+											"height": 13,
+											"text": "#pressione: long",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF2qrIME2xJ8iI=",
+											"_parent": {
+												"$ref": "AAAAAAF2qrAps2v3eWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF2qrIL3mxGL6A="
+											},
+											"font": "Arial;13;0",
+											"left": 285,
+											"top": 168,
+											"width": 203.41064453125,
+											"height": 13,
+											"text": "#temp: Double",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF2qrJZQmxSVC0=",
+											"_parent": {
+												"$ref": "AAAAAAF2qrAps2v3eWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF2qrJZC2xPAQc="
+											},
+											"font": "Arial;13;0",
+											"left": 285,
+											"top": 183,
+											"width": 203.41064453125,
+											"height": 13,
+											"text": "#tempMax: Double",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF2qrKtl2xbK5A=",
+											"_parent": {
+												"$ref": "AAAAAAF2qrAps2v3eWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF2qrKta2xYaM8="
+											},
+											"font": "Arial;13;0",
+											"left": 285,
+											"top": 198,
+											"width": 203.41064453125,
+											"height": 13,
+											"text": "#tempMin: Double",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF2qrLqr2xk3zI=",
+											"_parent": {
+												"$ref": "AAAAAAF2qrAps2v3eWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF2qrLqdWxh1Q4="
+											},
+											"font": "Arial;13;0",
+											"left": 285,
+											"top": 213,
+											"width": 203.41064453125,
+											"height": 13,
+											"text": "#tempPercepita: Double",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF2qrM9fGxtAUE=",
+											"_parent": {
+												"$ref": "AAAAAAF2qrAps2v3eWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF2qrM9P2xqUzc="
+											},
+											"font": "Arial;13;0",
+											"left": 285,
+											"top": 228,
+											"width": 203.41064453125,
+											"height": 13,
+											"text": "#umidita: long",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6722,10 +6688,27 @@
 											},
 											"font": "Arial;13;0",
 											"left": 285,
-											"top": 273,
+											"top": 243,
 											"width": 203.41064453125,
 											"height": 13,
 											"text": "#o: Ora",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF2qrXuZWx38dg=",
+											"_parent": {
+												"$ref": "AAAAAAF2qrAps2v3eWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF2qrXuAWx0Ap8="
+											},
+											"font": "Arial;13;0",
+											"left": 285,
+											"top": 258,
+											"width": 203.41064453125,
+											"height": 13,
+											"text": "#mC: MeteoCitta",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6739,7 +6722,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 285,
-											"top": 288,
+											"top": 273,
 											"width": 203.41064453125,
 											"height": 13,
 											"text": "#fC: ForecastCitta",
@@ -6756,7 +6739,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 285,
-											"top": 303,
+											"top": 288,
 											"width": 203.41064453125,
 											"height": 13,
 											"text": "#fCVector: Vector<ForecastCitta>",
@@ -6764,19 +6747,19 @@
 										},
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF2w7+3CnCcajk=",
+											"_id": "AAAAAAF2qrZ9qWyAoOs=",
 											"_parent": {
 												"$ref": "AAAAAAF2qrAps2v3eWI="
 											},
 											"model": {
-												"$ref": "AAAAAAF2w7+2wnCZb5Q="
+												"$ref": "AAAAAAF2qrZ9Y2x9M/0="
 											},
 											"font": "Arial;13;0",
 											"left": 285,
-											"top": 318,
+											"top": 303,
 											"width": 203.41064453125,
 											"height": 13,
-											"text": "#oS: OraService",
+											"text": "#mCS: MeteoCittaService",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6790,10 +6773,27 @@
 											},
 											"font": "Arial;13;0",
 											"left": 285,
-											"top": 333,
+											"top": 318,
 											"width": 203.41064453125,
 											"height": 13,
 											"text": "#fCS: ForecastCittaService",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF2w7+3CnCcajk=",
+											"_parent": {
+												"$ref": "AAAAAAF2qrAps2v3eWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF2w7+2wnCZb5Q="
+											},
+											"font": "Arial;13;0",
+											"left": 285,
+											"top": 333,
+											"width": 203.41064453125,
+											"height": 13,
+											"text": "#oS: OraService",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6952,7 +6952,7 @@
 											"top": 584,
 											"width": 229.74072265625,
 											"height": 13,
-											"text": "(from it.univpm.CovidForecast.Scanner)"
+											"text": "(from it.univpm.CovidForecast.scanner)"
 										},
 										{
 											"_type": "LabelView",
@@ -8404,7 +8404,7 @@
 											"top": 1240,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setData(value: long)",
+											"text": "+setData(d: long)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8438,7 +8438,7 @@
 											"top": 1270,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setDataTxt(value: String)",
+											"text": "+setDataTxt(dT: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8472,7 +8472,7 @@
 											"top": 1300,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setCitta(value: String)",
+											"text": "+setCitta(c: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8506,7 +8506,7 @@
 											"top": 1330,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setNazione(value: String)",
+											"text": "+setNazione(n: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8540,7 +8540,7 @@
 											"top": 1360,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setOra(value: int)",
+											"text": "+setOra(o: int)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8574,7 +8574,7 @@
 											"top": 1390,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setPressione(value: long)",
+											"text": "+setPressione(p: long)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8608,7 +8608,7 @@
 											"top": 1420,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setTemp(value: Double)",
+											"text": "+setTemp(t: Double)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8642,7 +8642,7 @@
 											"top": 1450,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setTempMax(value: Double)",
+											"text": "+setTempMax(tM: Double)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8676,7 +8676,7 @@
 											"top": 1480,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setTempMin(value: Double)",
+											"text": "+setTempMin(tm: Double)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8710,7 +8710,7 @@
 											"top": 1510,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setTempPercepita(value: Double)",
+											"text": "+setTempPercepita(tP: Double)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8744,7 +8744,7 @@
 											"top": 1540,
 											"width": 727.98095703125,
 											"height": 13,
-											"text": "+setUmidita(value: long)",
+											"text": "+setUmidita(u: long)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9282,7 +9282,7 @@
 											"top": -1182,
 											"width": 225.39892578125,
 											"height": 13,
-											"text": "(from it.univpm.CovidForecast.Parsing)"
+											"text": "(from it.univpm.CovidForecast.parsing)"
 										},
 										{
 											"_type": "LabelView",
@@ -9574,7 +9574,7 @@
 											"top": 696,
 											"width": 225.39892578125,
 											"height": 13,
-											"text": "(from it.univpm.CovidForecast.Parsing)"
+											"text": "(from it.univpm.CovidForecast.parsing)"
 										},
 										{
 											"_type": "LabelView",
@@ -11085,7 +11085,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF2pZc3X2bUwe0="
 							},
-							"name": "OpenWeatherCurrentData",
+							"name": "OpenWeatherData",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -11377,6 +11377,14 @@
 								}
 							],
 							"operations": [
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAF2w7JrYm/ZlQM=",
+									"_parent": {
+										"$ref": "AAAAAAF2qoazOmoiU8Y="
+									},
+									"name": "MeteoCitta"
+								},
 								{
 									"_type": "UMLOperation",
 									"_id": "AAAAAAF2qpDmfmq2hs4=",
@@ -11853,18 +11861,10 @@
 											"_parent": {
 												"$ref": "AAAAAAF2qp9rpWuMtWY="
 											},
-											"name": "umidita",
+											"name": "u",
 											"type": "long"
 										}
 									]
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAF2w7JrYm/ZlQM=",
-									"_parent": {
-										"$ref": "AAAAAAF2qoazOmoiU8Y="
-									},
-									"name": "MeteoCitta"
 								}
 							]
 						},
@@ -12138,7 +12138,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKOM283qt4="
 											},
-											"name": "value",
+											"name": "d",
 											"type": "long"
 										}
 									]
@@ -12176,7 +12176,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKROm9GEVs="
 											},
-											"name": "value",
+											"name": "dT",
 											"type": "String"
 										}
 									]
@@ -12214,7 +12214,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKTtW9VmGs="
 											},
-											"name": "value",
+											"name": "c",
 											"type": "String"
 										}
 									]
@@ -12252,7 +12252,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKWJ29kNUQ="
 											},
-											"name": "value",
+											"name": "n",
 											"type": "String"
 										}
 									]
@@ -12290,7 +12290,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKY4m9ztTY="
 											},
-											"name": "value",
+											"name": "o",
 											"type": "int"
 										}
 									]
@@ -12328,7 +12328,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKba2+CRdw="
 											},
-											"name": "value",
+											"name": "p",
 											"type": "long"
 										}
 									]
@@ -12366,7 +12366,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKd9G+RK3g="
 											},
-											"name": "value",
+											"name": "t",
 											"type": "Double"
 										}
 									]
@@ -12404,7 +12404,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKgcW+gmCU="
 											},
-											"name": "value",
+											"name": "tM",
 											"type": "Double"
 										}
 									]
@@ -12442,7 +12442,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKixG+vdiw="
 											},
-											"name": "value",
+											"name": "tm",
 											"type": "Double"
 										}
 									]
@@ -12480,7 +12480,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKlA2++fKI="
 											},
-											"name": "value",
+											"name": "tP",
 											"type": "Double"
 										}
 									]
@@ -12518,7 +12518,7 @@
 											"_parent": {
 												"$ref": "AAAAAAF2wwKnXm/N/FI="
 											},
-											"name": "value",
+											"name": "u",
 											"type": "long"
 										}
 									]
@@ -12677,7 +12677,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "it.univpm.CovidForecast.Parsing",
+					"name": "it.univpm.CovidForecast.parsing",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",
@@ -12689,12 +12689,22 @@
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
+									"_id": "AAAAAAF2qrEy42wrOGc=",
+									"_parent": {
+										"$ref": "AAAAAAF2qrApkWvvaoM="
+									},
+									"name": "data",
+									"visibility": "protected",
+									"type": "long"
+								},
+								{
+									"_type": "UMLAttribute",
 									"_id": "AAAAAAF2qrCIu2wZD0I=",
 									"_parent": {
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
 									"name": "dataTxt",
-									"visibility": "private",
+									"visibility": "protected",
 									"type": "String"
 								},
 								{
@@ -12704,18 +12714,8 @@
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
 									"name": "citta",
-									"visibility": "private",
+									"visibility": "protected",
 									"type": "String"
-								},
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAF2qrEy42wrOGc=",
-									"_parent": {
-										"$ref": "AAAAAAF2qrApkWvvaoM="
-									},
-									"name": "data",
-									"visibility": "private",
-									"type": "long"
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12724,8 +12724,18 @@
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
 									"name": "nazione",
-									"visibility": "private",
+									"visibility": "protected",
 									"type": "String"
+								},
+								{
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAF2w7zInHBzY94=",
+									"_parent": {
+										"$ref": "AAAAAAF2qrApkWvvaoM="
+									},
+									"name": "ora",
+									"visibility": "protected",
+									"type": "int"
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12734,7 +12744,7 @@
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
 									"name": "pressione",
-									"visibility": "private",
+									"visibility": "protected",
 									"type": "long"
 								},
 								{
@@ -12744,7 +12754,7 @@
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
 									"name": "temp",
-									"visibility": "private",
+									"visibility": "protected",
 									"type": "Double"
 								},
 								{
@@ -12754,7 +12764,7 @@
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
 									"name": "tempMax",
-									"visibility": "private",
+									"visibility": "protected",
 									"type": "Double"
 								},
 								{
@@ -12764,7 +12774,7 @@
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
 									"name": "tempMin",
-									"visibility": "private",
+									"visibility": "protected",
 									"type": "Double"
 								},
 								{
@@ -12774,7 +12784,7 @@
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
 									"name": "tempPercepita",
-									"visibility": "private",
+									"visibility": "protected",
 									"type": "Double"
 								},
 								{
@@ -12784,40 +12794,8 @@
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
 									"name": "umidita",
-									"visibility": "private",
+									"visibility": "protected",
 									"type": "long"
-								},
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAF2qrXuAWx0Ap8=",
-									"_parent": {
-										"$ref": "AAAAAAF2qrApkWvvaoM="
-									},
-									"name": "mC",
-									"visibility": "protected",
-									"type": {
-										"$ref": "AAAAAAF2qoazOmoiU8Y="
-									}
-								},
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAF2qrZ9Y2x9M/0=",
-									"_parent": {
-										"$ref": "AAAAAAF2qrApkWvvaoM="
-									},
-									"name": "mCS",
-									"visibility": "protected",
-									"type": "MeteoCittaService"
-								},
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAF2w7zInHBzY94=",
-									"_parent": {
-										"$ref": "AAAAAAF2qrApkWvvaoM="
-									},
-									"name": "ora",
-									"visibility": "private",
-									"type": "int"
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12829,6 +12807,18 @@
 									"visibility": "protected",
 									"type": {
 										"$ref": "AAAAAAF2w7YsJ2/juyQ="
+									}
+								},
+								{
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAF2qrXuAWx0Ap8=",
+									"_parent": {
+										"$ref": "AAAAAAF2qrApkWvvaoM="
+									},
+									"name": "mC",
+									"visibility": "protected",
+									"type": {
+										"$ref": "AAAAAAF2qoazOmoiU8Y="
 									}
 								},
 								{
@@ -12855,13 +12845,13 @@
 								},
 								{
 									"_type": "UMLAttribute",
-									"_id": "AAAAAAF2w7+2wnCZb5Q=",
+									"_id": "AAAAAAF2qrZ9Y2x9M/0=",
 									"_parent": {
 										"$ref": "AAAAAAF2qrApkWvvaoM="
 									},
-									"name": "oS",
+									"name": "mCS",
 									"visibility": "protected",
-									"type": "OraService"
+									"type": "MeteoCittaService"
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12872,6 +12862,16 @@
 									"name": "fCS",
 									"visibility": "protected",
 									"type": "ForecastCittaService"
+								},
+								{
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAF2w7+2wnCZb5Q=",
+									"_parent": {
+										"$ref": "AAAAAAF2qrApkWvvaoM="
+									},
+									"name": "oS",
+									"visibility": "protected",
+									"type": "OraService"
 								}
 							],
 							"operations": [
@@ -13034,7 +13034,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "it.univpm.CovidForecast.Scanner",
+					"name": "it.univpm.CovidForecast.scanner",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",
