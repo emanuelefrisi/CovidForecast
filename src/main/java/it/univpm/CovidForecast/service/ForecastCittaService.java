@@ -1,5 +1,6 @@
 package it.univpm.CovidForecast.service;
 
+import java.util.List;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class ForecastCittaService {
 	
 	public void salvaRecord(Vector<ForecastCitta> fC) {
 		fCR.saveAll(fC);
+	}
+	
+	public List<ForecastCitta> getForecastCittaFromDB() {
+		return fCR.findAll();
 	}
 	
 }
