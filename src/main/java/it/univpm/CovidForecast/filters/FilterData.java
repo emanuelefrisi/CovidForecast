@@ -2,25 +2,28 @@ package it.univpm.CovidForecast.filters;
 
 import java.util.List;
 
-import it.univpm.CovidForecast.service.*;
-import it.univpm.CovidForecast.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import it.univpm.CovidForecast.model.MeteoCitta;
+import it.univpm.CovidForecast.service.MeteoCittaService;
+
+@Service
 public class FilterData {
-	private long dataInit;
-	private long dataFinish;
-	private MeteoCittaService mcsD;
-	private List<MeteoCitta> listaPerFiltri = mcsD.getMeteoCittaFromDB();
-	private List<MeteoCitta> listaFiltrataD;
-	public List<MeteoCitta> getFromDataFilter(/*List<MeteoCitta> listaPerFiltri , */long dataInit, long dataFinish) {
-		this.dataInit=dataInit;
-		this.dataFinish=dataFinish;
+	
+	@Autowired
+	private MeteoCittaService mCS;
+	private List<MeteoCitta> listaPerFiltri = mCS.getMeteoCittaFromDB();
+	private List<MeteoCitta> listaFiltrata;
+	
+	public List<MeteoCitta> getFromDataFilter(long dataInit, long dataFin) {
 		for(int i=0;i<listaPerFiltri.size();i++) {
-			if(listaPerFiltri.get(i).getData()>this.dataInit&&listaPerFiltri.get(i).getData()<this.dataFinish) {
-				listaFiltrataD.add(listaPerFiltri.get(i));
+			MeteoCitta mC = listaPerFiltri.get(i);
+			if(mC.getData()>dataInit&&mC.getData()<dataFin) {
+				listaFiltrata.add(mC);
 			}	
 		}
-		return listaFiltrataD;
+		return listaFiltrata;
 	}
 	
-
 }

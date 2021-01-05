@@ -2,24 +2,28 @@ package it.univpm.CovidForecast.filters;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.service.MeteoCittaService;
 
+@Service
 public class FilterHour {
-	private int oraInit;
-	private int oraFinish;
-	private MeteoCittaService mcsO;
-	private List<MeteoCitta> listaPerFiltri = mcsO.getMeteoCittaFromDB();
-	private List<MeteoCitta> listaFiltrataO;
-	public List<MeteoCitta> getFromHourFilter(/*List<MeteoCitta> listaPerFiltri , */int oraInit, int oraFinish) {
-		this.oraInit=oraInit;
-		this.oraFinish=oraFinish;
+	
+	@Autowired
+	private MeteoCittaService mCS;
+	private List<MeteoCitta> listaPerFiltri = mCS.getMeteoCittaFromDB();
+	private List<MeteoCitta> listaFiltrata;
+	
+	public List<MeteoCitta> getFromHourFilter(int oraInit, int oraFin) {
 		for(int i=0;i<listaPerFiltri.size();i++) {
-			if(listaPerFiltri.get(i).getOra()>this.oraInit&&listaPerFiltri.get(i).getOra()<this.oraFinish) {
-				listaFiltrataO.add(listaPerFiltri.get(i));
+			MeteoCitta mC = listaPerFiltri.get(i);
+			if(mC.getOra()>oraInit&&mC.getOra()<oraFin) {
+				listaFiltrata.add(mC);
 			}	
 		}
-		return listaFiltrataO;
+		return listaFiltrata;
 	}
 
 }

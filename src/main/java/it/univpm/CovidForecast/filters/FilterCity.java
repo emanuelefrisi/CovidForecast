@@ -2,22 +2,28 @@ package it.univpm.CovidForecast.filters;
 
 import java.util.List;
 
-import it.univpm.CovidForecast.service.*;
-import it.univpm.CovidForecast.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import it.univpm.CovidForecast.model.MeteoCitta;
+import it.univpm.CovidForecast.service.MeteoCittaService;
+
+@Service
 public class FilterCity {
-	private String city;
-	private MeteoCittaService mcsC;
-	private List<MeteoCitta> listaPerFiltri = mcsC.getMeteoCittaFromDB();
-	private List<MeteoCitta> listaFiltrataC;
-	public List<MeteoCitta> getFromCityFilter(/*List<MeteoCitta> listaPerFiltri, */String city) {
-		this.city=city;
+	
+	@Autowired
+	private MeteoCittaService mCS;
+	private List<MeteoCitta> listaPerFiltri = mCS.getMeteoCittaFromDB();
+	private List<MeteoCitta> listaFiltrata;
+	
+	public List<MeteoCitta> getFromCityFilter(String city) {
 		for(int i=0;i<listaPerFiltri.size();i++) {
-			if(this.city.compareTo(listaPerFiltri.get(i).getCitta())==0) {
-				listaFiltrataC.add(listaPerFiltri.get(i));
+			MeteoCitta mC = listaPerFiltri.get(i);
+			if(city.equals(mC.getCitta())) {
+				listaFiltrata.add(mC);
 			}	
 		}
-		return listaFiltrataC;
+		return listaFiltrata;
 	}
 
 }

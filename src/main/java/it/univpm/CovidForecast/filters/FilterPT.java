@@ -2,24 +2,28 @@ package it.univpm.CovidForecast.filters;
 
 import java.util.List;
 
-import it.univpm.CovidForecast.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.service.MeteoCittaService;
 
+@Service
 public class FilterPT {
-	private Double TPInit;
-	private Double TPFinish;
-	private MeteoCittaService mcsTP;
-	private List<MeteoCitta> listaPerFiltri = mcsTP.getMeteoCittaFromDB();
-	private List<MeteoCitta> listaFiltrataTP;
-	public List<MeteoCitta> getFromPTemperatureFilter(/*List <MeteoCitta> listaPerFiltri, */Double TPInit, Double TPFinish) {
-		this.TPInit=TPInit;
-		this.TPFinish=TPFinish;
+	
+	@Autowired
+	private MeteoCittaService mCS;
+	private List<MeteoCitta> listaPerFiltri = mCS.getMeteoCittaFromDB();
+	private List<MeteoCitta> listaFiltrata;
+	
+	public List<MeteoCitta> getFromPTemperatureFilter(Double TPInit, Double TPFin) {
 		for(int i=0;i<listaPerFiltri.size();i++) {
-			if(listaPerFiltri.get(i).getTempPercepita()>this.TPInit&&listaPerFiltri.get(i).getTempPercepita()<this.TPFinish) {
-				listaFiltrataTP.add(listaPerFiltri.get(i));
+			MeteoCitta mC = listaPerFiltri.get(i);
+			if(mC.getTempPercepita()>TPInit&&mC.getTempPercepita()<TPFin) {
+				listaFiltrata.add(mC);
 			}	
 		}
-		return listaFiltrataTP;
+		return listaFiltrata;
 	}
 
 }

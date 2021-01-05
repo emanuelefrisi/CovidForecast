@@ -2,24 +2,28 @@ package it.univpm.CovidForecast.filters;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.service.MeteoCittaService;
 
+@Service
 public class FilterHumidity {
-	private long umiditaInit;
-	private long umiditaFinish;
-	private MeteoCittaService mcsU;
-	private List<MeteoCitta> listaPerFiltri = mcsU.getMeteoCittaFromDB();
-	private List<MeteoCitta> ListaFiltrataU;
-	public List<MeteoCitta> getFromHumidityFilter(/*List<MeteoCitta> listaPerFiltri, */long umiditaInit, long umiditaFinish) {
-		this.umiditaInit=umiditaInit;
-		this.umiditaFinish=umiditaFinish;
+	
+	@Autowired
+	private MeteoCittaService mCS;
+	private List<MeteoCitta> listaPerFiltri = mCS.getMeteoCittaFromDB();
+	private List<MeteoCitta> ListaFiltrata;
+	
+	public List<MeteoCitta> getFromHumidityFilter(long umiditaInit, long umiditaFin) {
 		for(int i=0;i<listaPerFiltri.size();i++) {
-			if(listaPerFiltri.get(i).getUmidita()>this.umiditaInit&&listaPerFiltri.get(i).getUmidita()<this.umiditaFinish) {
-				ListaFiltrataU.add(listaPerFiltri.get(i));
+			MeteoCitta mC = listaPerFiltri.get(i);
+			if(mC.getUmidita()>umiditaInit&&mC.getUmidita()<umiditaFin) {
+				ListaFiltrata.add(mC);
 			}	
 		}
-		return ListaFiltrataU;
+		return ListaFiltrata;
 	}
 
 }
