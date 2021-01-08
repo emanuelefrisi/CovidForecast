@@ -40,7 +40,7 @@ public class OpenWeatherData {
 	public void getData(String tipo) {
 		Vector<String> cittaData = new Vector<String>();
 		citta = cS.getCitta();
-		apiKey = aKS.getApiKeyFromDB();
+		apiKey = aKS.getApiKeyFromDB(0);
 		try {
 			for(String c : citta) {
 				String url = "http://api.openweathermap.org/data/2.5/" + tipo + "?q=" + c

@@ -14,10 +14,10 @@ public class ApiKeyService {
 	@Autowired
 	private ApiKeyRepository aKR;
 	
-	public String getApiKeyFromDB() {
+	public String getApiKeyFromDB(int i) {
 		List<ApiKey> aKList = aKR.findAll();
-		ApiKey aK = aKList.get(0);
+		ApiKey aK = aKList.get(i);
 		return aK.getApiKey();
 	}
-	
+
 }

@@ -8,11 +8,11 @@ import javax.swing.JOptionPane;
 
 public class ConvertitoreData {
 
-	private SimpleDateFormat sDF = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+	private SimpleDateFormat sDF = new SimpleDateFormat("dd-MM-yyyy hh:mm");
 	private Date data;
 	private long dataUnix;
 	
-	public long convertiDaStringa(String dataStr) {
+	public long convertiDaString(String dataStr) {
 		
 		try {
 			data = sDF.parse(dataStr);
@@ -20,16 +20,16 @@ public class ConvertitoreData {
 		
 		} catch (ParseException e) {
 			JOptionPane.showMessageDialog(null, "Attenzione! Il formato della data non è esatto."
-					+ "\nFormato accettato: dd-MM-yyyy hh:mm:ss", "CovidForecast", JOptionPane.WARNING_MESSAGE);
+					+ "\nFormato accettato: dd-MM-yyyy hh:mm", "CovidForecast", JOptionPane.WARNING_MESSAGE);
 		}
 		
-		return dataUnix;
+		return dataUnix/1000;
 		
 	}
 	
 	public String covertiDaUnix(long dataUn) {
 		
-		data = new Date(dataUn);
+		data = new Date(dataUn*1000);
 		return sDF.format(data);
 		
 	}

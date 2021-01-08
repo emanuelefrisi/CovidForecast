@@ -1,6 +1,9 @@
 package it.univpm.CovidForecast.filters;
 
 import java.util.List;
+import java.util.Vector;
+
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,17 +16,26 @@ public class FilterPressure {
 	
 	@Autowired
 	private MeteoCittaService mCS;
-	private List<MeteoCitta> listaPerFiltri = mCS.getMeteoCittaFromDB();
-	private List<MeteoCitta> ListaFiltrata;
+	private List<MeteoCitta> listaPerFiltri;
+	private Vector<MeteoCitta> listaFiltrata;
+	private int cont;
 	
-	public List<MeteoCitta> getFromPressureFilter(long pressureInit, long pressureFin) {
+	public Vector<MeteoCitta> getFromPressureFilter(long pressureInit, long pressureFin) {
+		
+		listaFiltrata = new Vector<MeteoCitta>();
+		listaPerFiltri = mCS.getMeteoCittaFromDB();
+		cont = 0;
+		
 		for(int i=0;i<listaPerFiltri.size();i++) {
 			MeteoCitta mC = listaPerFiltri.get(i);
-			if(mC.getPressione()>pressureInit&&mC.getPressione()<pressureFin) {
-				ListaFiltrata.add(mC);
+			if(mC.getPressione()>=pressureInit&&mC.getPressione()<=pressureFin) {
+				cont++;
+				listaFiltrata.add(mC);
 			}	
 		}
-		return ListaFiltrata;
+//		JOptionPane.showMessageDialog(null, "Oggetti ritornati: " + cont, "CovidForecast", JOptionPane.INFORMATION_MESSAGE);
+		System.out.println(cont);
+		return listaFiltrata;
 	}
 
 }

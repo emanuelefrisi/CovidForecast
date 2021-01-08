@@ -1,10 +1,10 @@
 package it.univpm.CovidForecast.stats;
 
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
 
-@Service
+//@Service
 public class StatsTempPercepita extends Stats {
 
 	@Override
