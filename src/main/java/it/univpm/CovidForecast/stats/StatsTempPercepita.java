@@ -1,14 +1,15 @@
 package it.univpm.CovidForecast.stats;
 
-//import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
 
-//@Service
+@Service
 public class StatsTempPercepita extends Stats {
 
 	@Override
 	public MeteoCitta getMax() {
+		listaPerStats = mCS.getMeteoCittaFromDB();
 		mCMax = listaPerStats.get(0);
 		for (int i = 1; i < listaPerStats.size(); i++) {
 			MeteoCitta mC = listaPerStats.get(i);
@@ -21,6 +22,7 @@ public class StatsTempPercepita extends Stats {
 
 	@Override
 	public MeteoCitta getMin() {
+		listaPerStats = mCS.getMeteoCittaFromDB();
 		mCMin = listaPerStats.get(0);
 		for (int i = 1; i < listaPerStats.size(); i++) {
 			MeteoCitta mC = listaPerStats.get(i);

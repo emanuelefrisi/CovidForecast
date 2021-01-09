@@ -13,7 +13,7 @@ public class Stats {
 	
 	@Autowired
 	protected MeteoCittaService mCS;
-	protected List<MeteoCitta> listaPerStats = mCS.getMeteoCittaFromDB();
+	protected List<MeteoCitta> listaPerStats;
 	protected MeteoCitta mCMax;
 	protected MeteoCitta mCMin;
 	
