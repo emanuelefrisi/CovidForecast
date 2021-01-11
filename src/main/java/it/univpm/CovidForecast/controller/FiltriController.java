@@ -41,13 +41,13 @@ public class FiltriController {
 
 	}
 
-	@GetMapping("/filterData")
-	public Vector<MeteoCitta> filterData(@RequestParam(name = "dataInit") long dataInit,
-			@RequestParam(name = "dataFin") long dataFin) {
-
-		return fD.getFromDataFilter(dataInit, dataFin);
-
-	}
+//	@GetMapping("/filterData")
+//	public Vector<MeteoCitta> filterData(@RequestParam(name = "dataInit") long dataInit,
+//			@RequestParam(name = "dataFin") long dataFin) {
+//
+//		return fD.getFromDataFilter(dataInit, dataFin);
+//
+//	}
 
 	@GetMapping("/filterFL")
 	public Vector<MeteoCitta> filterFL(@RequestParam(name = "TPInit") Double TPInit,

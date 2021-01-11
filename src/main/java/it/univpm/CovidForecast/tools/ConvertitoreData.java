@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class ConvertitoreData {
 
-	private SimpleDateFormat sDF = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+	private SimpleDateFormat sDF = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 	private Date data;
 	private long dataUnix;
 	
@@ -20,7 +20,7 @@ public class ConvertitoreData {
 		
 		} catch (ParseException e) {
 			JOptionPane.showMessageDialog(null, "Attenzione! Il formato della data non è esatto."
-					+ "\nFormato accettato: dd-MM-yyyy hh:mm", "CovidForecast", JOptionPane.WARNING_MESSAGE);
+					+ "\nFormato accettato: dd-MM-yyyy HH:mm", "CovidForecast", JOptionPane.WARNING_MESSAGE);
 		}
 		
 		return dataUnix/1000;

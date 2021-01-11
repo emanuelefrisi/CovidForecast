@@ -1,25 +1,13 @@
 package it.univpm.CovidForecast.model;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-/**
- * 
- * Classe che descrive i valori che vengono salvati sul database
- * 
- * @author emanuelefrisi
- *
- */
+public class CittaJSON {
 
-@Entity
-@Table(name = "meteo_citta")
-public class MeteoCitta {
 	/**
 	 * Data nella quale sono state fatte le misurazioni(Unix Time Stamp)
 	 */
-	@Id
-	private long data;
+	private String data;
 	/**
 	 * Nome della città
 	 */
@@ -28,10 +16,6 @@ public class MeteoCitta {
 	 * Prefisso internazionale
 	 */
 	private String nazione;
-	/**
-	 * Ora di riferimento
-	 */
-	private int ora;
 	/**
 	 * Pressione atmosferica(misurata in ettopascal)
 	 */
@@ -57,10 +41,6 @@ public class MeteoCitta {
 	 */
 	private long umidita;
 	
-	public MeteoCitta() {
-		
-	}
-	
 	/**
 	 * 
 	 * Costruttore che prende in ingresso tutti i parametri di questa classe
@@ -77,11 +57,10 @@ public class MeteoCitta {
 	 * @param u umidita
 	 * 
 	 */
-	public MeteoCitta(long d, String c, String n, int o, long p, Double t, Double tM, Double tm, Double tP, long u) {
+	public CittaJSON(String d, String c, String n, long p, Double t, Double tM, Double tm, Double tP, long u) {
 		this.data=d;
 		this.citta=c;
 		this.nazione=n;
-		this.ora=o;
 		this.pressione=p;
 		this.temp=t;
 		this.tempMax=tM;
@@ -95,7 +74,7 @@ public class MeteoCitta {
 	 * 
 	 * @return citta
 	 */
-	public long getData() {
+	public String getData() {
 		return data;
 	}
 	
@@ -104,7 +83,7 @@ public class MeteoCitta {
 	 * 
 	 * @param data
 	 */
-	public void setData(long d) {
+	public void setData(String d) {
 		this.data = d;
 	}
 	
@@ -144,14 +123,6 @@ public class MeteoCitta {
 		this.nazione = n;
 	}
 
-	public int getOra() {
-		return ora;
-	}
-
-	public void setOra(int o) {
-		this.ora=o;
-	}
-	
 	/**
 	 * Metodo getter dell'attributo pressione
 	 * 

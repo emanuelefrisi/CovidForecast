@@ -1,5 +1,7 @@
 package it.univpm.CovidForecast.stats;
 
+import java.util.Vector;
+
 import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
@@ -8,29 +10,53 @@ import it.univpm.CovidForecast.model.MeteoCitta;
 public class StatsPressione extends Stats {
 
 	@Override
-	public MeteoCitta getMax() {
-		listaPerStats = mCS.getMeteoCittaFromDB();
-		mCMax = listaPerStats.get(0);
-		for (int i = 1; i < listaPerStats.size(); i++) {
-			MeteoCitta mC = listaPerStats.get(i);
+	public Vector<MeteoCitta> getStats(String tipoStat, Vector<MeteoCitta> vectPerStats) {
+		
+		switch(tipoStat) {
+		
+		case "max":
+		mCVect = new Vector<MeteoCitta>();
+		
+		mCMax = vectPerStats.get(0);
+		for (int i = 1; i < vectPerStats.size(); i++) {
+			MeteoCitta mC = vectPerStats.get(i);
 			if (mC.getPressione() > mCMax.getPressione()) {
 				mCMax = mC;
 			}
 		}
-		return mCMax;
+		mCVect.add(mCMax);
+		return mCVect;
+		
+		case "min":
+			mCVect = new Vector<MeteoCitta>();
+			
+			mCMin = vectPerStats.get(0);
+			for (int i = 1; i < vectPerStats.size(); i++) {
+				MeteoCitta mC = vectPerStats.get(i);
+				if (mC.getPressione() < mCMin.getPressione()) {
+					mCMin = mC;
+				}
+			}
+			mCVect.add(mCMin);
+			return mCVect;
+		}
+		return null;
 	}
 
-	@Override
-	public MeteoCitta getMin() {
-		listaPerStats = mCS.getMeteoCittaFromDB();
-		mCMin = listaPerStats.get(0);
-		for (int i = 1; i < listaPerStats.size(); i++) {
-			MeteoCitta mC = listaPerStats.get(i);
-			if (mC.getPressione() < mCMin.getPressione()) {
-				mCMin = mC;
-			}
-		}
-		return mCMin;
-	}
+//	@Override
+//	public MeteoCitta getMin() {
+//		
+//		mCVect = new Vector<MeteoCitta>();
+//		
+//		mCMin = vectPerStats.get(0);
+//		for (int i = 1; i < vectPerStats.size(); i++) {
+//			MeteoCitta mC = vectPerStats.get(i);
+//			if (mC.getPressione() < mCMin.getPressione()) {
+//				mCMin = mC;
+//			}
+//		}
+//		mCVect.add(mCMin);
+//		return mCVect;
+//	}
 
 }
