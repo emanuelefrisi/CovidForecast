@@ -2,20 +2,18 @@ package it.univpm.CovidForecast.model;
 
 import java.util.Vector;
 
-public class Stats {
+public class Filtri {
 
 	private Vector<String> citta;
 	private String dataInit;
 	private String dataFin;
 	private String variabile;/* pressione, temperatura, temp max, temp min, temp percepita, umidità */
-	private String tipoStat;/* massimo, minimo, media, varianza */
 
-	public Stats(Vector<String> c, String dI, String dF, String var, String tS) {
+	public Filtri(Vector<String> c, String dI, String dF, String var) {
 		this.citta = c;
 		this.dataInit = dI;
 		this.dataFin = dF;
 		this.variabile = var;
-		this.tipoStat = tS;
 	}
 
 	public Vector<String> getCitta() {
@@ -48,14 +46,6 @@ public class Stats {
 
 	public void setVariabile(String variabile) {
 		this.variabile = variabile;
-	}
-
-	public String getTipoStat() {
-		return tipoStat;
-	}
-
-	public void setTipoStat(String tipoStat) {
-		this.tipoStat = tipoStat;
 	}
 
 }

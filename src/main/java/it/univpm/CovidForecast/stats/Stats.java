@@ -6,12 +6,12 @@ import java.util.Vector;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
-import it.univpm.CovidForecast.service.MeteoCittaService;
+//import it.univpm.CovidForecast.service.MeteoCittaService;
 
 public class Stats {
 	
 	@Autowired
-	protected MeteoCittaService mCS;
+//	protected MeteoCittaService mCS;
 //	protected List<MeteoCitta> listaPerStats;
 	protected MeteoCitta mCMax;
 	protected MeteoCitta mCMin;

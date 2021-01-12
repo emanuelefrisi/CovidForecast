@@ -4,6 +4,8 @@ import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +16,8 @@ import it.univpm.CovidForecast.filters.FilterHumidity;
 import it.univpm.CovidForecast.filters.FilterNation;
 import it.univpm.CovidForecast.filters.FilterPressure;
 import it.univpm.CovidForecast.filters.FilterTemperature;
+import it.univpm.CovidForecast.model.CittaJSON;
+import it.univpm.CovidForecast.model.Filtri;
 import it.univpm.CovidForecast.model.MeteoCitta;
 
 @RestController
@@ -33,6 +37,39 @@ public class FiltriController {
 	private FilterPressure fP = new FilterPressure();
 	@Autowired
 	private FilterTemperature fT = new FilterTemperature();
+	private Vector<CittaJSON> cJVect;
+	
+	@PostMapping
+	public Vector<CittaJSON> filtri(@RequestBody Filtri filtriObj) {
+		
+		cJVect = new Vector<CittaJSON>();
+		
+		/*Da completare*/
+		
+		return cJVect;
+		
+	}
+	
+	public Vector<MeteoCitta> variabile(String var, Vector<MeteoCitta> vectPerStats) {
+
+		switch (var) {
+
+		case "pressione":
+			return fP.getFromPressureFilter(0, 0);
+
+		case "temperatura":
+			return fT.getFromTemperatureFilter(null, null);
+
+		case "tempPercepita":
+			return fFL.getFromPTemperatureFilter(null, null);
+
+		case "umidità":
+			return fH.getFromHumidityFilter(0, 0);
+
+		}
+		return null;
+
+	}
 
 	@GetMapping("/filterCity")
 	public Vector<MeteoCitta> filterCity(@RequestParam(name = "citta", defaultValue = "") String citta) {
