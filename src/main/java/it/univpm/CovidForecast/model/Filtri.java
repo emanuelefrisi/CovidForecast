@@ -70,20 +70,20 @@ public class Filtri {
 		this.valFin_perDouble = valFin_perDouble;
 	}
 
-	public long getValInit_per_long() {
-		return valInit_per_long;
-	}
-
-	public void setValInit_per_long(long valInit_per_long) {
-		this.valInit_per_long = valInit_per_long;
-	}
-
-	public long getValFin_per_long() {
-		return valFin_per_long;
-	}
-
-	public void setValFin_per_long(long valFin_per_long) {
-		this.valFin_per_long = valFin_per_long;
-	}
+//	public long getValInit_per_long() {
+//		return valInit_per_long;
+//	}
+//
+//	public void setValInit_per_long(long valInit_per_long) {
+//		this.valInit_per_long = valInit_per_long;
+//	}
+//
+//	public long getValFin_per_long() {
+//		return valFin_per_long;
+//	}
+//
+//	public void setValFin_per_long(long valFin_per_long) {
+//		this.valFin_per_long = valFin_per_long;
+//	}
 
 }

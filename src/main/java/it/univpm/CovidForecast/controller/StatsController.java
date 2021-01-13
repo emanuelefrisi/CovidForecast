@@ -3,9 +3,11 @@ package it.univpm.CovidForecast.controller;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -78,6 +80,49 @@ public class StatsController {
 		 */
 		return cJVect;
 	}
+	
+	@GetMapping("/stats")
+	public Vector<CittaJSON> stats(@RequestParam(value="citta1") String citta1,
+								   @RequestParam(value="citta2") String citta2,
+								   @RequestParam(value="dataInit") long dataInit,
+								   @RequestParam(value="dataFin") long dataFin,
+								   @RequestParam(value="variabile") String variabile,
+								   @RequestParam(value="tipoStat") String tipoStat) {
+
+		cJVect = new Vector<CittaJSON>();
+		String[] citta = new String[] {citta1, citta2};
+		
+		for (int i = 0; i < citta.length; i++) {
+			/* Qui filtra per città */
+			vettCitta = filtroC.getFromCityFilter(citta[i]);
+			/*
+			 * Qui cambia il formato delle date da giorno-mese-anno a secondi passati dal
+			 * 01/01/1970
+			 */
+			/* Qui filtra il vettore precedentemente filtrato per citta, per data */
+			vettData = filtroD.getFromDataFilter(vettCitta, dataInit, dataFin);
+			/*
+			 * Qui crea un vettore e ci mette il massimo/minimo della statistica data in
+			 * input
+			 */
+			Vector<MeteoCitta> mCVect1 = this.variabile(variabile, tipoStat, vettData);
+			/*
+			 * Qui cambia il formato della data da secondi passati dal 01/01/1970 a
+			 * giorno-mese-anno e aggiunge tutto ad un vettore di CittaJSON (con data
+			 * formato giorno-mese-anno)
+			 */
+			cJVect.addAll(cCJ.getCittaJSON(mCVect1));
+			/*
+			 * Torna indietro e rifà tutto se nel parametro in entrata c'è più di una città
+			 */
+		}
+
+		/*
+		 * Ritorna il vettore finale filtrato per città, data e con la statistica
+		 * desiderata
+		 */
+		return cJVect;
+	}
 
 	public Vector<MeteoCitta> variabile(String var, String tipoStat, Vector<MeteoCitta> vectPerStats) {
 
@@ -106,7 +151,7 @@ public class StatsController {
 			MeteoCitta mCError = new MeteoCitta(0, "Errore", "Errore", 0, 0, null, null, null, null, 0);
 			VMCError.add(mCError);
 			return VMCError;
-		}
+			}
 
 		}
 
