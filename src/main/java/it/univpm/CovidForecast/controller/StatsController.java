@@ -68,12 +68,14 @@ public class StatsController {
 			 */
 			cJVect.addAll(cCJ.getCittaJSON(mCVect1));
 			/*
-			 * Torna indietro e rifà tutto se nel parametro in entrata c'è più di una
-			 * città
+			 * Torna indietro e rifà tutto se nel parametro in entrata c'è più di una città
 			 */
 		}
 
-		/* Ritorna il vettore finale filtrato per città, data e con la statistica desiderata*/
+		/*
+		 * Ritorna il vettore finale filtrato per città, data e con la statistica
+		 * desiderata
+		 */
 		return cJVect;
 	}
 
@@ -96,11 +98,17 @@ public class StatsController {
 		case "tempPercepita":
 			return sTP.getStats(tipoStat, vectPerStats);
 
-		case "umidità":
+		case "umidita":
 			return sU.getStats(tipoStat, vectPerStats);
 
+		default: {
+			Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
+			MeteoCitta mCError = new MeteoCitta(0, "Errore", "Errore", 0, 0, null, null, null, null, 0);
+			VMCError.add(mCError);
+			return VMCError;
 		}
-		return null;
+
+		}
 
 	}
 
