@@ -16,9 +16,9 @@ import it.univpm.CovidForecast.filters.FilterTemperature;
 import it.univpm.CovidForecast.model.CittaJSON;
 import it.univpm.CovidForecast.model.Filtri;
 import it.univpm.CovidForecast.model.MeteoCitta;
+import it.univpm.CovidForecast.scanner.CittaScanner;
 import it.univpm.CovidForecast.tools.ConvertitoreData;
 import it.univpm.CovidForecast.tools.CreaCittaJSON;
-import it.univpm.CovidForecast.tools.ErroreCitta;
 
 @RestController
 public class FiltriController {
@@ -39,12 +39,13 @@ public class FiltriController {
 	private Vector<CittaJSON> cJVect;
 	private Vector<MeteoCitta> vettCitta;
 	private Vector<MeteoCitta> vettData;
-	private ErroreCitta eR;
 
-	@PostMapping("/filtri")
-	public Vector<CittaJSON> filtri(@RequestBody Filtri filtriObj) {
+	private CittaScanner cS = new CittaScanner();
+	
+	@PostMapping("/filters")
+	public Vector<CittaJSON> filters(@RequestBody Filtri filtriObj) {
 
-		if (!eR.errorCity(filtriObj.getCitta())) {
+		if (!cS.controlloCitta(filtriObj.getCitta())) {
 
 			cJVect = new Vector<CittaJSON>();
 			CittaJSON cJError = new CittaJSON("01-01-1970 01:00", "Errore di input della città",
@@ -113,35 +114,4 @@ public class FiltriController {
 
 	}
 
-//	public Vector<MeteoCitta> variabilePerDouble(String var, Vector<MeteoCitta> vectPerFiltri, Double valInit,
-//			Double valFin) {
-//
-//		switch (var) {
-//
-//		case "temperatura":
-//			return fT.getFromTemperatureFilter(valInit, valFin);
-//
-//		case "tempPercepita":
-//			return fFL.getFromPTemperatureFilter(vectPerFiltri, valInit, valFin);
-//
-//		}
-//		return null;
-//
-//	}
-//
-//	public Vector<MeteoCitta> variabilePer_long(String var, Vector<MeteoCitta> vectPerStats, long valInit,
-//			long valFin) {
-//
-//		switch (var) {
-//
-//		case "pressione":
-//			return fP.getFromPressureFilter(valInit, valFin);
-//
-//		case "umidita":
-//			return fH.getFromHumidityFilter(valInit, valFin);
-//
-//		}
-//		return null;
-//
-//	}
 }

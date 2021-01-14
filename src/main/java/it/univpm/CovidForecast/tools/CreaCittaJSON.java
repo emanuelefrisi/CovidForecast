@@ -33,21 +33,4 @@ public class CreaCittaJSON {
 		
 	}
 	
-//	public CittaJSON getCittaJSON(MeteoCitta mC) {
-//		
-//		String data = cD.covertiDaUnix(mC.getData());
-//		String citta = mC.getCitta();
-//		String nazione = mC.getNazione();
-//		long pressione = mC.getPressione();
-//		Double temp = mC.getTemp();
-//		Double tempMax = mC.getTempMax();
-//		Double tempMin = mC.getTempMin();
-//		Double tempPercepita = mC.getTempPercepita();
-//		long umidita = mC.getUmidita();
-//		CittaJSON cJ = new CittaJSON(data, citta, nazione, pressione, temp, tempMax, tempMin, tempPercepita, umidita);
-//		
-//		return cJ;
-//		
-//	}
-	
 }

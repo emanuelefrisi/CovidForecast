@@ -4,11 +4,9 @@ import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.CovidForecast.filters.FilterCity;
@@ -16,6 +14,7 @@ import it.univpm.CovidForecast.filters.FilterData;
 import it.univpm.CovidForecast.model.CittaJSON;
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.model.Stats;
+import it.univpm.CovidForecast.scanner.CittaScanner;
 import it.univpm.CovidForecast.stats.StatsPressione;
 import it.univpm.CovidForecast.stats.StatsTemp;
 import it.univpm.CovidForecast.stats.StatsTempMax;
@@ -24,7 +23,6 @@ import it.univpm.CovidForecast.stats.StatsTempPercepita;
 import it.univpm.CovidForecast.stats.StatsUmidita;
 import it.univpm.CovidForecast.tools.ConvertitoreData;
 import it.univpm.CovidForecast.tools.CreaCittaJSON;
-import it.univpm.CovidForecast.tools.ErroreCitta;
 
 @RestController
 public class StatsController {
@@ -43,12 +41,14 @@ public class StatsController {
 	private Vector<CittaJSON> cJVect;
 	private Vector<MeteoCitta> vettCitta;
 	private Vector<MeteoCitta> vettData;
-	private ErroreCitta eR;
-
+	
+	private CittaScanner cS = new CittaScanner();
+	
+	
 	@PostMapping("/stats")
 	public Vector<CittaJSON> stats(@RequestBody Stats statsObj) {
 
-		if (!eR.errorCity(statsObj.getCitta())) {
+		if (!cS.controlloCitta(statsObj.getCitta())) {
 
 			cJVect = new Vector<CittaJSON>();
 			CittaJSON cJError = new CittaJSON("01-01-1970 01:00", "Errore di input della città",

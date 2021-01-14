@@ -30,4 +30,19 @@ public class CittaScanner {
 		
 	}
 	
+	public boolean controlloCitta(Vector<String> cittaVect) {
+		
+		this.getCitta();
+		
+		for(int i = 0; i<cittaVect.size(); i++) {
+			String c = cittaVect.elementAt(i);
+			if(!this.citta.contains(c))
+				return false;	
+				
+		}
+		
+		return true;
+		
+	}
+	
 }
