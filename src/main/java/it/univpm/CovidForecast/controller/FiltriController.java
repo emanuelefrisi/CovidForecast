@@ -18,6 +18,7 @@ import it.univpm.CovidForecast.model.Filtri;
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.tools.ConvertitoreData;
 import it.univpm.CovidForecast.tools.CreaCittaJSON;
+import it.univpm.CovidForecast.tools.ErroreCitta;
 
 @RestController
 public class FiltriController {
@@ -38,9 +39,19 @@ public class FiltriController {
 	private Vector<CittaJSON> cJVect;
 	private Vector<MeteoCitta> vettCitta;
 	private Vector<MeteoCitta> vettData;
+	private ErroreCitta eR;
 
 	@PostMapping("/filtri")
 	public Vector<CittaJSON> filtri(@RequestBody Filtri filtriObj) {
+
+		if (!eR.errorCity(filtriObj.getCitta())) {
+
+			cJVect = new Vector<CittaJSON>();
+			CittaJSON cJError = new CittaJSON("01-01-1970 01:00", "Errore di input della città",
+					"Errore di input della città", 0, null, null, null, null, 0);
+			cJVect.add(cJError);
+			return cJVect;
+		}
 
 		cJVect = new Vector<CittaJSON>();
 		for (int i = 0; i < filtriObj.getCitta().size(); i++) {
@@ -55,49 +66,25 @@ public class FiltriController {
 			/* Qui filtra il vettore precedentemente filtrato per citta, per data */
 			vettData = fD.getFromDataFilter(vettCitta, dI, dF);
 			/*
-			 * A seconda del tipo di filtro che si vuole, il programma chiama il metodo che
-			 * prende in input i dati con il giusto tipo. Il metodo esegue il filtro
-			 * desiderato e cambia il formato della data da secondi passati dal 01/01/1970 a
-			 * giorno-mese-anno e aggiunge tutto ad un vettore di CittaJSON (con data
-			 * formato giorno-mese-anno)
+			 * Il metodo esegue il filtro desiderato e cambia il formato della data da
+			 * secondi passati dal 01/01/1970 a giorno-mese-anno e aggiunge tutto ad un
+			 * vettore di CittaJSON (con data formato giorno-mese-anno)
 			 */
 			String longOrDouble = filtriObj.getVariabile();
-//			if (longOrDouble.equals("temperatura") || longOrDouble.equals("tempPercepita")) {
-//				Vector<MeteoCitta> mCVect1 = this.variabilePerDouble(longOrDouble, vettData,
-//						filtriObj.getValInit_perDouble(), filtriObj.getValFin_perDouble());
-//				cJVect.addAll(cCJ.getCittaJSON(mCVect1));
-//			}else if (longOrDouble.equals("pressione") || longOrDouble.equals("umidita")) {
-//				Vector<MeteoCitta> mCVect1 = this.variabilePer_long(longOrDouble, vettData,
-//						filtriObj.getValInit_per_long(), filtriObj.getValFin_per_long());
-//				cJVect.addAll(cCJ.getCittaJSON(mCVect1));
-//			} else {
-//				Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
-//				MeteoCitta mCError = new MeteoCitta(0, "Errore", "Errore", 0, 0, null, null, null, null, 0);
-//				VMCError.add(mCError);
-//				cJVect.addAll(cCJ.getCittaJSON(VMCError));
-//			}
+			Vector<MeteoCitta> mCVect1 = this.variabile(longOrDouble, vettData, filtriObj.getValInit(),
+					filtriObj.getValFin());
+			cJVect.addAll(cCJ.getCittaJSON(mCVect1));
 			/*
 			 * Torna indietro e rifà tutto se nel parametro in entrata c'è più di una città
 			 */
-			Vector<MeteoCitta> mCVect1 = this.variabile(longOrDouble, vettData,
-					filtriObj.getValInit_perDouble(), filtriObj.getValFin_perDouble());
-			cJVect.addAll(cCJ.getCittaJSON(mCVect1));
 		}
 		/*
 		 * Ritorna il vettore finale filtrato per città, data e per la variabile
 		 * desiderata
 		 */
-		
-		
-		
-		
-		
-		
-		
 		return cJVect;
 	}
 
-	
 	public Vector<MeteoCitta> variabile(String var, Vector<MeteoCitta> vectPerFiltri, Double valInit, Double valFin) {
 
 		switch (var) {
@@ -106,33 +93,26 @@ public class FiltriController {
 			return fP.getFromPressureFilter(vectPerFiltri, valInit.longValue(), valFin.longValue());
 
 		case "temperatura":
-//			return sT.getStats(tipoStat, vectPerStats);
-
-		case "tempMax":
-//			return sTM.getStats(tipoStat, vectPerStats);
-
-		case "tempMin":
-//			return sTm.getStats(tipoStat, vectPerStats);
+			return fT.getFromTemperatureFilter(vectPerFiltri, valInit, valFin);
 
 		case "tempPercepita":
 			return fFL.getFromPTemperatureFilter(vectPerFiltri, valInit, valFin);
 
 		case "umidita":
-//			return sU.getStats(tipoStat, vectPerStats);
+			return fH.getFromHumidityFilter(vectPerFiltri, valInit.longValue(), valFin.longValue());
 
 		default: {
 			Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
-			MeteoCitta mCError = new MeteoCitta(0, "Errore", "Errore", 0, 0, null, null, null, null, 0);
+			MeteoCitta mCError = new MeteoCitta(0, "Errore di input del tipo di parametro",
+					"Errore di input del tipo di parametro", 0, 0, null, null, null, null, 0);
 			VMCError.add(mCError);
 			return VMCError;
-			}
+		}
 
 		}
 
 	}
-	
-	
-	
+
 //	public Vector<MeteoCitta> variabilePerDouble(String var, Vector<MeteoCitta> vectPerFiltri, Double valInit,
 //			Double valFin) {
 //

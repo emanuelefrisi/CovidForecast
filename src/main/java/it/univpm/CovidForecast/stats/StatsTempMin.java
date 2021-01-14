@@ -39,7 +39,7 @@ public class StatsTempMin extends Stats {
 			}
 			mCVect.add(mCMin);
 			return mCVect;
-			
+
 		case "varianza":
 			Vector<Double> vett = new Vector<Double>();
 
@@ -62,7 +62,7 @@ public class StatsTempMin extends Stats {
 			mCVarianza.setTempMax(varianza);
 			VMCVarianza.add(mCVarianza);
 			return VMCVarianza;
-			
+
 		case "media":
 			Vector<Double> vett1 = new Vector<Double>();
 
@@ -84,7 +84,8 @@ public class StatsTempMin extends Stats {
 
 		default: {
 			Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
-			MeteoCitta mCError = new MeteoCitta(0, "Errore", "Errore", 0, 0, null, null, null, null, 0);
+			MeteoCitta mCError = new MeteoCitta(0, "Errore di input del tipo di stat",
+					"Errore di input del tipo di stat", 0, 0, null, null, null, null, 0);
 			VMCError.add(mCError);
 			return VMCError;
 		}

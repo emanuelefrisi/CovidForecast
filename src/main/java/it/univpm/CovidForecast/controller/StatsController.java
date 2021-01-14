@@ -24,6 +24,7 @@ import it.univpm.CovidForecast.stats.StatsTempPercepita;
 import it.univpm.CovidForecast.stats.StatsUmidita;
 import it.univpm.CovidForecast.tools.ConvertitoreData;
 import it.univpm.CovidForecast.tools.CreaCittaJSON;
+import it.univpm.CovidForecast.tools.ErroreCitta;
 
 @RestController
 public class StatsController {
@@ -42,9 +43,19 @@ public class StatsController {
 	private Vector<CittaJSON> cJVect;
 	private Vector<MeteoCitta> vettCitta;
 	private Vector<MeteoCitta> vettData;
+	private ErroreCitta eR;
 
 	@PostMapping("/stats")
 	public Vector<CittaJSON> stats(@RequestBody Stats statsObj) {
+
+		if (!eR.errorCity(statsObj.getCitta())) {
+
+			cJVect = new Vector<CittaJSON>();
+			CittaJSON cJError = new CittaJSON("01-01-1970 01:00", "Errore di input della città",
+					"Errore di input della città", 0, null, null, null, null, 0);
+			cJVect.add(cJError);
+			return cJVect;
+		}
 
 		cJVect = new Vector<CittaJSON>();
 		for (int i = 0; i < statsObj.getCitta().size(); i++) {
@@ -80,18 +91,16 @@ public class StatsController {
 		 */
 		return cJVect;
 	}
-	
+
 	@GetMapping("/stats")
-	public Vector<CittaJSON> stats(@RequestParam(value="citta1") String citta1,
-								   @RequestParam(value="citta2") String citta2,
-								   @RequestParam(value="dataInit") long dataInit,
-								   @RequestParam(value="dataFin") long dataFin,
-								   @RequestParam(value="variabile") String variabile,
-								   @RequestParam(value="tipoStat") String tipoStat) {
+	public Vector<CittaJSON> stats(@RequestParam(value = "citta1") String citta1,
+			@RequestParam(value = "citta2") String citta2, @RequestParam(value = "dataInit") long dataInit,
+			@RequestParam(value = "dataFin") long dataFin, @RequestParam(value = "variabile") String variabile,
+			@RequestParam(value = "tipoStat") String tipoStat) {
 
 		cJVect = new Vector<CittaJSON>();
-		String[] citta = new String[] {citta1, citta2};
-		
+		String[] citta = new String[] { citta1, citta2 };
+
 		for (int i = 0; i < citta.length; i++) {
 			/* Qui filtra per città */
 			vettCitta = filtroC.getFromCityFilter(citta[i]);
@@ -148,10 +157,11 @@ public class StatsController {
 
 		default: {
 			Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
-			MeteoCitta mCError = new MeteoCitta(0, "Errore", "Errore", 0, 0, null, null, null, null, 0);
+			MeteoCitta mCError = new MeteoCitta(0, "Errore di input del tipo di parametro",
+					"Errore di input del tipo di parametro", 0, 0, null, null, null, null, 0);
 			VMCError.add(mCError);
 			return VMCError;
-			}
+		}
 
 		}
 

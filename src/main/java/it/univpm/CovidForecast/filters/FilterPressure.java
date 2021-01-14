@@ -5,7 +5,6 @@ import java.util.Vector;
 import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
-import it.univpm.CovidForecast.service.MeteoCittaService;
 
 @Service
 public class FilterPressure {

@@ -39,7 +39,7 @@ public class StatsUmidita extends Stats {
 			}
 			mCVect.add(mCMin);
 			return mCVect;
-			
+
 		case "varianza":
 			Vector<Long> vett = new Vector<Long>();
 
@@ -62,7 +62,7 @@ public class StatsUmidita extends Stats {
 			mCVarianza.setUmidita(varianza);
 			VMCVarianza.add(mCVarianza);
 			return VMCVarianza;
-			
+
 		case "media":
 			Vector<Long> vett1 = new Vector<Long>();
 
@@ -81,10 +81,11 @@ public class StatsUmidita extends Stats {
 			mCMedia.setUmidita(media1);
 			VMCMedia.add(mCMedia);
 			return VMCMedia;
-			
+
 		default: {
 			Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
-			MeteoCitta mCError = new MeteoCitta(0, "Errore", "Errore", 0, 0, null, null, null, null, 0);
+			MeteoCitta mCError = new MeteoCitta(0, "Errore di input del tipo di stat",
+					"Errore di input del tipo di stat", 0, 0, null, null, null, null, 0);
 			VMCError.add(mCError);
 			return VMCError;
 		}
