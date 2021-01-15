@@ -1,5 +1,6 @@
 package it.univpm.CovidForecast.stats;
 
+import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.springframework.stereotype.Service;
@@ -59,7 +60,12 @@ public class StatsTemp extends Stats {
 			varianza = sommaScartiQuadrati / n;
 			Vector<MeteoCitta> VMCVarianza = new Vector<MeteoCitta>();
 			MeteoCitta mCVarianza = new MeteoCitta();
+			DecimalFormat DF = new DecimalFormat("##.##");
+			varianza = Double.valueOf(DF.format(varianza));
 			mCVarianza.setTemp(varianza);
+			mCVarianza.setCitta(vectPerStats.elementAt(0).getCitta());
+			mCVarianza.setNazione(vectPerStats.elementAt(0).getNazione());
+			mCVarianza.setData(System.currentTimeMillis()/1000);
 			VMCVarianza.add(mCVarianza);
 			return VMCVarianza;
 
@@ -78,18 +84,24 @@ public class StatsTemp extends Stats {
 			media1 = somma1 / num;
 			Vector<MeteoCitta> VMCMedia = new Vector<MeteoCitta>();
 			MeteoCitta mCMedia = new MeteoCitta();
+			DecimalFormat dF = new DecimalFormat("####.##");
+			media1 = Double.valueOf(dF.format(media1));
 			mCMedia.setTemp(media1);
+			mCMedia.setCitta(vectPerStats.elementAt(0).getCitta());
+			mCMedia.setNazione(vectPerStats.elementAt(0).getNazione());
+			mCMedia.setData(System.currentTimeMillis()/1000);
 			VMCMedia.add(mCMedia);
 			return VMCMedia;
 
 		default: {
-			Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
+			/*Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
 			MeteoCitta mCError = new MeteoCitta(0, "Errore di input del tipo di stat",
 					"Errore di input del tipo di stat", 0, 0, null, null, null, null, 0);
 			VMCError.add(mCError);
-			return VMCError;
+			return VMCError;*/
 		}
 		}
+		return null;
 
 	}
 

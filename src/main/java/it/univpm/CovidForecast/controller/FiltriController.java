@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.univpm.CovidForecast.exception.EccezioniPersonalizzate;
 import it.univpm.CovidForecast.filters.FilterCity;
 import it.univpm.CovidForecast.filters.FilterData;
 import it.univpm.CovidForecast.filters.FilterFL;
@@ -17,6 +18,7 @@ import it.univpm.CovidForecast.model.CittaJSON;
 import it.univpm.CovidForecast.model.Filtri;
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.scanner.CittaScanner;
+import it.univpm.CovidForecast.scanner.VariabileScanner;
 import it.univpm.CovidForecast.tools.ConvertitoreData;
 import it.univpm.CovidForecast.tools.CreaCittaJSON;
 
@@ -41,17 +43,28 @@ public class FiltriController {
 	private Vector<MeteoCitta> vettData;
 
 	private CittaScanner cS = new CittaScanner();
-	
+	private VariabileScanner vS = new VariabileScanner();
+
 	@PostMapping("/filters")
 	public Vector<CittaJSON> filters(@RequestBody Filtri filtriObj) {
 
-		if (!cS.controlloCitta(filtriObj.getCitta())) {
+		try {
+			if (!cS.controlloCitta(filtriObj.getCitta()))
+				throw new EccezioniPersonalizzate("Errore nell'input della città!");
 
-			cJVect = new Vector<CittaJSON>();
-			CittaJSON cJError = new CittaJSON("01-01-1970 01:00", "Errore di input della città",
-					"Errore di input della città", 0, null, null, null, null, 0);
-			cJVect.add(cJError);
-			return cJVect;
+			if (!vS.controlloVariabile(filtriObj.getVariabile()))
+				throw new EccezioniPersonalizzate("Errore nell'input del tipo di parametro!");
+
+			if (filtriObj.getDataFin().charAt(2) != '-' || filtriObj.getDataFin().charAt(5) != '-'
+					|| filtriObj.getDataInit().charAt(2) != '-' || filtriObj.getDataInit().charAt(5) != '-'
+					|| filtriObj.getDataInit().charAt(10) != ' ' || filtriObj.getDataFin().charAt(10) != ' '
+					|| filtriObj.getDataInit().charAt(13) != ':' || filtriObj.getDataFin().charAt(13) != ':'
+					|| filtriObj.getDataInit().length() != 15 || filtriObj.getDataFin().length() != 15)
+				throw new EccezioniPersonalizzate("Errore di input della data!");
+
+		} catch (EccezioniPersonalizzate e) {
+
+			return EccezioniPersonalizzate.getVCJError();
 		}
 
 		cJVect = new Vector<CittaJSON>();
@@ -103,14 +116,16 @@ public class FiltriController {
 			return fH.getFromHumidityFilter(vectPerFiltri, valInit.longValue(), valFin.longValue());
 
 		default: {
-			Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
-			MeteoCitta mCError = new MeteoCitta(0, "Errore di input del tipo di parametro",
-					"Errore di input del tipo di parametro", 0, 0, null, null, null, null, 0);
-			VMCError.add(mCError);
-			return VMCError;
+			/*
+			 * Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>(); MeteoCitta mCError =
+			 * new MeteoCitta(0, "Errore di input del tipo di parametro",
+			 * "Errore di input del tipo di parametro", 0, 0, null, null, null, null, 0);
+			 * VMCError.add(mCError); return VMCError;
+			 */
 		}
 
 		}
+		return null;
 
 	}
 

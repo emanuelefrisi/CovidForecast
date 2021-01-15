@@ -1,6 +1,7 @@
 /**
  * 
- * Package contenente la classe che ritorna le città da usare per le chiamate all'API
+ * Package contenente le classi che ritornano le città da usare per le chiamate
+ * all'API e i tipi di stats e di variabili che possono essere chiamati dall'utente
  * 
  * @author emanuelefrisi&domenicolaporta00
  *
