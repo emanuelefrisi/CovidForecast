@@ -12,12 +12,20 @@ import it.univpm.CovidForecast.model.ForecastCitta;
 
 /**
  * 
+ * Classe figlia che effettua il parsing della chiamata ad OpenWeather riguardante i dati previsionali
+ * 
+ * @see it.univpm.CovidForecast.service.OraService
+ * @see it.univpm.CovidForecast.service.ForecastCittaService
+ * 
  * @author emanuelefrisi
  *
  */
 @Service
 public class ParsingForecastData extends ParsingData{
 	
+	/**
+	 * Metodo override dove si effettua il parsing dei dati e poi vengono salvati tramite ForecastCittaService
+	 */
 	@Override
 	public void parsing(Vector<String> cittaForecastData) {
 		

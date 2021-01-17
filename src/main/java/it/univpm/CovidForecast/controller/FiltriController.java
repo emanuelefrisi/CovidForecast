@@ -1,5 +1,6 @@
 package it.univpm.CovidForecast.controller;
 
+import java.util.InputMismatchException;
 //import java.util.InputMismatchException;
 import java.util.Vector;
 
@@ -130,16 +131,14 @@ public class FiltriController {
 		} catch (EccezioniPersonalizzate e) {
 
 			return EccezioniPersonalizzate.getVCJError();
-
-		} /*
-			 * catch (InputMismatchException e) {
-			 * 
-			 * try { throw new
-			 * EccezioniPersonalizzate("Errore di input. InputMismatchException!"); } catch
-			 * (EccezioniPersonalizzate E) {
-			 * 
-			 * return EccezioniPersonalizzate.getVCJError(); } }
-			 */
+			
+		} catch (InputMismatchException e) {
+			  
+		 try { throw new
+		 EccezioniPersonalizzate("Errore di input. InputMismatchException!"); } catch
+		 (EccezioniPersonalizzate E) {
+		 
+		 return EccezioniPersonalizzate.getVCJError(); } }
 
 		cJVect = new Vector<CittaJSON>();
 		for (int i = 0; i < filtriObj.getCitta().size(); i++) {

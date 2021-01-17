@@ -16,9 +16,9 @@ public class ChiamataPaginaPrincipale {
 	private Vector<String> geo;
 	Vector<Vector<String>> weather;
 
-	public ChiamataPaginaPrincipale(String username) {
+	public ChiamataPaginaPrincipale(String username) throws CFException {
 
-		try {
+//		try {
 //		String apiKey = aKD.getApiKeys().elementAt(1);
 //		Vector<String> geo = gID.getLocation(apiKey);
 		geo = new Vector<String>();
@@ -30,15 +30,15 @@ public class ChiamataPaginaPrincipale {
 		System.out.println(geo);
 		System.out.println(weather);
 		new CFPaginaPrincipale(username, geo, weather);
-		} catch(CFException cF) {
-			
-		}
+//		} catch(CFException cF) {
+//			
+//		}
 
 	}
 
-	public ChiamataPaginaPrincipale(String username, String citta) {
+	public ChiamataPaginaPrincipale(String username, String citta) throws CFException {
 
-		try {
+//		try {
 		geo = new Vector<String>();
 		weather = new Vector<Vector<String>>();
 		weather = cI.chiamata(citta);
@@ -50,9 +50,9 @@ public class ChiamataPaginaPrincipale {
 		System.out.println(geo);
 		System.out.println(weather);
 		new CFPaginaPrincipale(username, geo, weather);
-		} catch(CFException cF) {
-			
-		}
+//		} catch(CFException cF) {
+//			
+//		}
 		
 	}
 

@@ -171,6 +171,7 @@ public class CFStats {
 		    }
 		    public void mouseClicked(MouseEvent mEC) {
 		    	new CFPaginaPrincipale(username, geo, weather);
+		    	frame.setVisible(false);
 		      }
 		    });
 		background.add(frecciaButton);
@@ -264,7 +265,7 @@ public class CFStats {
 		
 		variabileMap.put("Scegliere una variabile", null);
 		variabileMap.put("Pressione", "pressione");
-		variabileMap.put("Temperatura", "temperatura");
+		variabileMap.put("Temperatura", "temp");
 		variabileMap.put("Temperatura Massima", "tempMax");
 		variabileMap.put("Temperatura Minima", "tempMin");
 		variabileMap.put("Temperatura Percepita", "tempPercepita");

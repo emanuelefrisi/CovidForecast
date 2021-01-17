@@ -6,12 +6,26 @@ import org.springframework.stereotype.Component;
 
 import it.univpm.CovidForecast.api.OpenWeatherData;
 
+/**
+ * Classe che è servita per salvare i dati attuali e previsionali di ogni città sul database
+ * 
+ * @author emanuelefrisi
+ *
+ * @see it.univpm.CovidForecast.api.OpenWeatherData
+ *
+ */
+
 @Component
 public class Scheduler {
 
 	@Autowired
 	private OpenWeatherData oWD = new OpenWeatherData();
 	
+	/**
+	 * 
+	 * Metodo che consente di salvare i dati sul database ogni ora
+	 * 
+	 */
 	@Scheduled(fixedRate=3600000)
 	public void scheduler() {
 //		oWD.getData("weather");

@@ -147,15 +147,6 @@ public class StatsController {
 
 			return EccezioniPersonalizzate.getVCJError();
 		}
-		/*
-		 * catch (InputMismatchException e) {
-		 * 
-		 * try { throw new
-		 * EccezioniPersonalizzate("Errore di input. InputMismatchException!"); } catch
-		 * (EccezioniPersonalizzate E) {
-		 * 
-		 * return EccezioniPersonalizzate.getVCJError(); } }
-		 */
 
 		cJVect = new Vector<CittaJSON>();
 		for (int i = 0; i < statsObj.getCitta().size(); i++) {
@@ -250,7 +241,7 @@ public class StatsController {
 		case "pressione":
 			return sP.getStats(tipoStat, vectPerStats);
 
-		case "temperatura":
+		case "temp":
 			return sT.getStats(tipoStat, vectPerStats);
 
 		case "tempMax":
@@ -264,15 +255,6 @@ public class StatsController {
 
 		case "umidita":
 			return sU.getStats(tipoStat, vectPerStats);
-
-		default: {
-			/*
-			 * Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>(); MeteoCitta mCError =
-			 * new MeteoCitta(0, "Errore di input del tipo di parametro",
-			 * "Errore di input del tipo di parametro", 0, 0, null, null, null, null, 0);
-			 * VMCError.add(mCError); return VMCError;
-			 */
-		}
 
 		}
 		return null;

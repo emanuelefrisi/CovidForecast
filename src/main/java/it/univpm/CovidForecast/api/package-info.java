@@ -1,6 +1,6 @@
 /**
  * 
- * Package contenente le classi che effettuano le chiamate all'API
+ * Package contenente la classe che effettua le chiamate all'API
  * 
  * @author emanuelefrisi&domenicolaporta00
  *

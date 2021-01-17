@@ -13,6 +13,8 @@ import it.univpm.CovidForecast.service.OraService;
 
 /**
  * 
+ * Classe madre dove si effettua il parsing della chiamata ad OpenWeather
+ * 
  * @author emanuelefrisi
  *
  */
@@ -74,6 +76,14 @@ public class ParsingData {
 	@Autowired
 	protected OraService oS = new OraService();
 	
+	/**
+	 * 
+	 * Metodo dove viene effettuato il parsing
+	 * Viene passato in ingresso un vettore di citta
+	 * 
+	 * @param cittaData
+	 * 
+	 */
 	public void parsing(Vector<String> cittaData) {
 		
 	}

@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import it.univpm.CovidForecast.exceptions.CFException;
 import it.univpm.CovidForecast.tools.Credenziali;
 
 public class CFLogin {
@@ -163,8 +164,12 @@ public class CFLogin {
 		    }
 		      public void mouseClicked(MouseEvent me) {
 		    	  if(c.compara(userField.getText(), new String(pwField.getPassword()))) {
-		    		  new ChiamataPaginaPrincipale(userField.getText());
-		    		  frame.setVisible(false);
+		    		  try {
+						new ChiamataPaginaPrincipale(userField.getText());
+						frame.setVisible(false);
+					} catch (CFException e) {
+
+					}
 		    	  }
 		      }
 		    });

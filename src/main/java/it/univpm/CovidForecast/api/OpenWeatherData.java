@@ -22,6 +22,11 @@ import it.univpm.CovidForecast.service.ApiKeyService;
  * attuali e previsionali per ogni città che viene letta dallo scanner
  * 
  * @author emanuelefrisi
+ * 
+ * @see it.univpm.CovidForecast.scanner.CittaScanner
+ * @see it.univpm.CovidForecast.service.ApiKeyService
+ * @see it.univpm.CovidForecast.parsing.ParsingCurrentData
+ * @see it.univpm.CovidForecast.parsing.ParsingForecastData
  *
  */
 @Service
@@ -34,9 +39,23 @@ public class OpenWeatherData {
 	private ParsingCurrentData parsingCD = new ParsingCurrentData();
 	@Autowired
 	private ParsingForecastData parsingFD = new ParsingForecastData();
+	/**
+	 * Vettore dove vengono istanziate le città
+	 */
 	private Vector<String> citta;
+	/**
+	 * Stringa dove viene istanziata l'api key per la chiamata ad OpenWeather
+	 */
 	private String apiKey;
 	
+	/**
+	 * 
+	 * Metodo dove viene effettuata la chiamata ad OpenWeather in base al tipo di chiamata dato in ingresso
+	 * La chiamata poi viene passata al parsing, sempre in base al tipo di chiamata
+	 * 
+	 * @param tipo
+	 * 
+	 */
 	public void getData(String tipo) {
 		Vector<String> cittaData = new Vector<String>();
 		citta = cS.getCitta();

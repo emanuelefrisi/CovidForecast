@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import it.univpm.CovidForecast.exceptions.CFException;
 import it.univpm.CovidForecast.tools.ConvertitoreData;	
 
 public class CFPaginaPrincipale {
@@ -130,8 +131,12 @@ public class CFPaginaPrincipale {
 		    public void mouseClicked(MouseEvent mEC) {
 		    	String testo = ricercaField.getText();
 		    	  if(!testo.equals("")) {
-		    		  new ChiamataPaginaPrincipale(username, testo);
-		    		  frame.setVisible(false);
+		    		  try {
+						new ChiamataPaginaPrincipale(username, testo);
+						frame.setVisible(false);
+					} catch (CFException e) {
+						ricercaField.setText("Cerca meteo città...");
+					}
 		    	  }
 		      }
 		    });
