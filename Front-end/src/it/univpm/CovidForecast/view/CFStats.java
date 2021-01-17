@@ -30,17 +30,17 @@ public class CFStats {
 
 	private JFrame frame = new JFrame();
 
-	private ImageIcon backgroundImg = new ImageIcon("images/Background - Registrazione.png");
-	private ImageIcon logo = new ImageIcon("images/Logo3 - Copia.png");
-	private ImageIcon logoInterno = new ImageIcon("images/Logo4_without_background - Logo.png");
-	private ImageIcon minimize_white = new ImageIcon("images/Minimize - Copia.png");
-	private ImageIcon minimize_lilac = new ImageIcon("images/Minimize_Lilac - Copia.png");
-	private ImageIcon close_white = new ImageIcon("images/Close_White - 36x36.png");
-	private ImageIcon close_lilac = new ImageIcon("images/Close_Lilac - 36x36.png");
-	private ImageIcon freccia_white = new ImageIcon("images/Freccia - Copia.png");
-	private ImageIcon freccia_lilac = new ImageIcon("images/Freccia_lilac - Copia.png");
-	private ImageIcon iIStats = new ImageIcon("images/Button_crea_statistica - Copia.png");
-	private ImageIcon iIStats_switch = new ImageIcon("images/Button_crea_statistica_switch - Copia.png");
+	private ImageIcon backgroundImg = new ImageIcon("images/Background - 2.png");
+	private ImageIcon logo = new ImageIcon("images/Logo icona.png");
+	private ImageIcon logoInterno = new ImageIcon("images/Logo interno.png");
+	private ImageIcon minimize_white = new ImageIcon("images/Minimize_White_48x48.png");
+	private ImageIcon minimize_lilac = new ImageIcon("images/Minimize_Lilac_48x48.png");
+	private ImageIcon close_white = new ImageIcon("images/Close_White_36x36.png");
+	private ImageIcon close_lilac = new ImageIcon("images/Close_Lilac_36x36.png");
+	private ImageIcon freccia_white = new ImageIcon("images/Freccia_White_small.png");
+	private ImageIcon freccia_lilac = new ImageIcon("images/Freccia_lilac_small.png");
+	private ImageIcon iIStats = new ImageIcon("images/Button_crea_statistica_small.png");
+	private ImageIcon iIStats_switch = new ImageIcon("images/Button_crea_statistica_switch_small.png");
 	
 	private JLabel background = new JLabel("", backgroundImg, JLabel.CENTER);
 	private JLabel logoInternoLabel = new JLabel(logoInterno);

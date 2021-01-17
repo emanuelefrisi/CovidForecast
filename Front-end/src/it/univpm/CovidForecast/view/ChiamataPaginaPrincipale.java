@@ -5,6 +5,7 @@ import java.util.Vector;
 import it.univpm.CovidForecast.api.ApiKeyData;
 import it.univpm.CovidForecast.api.ChiamataMeteo;
 import it.univpm.CovidForecast.api.GeoIpifyData;
+import it.univpm.CovidForecast.exceptions.CFException;
 
 public class ChiamataPaginaPrincipale {
 
@@ -17,6 +18,7 @@ public class ChiamataPaginaPrincipale {
 
 	public ChiamataPaginaPrincipale(String username) {
 
+		try {
 //		String apiKey = aKD.getApiKeys().elementAt(1);
 //		Vector<String> geo = gID.getLocation(apiKey);
 		geo = new Vector<String>();
@@ -28,20 +30,29 @@ public class ChiamataPaginaPrincipale {
 		System.out.println(geo);
 		System.out.println(weather);
 		new CFPaginaPrincipale(username, geo, weather);
+		} catch(CFException cF) {
+			
+		}
 
 	}
 
 	public ChiamataPaginaPrincipale(String username, String citta) {
 
+		try {
 		geo = new Vector<String>();
-		geo.add("IT");
+		weather = new Vector<Vector<String>>();
+		weather = cI.chiamata(citta);
+		
+		geo.add(weather.elementAt(0).elementAt(5));
 		geo.add(citta);
 		
-		weather = new Vector<Vector<String>>();
-		weather = cI.chiamata(geo.elementAt(1));
+		
 		System.out.println(geo);
 		System.out.println(weather);
 		new CFPaginaPrincipale(username, geo, weather);
+		} catch(CFException cF) {
+			
+		}
 		
 	}
 

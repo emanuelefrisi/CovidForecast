@@ -8,6 +8,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
+import it.univpm.CovidForecast.exceptions.CFException;
 import it.univpm.CovidForecast.parsing.ParsingCurrentData;
 
 public class OpenWeatherCurrentData {
@@ -15,7 +18,7 @@ public class OpenWeatherCurrentData {
 	private ParsingCurrentData pCD = new ParsingCurrentData();
 	private Vector<String> weather = new Vector<String>();
 	
-	public Vector<String> getData(String citta, String apiKey) {
+	public Vector<String> getData(String citta, String apiKey) throws CFException {
 		
 		try {
 				String url = "http://api.openweathermap.org/data/2.5/weather?q=" + citta
@@ -30,7 +33,7 @@ public class OpenWeatherCurrentData {
 		}catch (MalformedURLException m) {
 			System.out.println("Eccezione MalformedURLException");
 		} catch (IOException i) {
-			System.out.println("Eccezione IOException");
+			throw new CFException("La città inserita non è valida", "CovidForecast", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		return weather;

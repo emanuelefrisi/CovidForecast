@@ -25,6 +25,8 @@ public class ParsingCurrentData {
 			weather.add(new DecimalFormat("##.#").format((Double.parseDouble(jOMain.get("temp").toString()))));
 			weather.add(new DecimalFormat("##.#").format((Double.parseDouble(jOMain.get("temp_min").toString()))));
 			weather.add(new DecimalFormat("##.#").format((Double.parseDouble(jOMain.get("temp_max").toString()))));
+			JSONObject jOSys = (JSONObject) jO.get("sys");
+			weather.add((String) jOSys.get("country"));
 			
 		} catch (ParseException p) {
 			System.out.println("Eccezione ParseException");

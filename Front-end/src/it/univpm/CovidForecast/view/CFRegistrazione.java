@@ -18,26 +18,30 @@ import it.univpm.CovidForecast.tools.Credenziali;
 public class CFRegistrazione {
 
 	private JFrame frame = new JFrame();
-	private ImageIcon backgroundImg = new ImageIcon("images/Background - Registrazione.png");
-	private JLabel background = new JLabel("", backgroundImg, JLabel.CENTER);
-	private ImageIcon logo = new ImageIcon("images/Logo3 - Copia.png");
-	private JLabel userLabel = new JLabel("username");
-	private JTextField userField = new JTextField();
-	private JLabel pwLabel = new JLabel("password");
-	private JPasswordField pwField = new JPasswordField();
-	private JLabel pwLabel2 = new JLabel("conferma password");
-	private JPasswordField pwField2 = new JPasswordField();
-	private JLabel logLabel = new JLabel("Se sei già registrato allora:");
-	private ImageIcon logoInterno = new ImageIcon("images/Logo4_without_background - Logo.png");
-	private ImageIcon minimize_white = new ImageIcon("images/Minimize - Copia.png");
-	private ImageIcon minimize_lilac = new ImageIcon("images/Minimize_Lilac - Copia.png");
-	private ImageIcon close_white = new ImageIcon("images/Close_White - 36x36.png");
-	private ImageIcon close_lilac = new ImageIcon("images/Close_Lilac - 36x36.png");
+	
+	private ImageIcon backgroundImg = new ImageIcon("images/Background - 2.png");
+	private ImageIcon logo = new ImageIcon("images/Logo icona.png");
+	private ImageIcon logoInterno = new ImageIcon("images/Logo interno.png");
+	private ImageIcon minimize_white = new ImageIcon("images/Minimize_White_48x48.png");
+	private ImageIcon minimize_lilac = new ImageIcon("images/Minimize_Lilac_48x48.png");
+	private ImageIcon close_white = new ImageIcon("images/Close_White_36x36.png");
+	private ImageIcon close_lilac = new ImageIcon("images/Close_Lilac_36x36.png");
 	private ImageIcon profile = new ImageIcon("images/Login_logo_small.png");
-	private ImageIcon login = new ImageIcon("images/Button_login - Copia.png");
-	private ImageIcon login_switch = new ImageIcon("images/Button_login_switch - Copia.png");
-	private ImageIcon registrati = new ImageIcon("images/Button_registrati - Copia.png");
-	private ImageIcon registrati_switch = new ImageIcon("images/Button_registrati_switch - Copia.png");
+	private ImageIcon login = new ImageIcon("images/Button_login_small.png");
+	private ImageIcon login_switch = new ImageIcon("images/Button_login_switch_small.png");
+	private ImageIcon registrati = new ImageIcon("images/Button_registrati_small.png");
+	private ImageIcon registrati_switch = new ImageIcon("images/Button_registrati_switch_small.png");
+	
+	private JLabel background = new JLabel("", backgroundImg, JLabel.CENTER);
+	private JLabel userLabel = new JLabel("username");
+	private JLabel pwLabel = new JLabel("password");
+	private JLabel pwLabel2 = new JLabel("conferma password");
+	private JLabel logLabel = new JLabel("Se sei già registrato allora:");	
+	
+	private JTextField userField = new JTextField();
+	private JPasswordField pwField = new JPasswordField();	
+	private JPasswordField pwField2 = new JPasswordField();
+	
 	private JButton minimize = new JButton(minimize_white);
 	private JButton close = new JButton(close_white);
 	private JLabel logoInternoLabel = new JLabel(logoInterno);

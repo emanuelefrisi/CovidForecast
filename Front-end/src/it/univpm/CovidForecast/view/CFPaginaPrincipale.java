@@ -26,15 +26,15 @@ public class CFPaginaPrincipale {
 
 	private JFrame frame = new JFrame();
 
-	private ImageIcon backgroundImg = new ImageIcon("images/Background - Registrazione.png");
-	private ImageIcon logo = new ImageIcon("images/Logo3 - Copia.png");
-	private ImageIcon logoInterno = new ImageIcon("images/Logo4_without_background - Logo.png");
-	private ImageIcon minimize_white = new ImageIcon("images/Minimize - Copia.png");
-	private ImageIcon minimize_lilac = new ImageIcon("images/Minimize_Lilac - Copia.png");
-	private ImageIcon close_white = new ImageIcon("images/Close_White - 36x36.png");
-	private ImageIcon close_lilac = new ImageIcon("images/Close_Lilac - 36x36.png");
-	private ImageIcon ricerca_white = new ImageIcon("images/Button_ricerca - Copia.png");
-	private ImageIcon ricerca_lilac = new ImageIcon("images/Button_ricerca_Lilac - Copia.png");
+	private ImageIcon backgroundImg = new ImageIcon("images/Background - 2.png");
+	private ImageIcon logo = new ImageIcon("images/Logo icona.png");
+	private ImageIcon logoInterno = new ImageIcon("images/Logo interno.png");
+	private ImageIcon minimize_white = new ImageIcon("images/Minimize_White_48x48.png");
+	private ImageIcon minimize_lilac = new ImageIcon("images/Minimize_Lilac_48x48.png");
+	private ImageIcon close_white = new ImageIcon("images/Close_White_36x36.png");
+	private ImageIcon close_lilac = new ImageIcon("images/Close_Lilac_36x36.png");
+	private ImageIcon ricerca_white = new ImageIcon("images/Button_ricerca_White_small.png");
+	private ImageIcon ricerca_lilac = new ImageIcon("images/Button_ricerca_Lilac_small.png");
 	private ImageIcon iconaMeteo;
 	
 	private JLabel background = new JLabel("", backgroundImg, JLabel.CENTER);

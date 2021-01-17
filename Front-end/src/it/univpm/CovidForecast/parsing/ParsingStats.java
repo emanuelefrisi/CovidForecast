@@ -9,7 +9,7 @@ public class ParsingStats {
 
 	private String data, citta, nazione, dati;
 	private long pressione, umidita;
-	private Double temp, tempMax, tempMin, tempPercepita;
+	private Double temp, tempMax, tempMin, tempPercepita, valore;
 	
 	public String parsing(String chiamata) {
 		
@@ -41,11 +41,44 @@ public class ParsingStats {
 		
 	}
 	
+	public String parsingAlternativo(String chiamata, String variabile) {
+		
+		this.dati = "";
+		
+		try {
+			JSONParser jP = new JSONParser();
+			JSONArray jA = (JSONArray) jP.parse(chiamata);
+			for(int i = 0; i<jA.size(); i++) {
+				JSONObject jO = (JSONObject) jA.get(i);
+				data = (String) jO.get("data");
+				citta = (String) jO.get("citta");
+				nazione = (String) jO.get("nazione");
+				valore = Double.parseDouble(jO.get(variabile).toString());
+				this.toStringAlternativo();
+			}
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dati;
+		
+	}
+	
 	public String toString() {
 			
 			dati += "Città: " + citta + ", " + nazione + "\n\nData: " + data + "\nPressione: " + pressione + " hPa\nTemperatura: " + temp +
 					"°C\nTemperatura massima: " + tempMax + "°C\nTemperatura minima: " + tempMin + "°C\nTemperatura percepita: " + tempPercepita +
 					"°C\nUmidità: " + umidita + "%\n\n";
+		
+		return dati;
+		
+	}
+	
+	public String toStringAlternativo() {
+		
+		dati += "Città: " + citta + ", " + nazione + "\n\nData: " + data + "\nValore: " + valore + "\n\n";
 		
 		return dati;
 		
