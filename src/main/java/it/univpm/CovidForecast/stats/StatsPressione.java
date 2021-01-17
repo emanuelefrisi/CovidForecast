@@ -1,15 +1,31 @@
 package it.univpm.CovidForecast.stats;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 import java.util.Vector;
 
 import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
 
+/**
+ * Classe che esegue le stats sulla pressione
+ * 
+ * @author 
+ *
+ */
 @Service
 public class StatsPressione extends Stats {
 
+	/**
+	 * Metodo che trova il tipo di statistica desiderata sulla pressione
+	 * 
+	 * @param tipoStat     String
+	 * @param vectPerStats Vector<MeteoCitta>
+	 * @return mCVect
+	 * 
+	 */
 	@Override
 	public Vector<MeteoCitta> getStats(String tipoStat, Vector<MeteoCitta> vectPerStats) {
 
@@ -60,7 +76,7 @@ public class StatsPressione extends Stats {
 			varianza = sommaScartiQuadrati / n;
 			Vector<MeteoCitta> VMCVarianza = new Vector<MeteoCitta>();
 			MeteoCitta mCVarianza = new MeteoCitta();
-			DecimalFormat DF = new DecimalFormat("##.##");
+			DecimalFormat DF = new DecimalFormat("##.##", new DecimalFormatSymbols(Locale.ENGLISH));
 			varianza = Long.valueOf(DF.format(varianza));
 			mCVarianza.setPressione(varianza);
 			mCVarianza.setCitta(vectPerStats.elementAt(0).getCitta());
@@ -84,7 +100,7 @@ public class StatsPressione extends Stats {
 			media1 = somma1 / num;
 			Vector<MeteoCitta> VMCMedia = new Vector<MeteoCitta>();
 			MeteoCitta mCMedia = new MeteoCitta();
-			DecimalFormat dF = new DecimalFormat("####.##");
+			DecimalFormat dF = new DecimalFormat("####.##", new DecimalFormatSymbols(Locale.ENGLISH));
 			media1 = Long.valueOf(dF.format(media1));
 			mCMedia.setPressione(media1);
 			mCMedia.setCitta(vectPerStats.elementAt(0).getCitta());

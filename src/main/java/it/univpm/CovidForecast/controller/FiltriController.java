@@ -1,5 +1,6 @@
 package it.univpm.CovidForecast.controller;
 
+//import java.util.InputMismatchException;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,29 +23,93 @@ import it.univpm.CovidForecast.scanner.VariabileScanner;
 import it.univpm.CovidForecast.tools.ConvertitoreData;
 import it.univpm.CovidForecast.tools.CreaCittaJSON;
 
+/**
+ * Classe contenente il controller dell'applicazione che gestisce le rotte dei
+ * filtri
+ * 
+ * @author
+ *
+ */
 @RestController
 public class FiltriController {
 
 	@Autowired
+	/**
+	 * Oggetto FilterCity utile per eseguire il filtraggio per città
+	 */
 	private FilterCity fC = new FilterCity();
+	/**
+	 * Oggetto FilterData utile per eseguire il filtraggio per data
+	 */
 	private FilterData fD = new FilterData();
+	/**
+	 * Oggetto ConvertitoreData utile per convertire la data da un formato Unix a
+	 * formato String o viceversa
+	 */
 	private ConvertitoreData cD = new ConvertitoreData();
+	/**
+	 * Oggetto CreaCittaJSON utile per passare da un oggetto MeteoCitta (data
+	 * formato Unix) a un oggetto CittaJSON (data formato String)
+	 */
 	private CreaCittaJSON cCJ = new CreaCittaJSON();
 	@Autowired
+	/**
+	 * Oggetto FilterFL utile per eseguire il filtraggio per temperatura percepita
+	 */
 	private FilterFL fFL = new FilterFL();
 	@Autowired
+	/**
+	 * Oggetto FilterHumidity utile per eseguire il filtraggio per umidità
+	 */
 	private FilterHumidity fH = new FilterHumidity();
 	@Autowired
+	/**
+	 * Oggetto FilterPressure utile per eseguire il filtraggio per pressione
+	 */
 	private FilterPressure fP = new FilterPressure();
 	@Autowired
+	/**
+	 * Oggetto FilterTemperature utile per eseguire il filtraggio per temperatura
+	 */
 	private FilterTemperature fT = new FilterTemperature();
+	/**
+	 * Vector di CittaJSON contenente gli oggetti filtrati secondo l'input
+	 * dell'utente
+	 */
 	private Vector<CittaJSON> cJVect;
+	/**
+	 * Vector di MeteoCitta contenente gli oggetti filtrati per città
+	 */
 	private Vector<MeteoCitta> vettCitta;
+	/**
+	 * Vector di MeteoCitta contenente gli oggetti filtrati per data
+	 */
 	private Vector<MeteoCitta> vettData;
 
+	/**
+	 * Oggetto CittaScanner utile per controllare se la città data in input è
+	 * presente in quelle disponibili
+	 */
 	private CittaScanner cS = new CittaScanner();
+	/**
+	 * Oggetto VariabileScanner utile per controllare se la variabile data in input
+	 * è presente in quelle disponibili
+	 */
 	private VariabileScanner vS = new VariabileScanner();
 
+	/**
+	 * Metodo che ritorna un Vector di CittaJSON contenente tutti gli oggetti
+	 * filtati secondo l'input ricevuto dall'utente
+	 * 
+	 * @param filtriObj Filtri
+	 * @see it.univpm.CovidForecast.filters.FilterCity.getFromCityFilter
+	 * @see it.univpm.CovidForecast.tools.ConvertitoreData.convertiDaString
+	 * @see it.univpm.CovidForecast.filters.FilterData.getFromDataFilter
+	 * @see it.univpm.CovidForecast.controller.FiltriController.variabile
+	 * @return Vector<CittaJSON>
+	 * @throws Eccezioni personalizzate se ci sono errori di input nell'oggetto di
+	 *                   tipo Filtri filtriObj
+	 */
 	@PostMapping("/filters")
 	public Vector<CittaJSON> filters(@RequestBody Filtri filtriObj) {
 
@@ -59,13 +124,22 @@ public class FiltriController {
 					|| filtriObj.getDataInit().charAt(2) != '-' || filtriObj.getDataInit().charAt(5) != '-'
 					|| filtriObj.getDataInit().charAt(10) != ' ' || filtriObj.getDataFin().charAt(10) != ' '
 					|| filtriObj.getDataInit().charAt(13) != ':' || filtriObj.getDataFin().charAt(13) != ':'
-					|| filtriObj.getDataInit().length() != 15 || filtriObj.getDataFin().length() != 15)
+					|| filtriObj.getDataInit().length() != 16 || filtriObj.getDataFin().length() != 16)
 				throw new EccezioniPersonalizzate("Errore di input della data!");
 
 		} catch (EccezioniPersonalizzate e) {
 
 			return EccezioniPersonalizzate.getVCJError();
-		}
+
+		} /*
+			 * catch (InputMismatchException e) {
+			 * 
+			 * try { throw new
+			 * EccezioniPersonalizzate("Errore di input. InputMismatchException!"); } catch
+			 * (EccezioniPersonalizzate E) {
+			 * 
+			 * return EccezioniPersonalizzate.getVCJError(); } }
+			 */
 
 		cJVect = new Vector<CittaJSON>();
 		for (int i = 0; i < filtriObj.getCitta().size(); i++) {
@@ -99,6 +173,17 @@ public class FiltriController {
 		return cJVect;
 	}
 
+	/**
+	 * Metodo che esegue il filtraggio desiderato, restituendo un oggetto MeteoCitta
+	 * (formato data String). A seconda del var dato in input, parte una funzione
+	 * che esegue il filtraggio
+	 * 
+	 * @param var           String
+	 * @param vectPerFiltri Vector<MeteoCitta>
+	 * @param valInit       Double
+	 * @param valFin        Double
+	 * @return Vector<MeteoCitta>
+	 */
 	public Vector<MeteoCitta> variabile(String var, Vector<MeteoCitta> vectPerFiltri, Double valInit, Double valFin) {
 
 		switch (var) {

@@ -6,12 +6,32 @@ import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
 
+/**
+ * Classe che esegue il filtraggio in base alla temperatura 
+ */
 @Service
 public class FilterTemperature {
 
+	/**
+	 * Vector contenente gli oggetti di tipo MeteoCitta filtarti per temperatura
+	 */
 	private Vector<MeteoCitta> vectFiltrato;
 
-	public Vector<MeteoCitta> getFromTemperatureFilter(Vector<MeteoCitta> vectDaFiltr, Double tempInit, Double tempFin) {
+	/**
+	 * Metodo che esegue il filtraggio per temperatura su un Vector ricevuto in
+	 * input
+	 * 
+	 * @param vectDaFiltr Vector<MeteoCitta>
+	 * 
+	 * @param tempInit Double
+	 * 
+	 * @param tempFin Double
+	 * 
+	 * @return Vector<MeteoCitta>
+	 * 
+	 */
+	public Vector<MeteoCitta> getFromTemperatureFilter(Vector<MeteoCitta> vectDaFiltr, Double tempInit,
+			Double tempFin) {
 
 		vectFiltrato = new Vector<MeteoCitta>();
 

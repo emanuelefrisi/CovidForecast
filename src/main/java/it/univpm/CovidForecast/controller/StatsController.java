@@ -27,28 +27,102 @@ import it.univpm.CovidForecast.stats.StatsUmidita;
 import it.univpm.CovidForecast.tools.ConvertitoreData;
 import it.univpm.CovidForecast.tools.CreaCittaJSON;
 
+/**
+ * Classe contenente il controller dell'applicazione che gestisce le rotte delle
+ * stats
+ * 
+ * @author
+ *
+ */
 @RestController
 public class StatsController {
 
 	@Autowired
+	/**
+	 * Oggetto FilterCity utile per eseguire il filtraggio per città
+	 */
 	private FilterCity filtroC = new FilterCity();
+	/**
+	 * Oggetto FilterData utile per eseguire il filtraggio per data
+	 */
 	private FilterData filtroD = new FilterData();
+	/**
+	 * Oggetto ConvertitoreData utile per convertire la data da un formato Unix a
+	 * formato String o viceversa
+	 */
 	private ConvertitoreData cD = new ConvertitoreData();
+	/**
+	 * Oggetto FilterFL utile per eseguire il filtraggio per temperatura percepita
+	 */
 	private CreaCittaJSON cCJ = new CreaCittaJSON();
+	/**
+	 * Oggetto StatsPressione utile per ricevere stats sulla pressione
+	 */
 	private StatsPressione sP = new StatsPressione();
+	/**
+	 * Oggetto StatsTemp utile per ricevere stats sulla temperatura
+	 */
 	private StatsTemp sT = new StatsTemp();
+	/**
+	 * Oggetto StatsTempMax utile per ricevere stats sulla temperatura massima
+	 */
 	private StatsTempMax sTM = new StatsTempMax();
+	/**
+	 * Oggetto StatsTempMin utile per ricevere stats sulla temperatura minima
+	 */
 	private StatsTempMin sTm = new StatsTempMin();
+	/**
+	 * Oggetto StatsTempPercepita utile per ricevere stats sulla temperatura
+	 * percepita
+	 */
 	private StatsTempPercepita sTP = new StatsTempPercepita();
+	/**
+	 * Oggetto StatsUmidita utile per ricevere stats sull'umidità
+	 */
 	private StatsUmidita sU = new StatsUmidita();
+	/**
+	 * Vector di CittaJSON contenente gli oggetti filtrati secondo l'input
+	 * dell'utente
+	 */
 	private Vector<CittaJSON> cJVect;
+	/**
+	 * Vector di MeteoCitta contenente gli oggetti filtrati per città
+	 */
 	private Vector<MeteoCitta> vettCitta;
+	/**
+	 * Vector di MeteoCitta contenente gli oggetti filtrati per data
+	 */
 	private Vector<MeteoCitta> vettData;
 
+	/**
+	 * Oggetto CittaScanner utile per controllare se la città data in input è
+	 * presente in quelle disponibili
+	 */
 	private CittaScanner cS = new CittaScanner();
+	/**
+	 * Oggetto VariabileScanner utile per controllare se la variabile data in input
+	 * è presente in quelle disponibili
+	 */
 	private VariabileScanner vS = new VariabileScanner();
+	/**
+	 * Oggetto TipoStatScanner utile per controllare se il tipo di stat dato in
+	 * input è presente in quelli disponibili
+	 */
 	private TipoStatScanner tSS = new TipoStatScanner();
 
+	/**
+	 * Metodo che ritorna un Vector di CittaJSON contenente tutti gli oggetti con le
+	 * stats desiderate secondo l'input ricevuto dall'utente
+	 * 
+	 * @param statsObj Stats
+	 * @see it.univpm.CovidForecast.filters.FilterCity.getFromCityFilter
+	 * @see it.univpm.CovidForecast.tools.ConvertitoreData.convertiDaString
+	 * @see it.univpm.CovidForecast.filters.FilterData.getFromDataFilter
+	 * @see it.univpm.CovidForecast.controller.StatsController.variabile
+	 * @return Vector<CittaJSON>
+	 * @throws Eccezioni personalizzate se ci sono errori di input nell'oggetto di
+	 *                   tipo Stats statsObj
+	 */
 	@PostMapping("/stats")
 	public Vector<CittaJSON> stats(@RequestBody Stats statsObj) {
 
@@ -66,13 +140,22 @@ public class StatsController {
 					|| statsObj.getDataInit().charAt(2) != '-' || statsObj.getDataInit().charAt(5) != '-'
 					|| statsObj.getDataInit().charAt(10) != ' ' || statsObj.getDataFin().charAt(10) != ' '
 					|| statsObj.getDataInit().charAt(13) != ':' || statsObj.getDataFin().charAt(13) != ':'
-					|| statsObj.getDataInit().length() != 15 || statsObj.getDataFin().length() != 15)
+					|| statsObj.getDataInit().length() != 16 || statsObj.getDataFin().length() != 16)
 				throw new EccezioniPersonalizzate("Errore di input della data!");
 
 		} catch (EccezioniPersonalizzate e) {
 
 			return EccezioniPersonalizzate.getVCJError();
 		}
+		/*
+		 * catch (InputMismatchException e) {
+		 * 
+		 * try { throw new
+		 * EccezioniPersonalizzate("Errore di input. InputMismatchException!"); } catch
+		 * (EccezioniPersonalizzate E) {
+		 * 
+		 * return EccezioniPersonalizzate.getVCJError(); } }
+		 */
 
 		cJVect = new Vector<CittaJSON>();
 		for (int i = 0; i < statsObj.getCitta().size(); i++) {
@@ -150,6 +233,16 @@ public class StatsController {
 		return cJVect;
 	}
 
+	/**
+	 * Metodo che restituisce le stats desiderate, restituendo un oggetto MeteoCitta
+	 * (formato data String). A seconda del var dato in input, parte una funzione
+	 * che genera le stats di tale var
+	 * 
+	 * @param var String
+	 * @param tipoStat String
+	 * @param vectPerStats Vector<MeteoCitta>
+	 * @return
+	 */
 	public Vector<MeteoCitta> variabile(String var, String tipoStat, Vector<MeteoCitta> vectPerStats) {
 
 		switch (var) {
@@ -173,11 +266,12 @@ public class StatsController {
 			return sU.getStats(tipoStat, vectPerStats);
 
 		default: {
-			/*Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
-			MeteoCitta mCError = new MeteoCitta(0, "Errore di input del tipo di parametro",
-					"Errore di input del tipo di parametro", 0, 0, null, null, null, null, 0);
-			VMCError.add(mCError);
-			return VMCError;*/
+			/*
+			 * Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>(); MeteoCitta mCError =
+			 * new MeteoCitta(0, "Errore di input del tipo di parametro",
+			 * "Errore di input del tipo di parametro", 0, 0, null, null, null, null, 0);
+			 * VMCError.add(mCError); return VMCError;
+			 */
 		}
 
 		}

@@ -91,9 +91,9 @@ public class MeteoCitta {
 	}
 
 	/**
-	 * Metodo getter dell'attributo citta
+	 * Metodo getter dell'attributo data
 	 * 
-	 * @return citta
+	 * @return data
 	 */
 	public long getData() {
 		return data;

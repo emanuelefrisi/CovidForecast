@@ -6,11 +6,29 @@ import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.MeteoCitta;
 
+/**
+ * Classe che esegue il filtraggio in base all'umidità 
+ */
 @Service
 public class FilterHumidity {
 
+	/**
+	 * Vector contenente gli oggetti di tipo MeteoCitta filtarti per umidità
+	 */
 	private Vector<MeteoCitta> vectFiltrato;
 
+	/**
+	 * Metodo che esegue il filtraggio per umidità su un Vector ricevuto in input
+	 * 
+	 * @param vectDaFiltr Vector<MeteoCitta>
+	 * 
+	 * @param umiditaInit long
+	 * 
+	 * @param umiditaFin long
+	 * 
+	 * @return Vector<MeteoCitta>
+	 * 
+	 */
 	public Vector<MeteoCitta> getFromHumidityFilter(Vector<MeteoCitta> vectDaFiltr, long umiditaInit, long umiditaFin) {
 
 		vectFiltrato = new Vector<MeteoCitta>();
