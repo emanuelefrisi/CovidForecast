@@ -41,7 +41,7 @@ public class ParsingStats {
 		
 	}
 	
-	public String parsingAlternativo(String chiamata, String variabile) {
+	public String parsingAlternativo(String chiamata, String variabile, String tipoStat) {
 		
 		this.dati = "";
 		
@@ -54,7 +54,7 @@ public class ParsingStats {
 				citta = (String) jO.get("citta");
 				nazione = (String) jO.get("nazione");
 				valore = Double.parseDouble(jO.get(variabile).toString());
-				this.toStringAlternativo(variabile);
+				this.toStringAlternativo(variabile, tipoStat);
 			}
 			
 		} catch (ParseException e) {
@@ -76,7 +76,7 @@ public class ParsingStats {
 		
 	}
 	
-	public String toStringAlternativo(String variabile) {
+	public String toStringAlternativo(String variabile, String tipoStat) {
 		
 		String unit;
 		
@@ -87,7 +87,10 @@ public class ParsingStats {
 		else
 			unit = "°C";
 			
-		dati += "Città: " + citta + ", " + nazione + "\n\nData: " + data + "\nValore: " + valore + " " + unit + "\n\n";
+		if(tipoStat.equals("media"))
+			dati += "Città: " + citta + ", " + nazione + "\n\nData: " + data + "\nValore: " + valore + " " + unit + "\n\n";
+		else
+			dati += "Città: " + citta + ", " + nazione + "\n\nData: " + data + "\nValore: " + valore + "\n\n";
 		
 		return dati;
 		

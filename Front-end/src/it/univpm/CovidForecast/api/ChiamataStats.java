@@ -37,7 +37,7 @@ public class ChiamataStats {
 			HttpURLConnection c = (HttpURLConnection) url.openConnection();
 			BufferedReader input = new BufferedReader(new InputStreamReader(c.getInputStream()));
 			if(tipoStat.equals("media") || tipoStat.equals("varianza")) {
-				dati = pS.parsingAlternativo(input.readLine(), variabile);
+				dati = pS.parsingAlternativo(input.readLine(), variabile, tipoStat);
 			}
 			else {
 				dati = pS.parsing(input.readLine());

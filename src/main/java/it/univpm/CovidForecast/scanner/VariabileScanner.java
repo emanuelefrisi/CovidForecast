@@ -28,7 +28,7 @@ public class VariabileScanner {
 
 		variabili = new Vector<String>();
 		variabili.add("pressione");
-		variabili.add("temperatura");
+		variabili.add("temp");
 		variabili.add("tempMax");
 		variabili.add("tempMin");
 		variabili.add("tempPercepita");

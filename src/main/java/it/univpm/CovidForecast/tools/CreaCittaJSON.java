@@ -16,7 +16,7 @@ public class CreaCittaJSON {
 		
 		for(int i = 0; i<mCVect.size(); i++) {
 			MeteoCitta mC = mCVect.elementAt(i);
-			String data = cD.covertiDaUnix(mC.getData());
+			String data = cD.convertiDaUnix(mC.getData());
 			String citta = mC.getCitta();
 			String nazione = mC.getNazione();
 			long pressione = mC.getPressione();

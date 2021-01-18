@@ -1,7 +1,5 @@
 package it.univpm.CovidForecast.controller;
 
-import java.util.InputMismatchException;
-//import java.util.InputMismatchException;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.CovidForecast.exception.EccezioniPersonalizzate;
-//import it.univpm.CovidForecast.filters.FilterCity;
-//import it.univpm.CovidForecast.filters.FilterData;
 import it.univpm.CovidForecast.filters.FilterFL;
 import it.univpm.CovidForecast.filters.FilterHumidity;
 import it.univpm.CovidForecast.filters.FilterPressure;
@@ -19,10 +15,6 @@ import it.univpm.CovidForecast.filters.FilterTemperature;
 import it.univpm.CovidForecast.model.CittaJSON;
 import it.univpm.CovidForecast.model.Filtri;
 import it.univpm.CovidForecast.model.MeteoCitta;
-//import it.univpm.CovidForecast.scanner.CittaScanner;
-//import it.univpm.CovidForecast.scanner.VariabileScanner;
-//import it.univpm.CovidForecast.tools.ConvertitoreData;
-//import it.univpm.CovidForecast.tools.CreaCittaJSON;
 
 /**
  * Classe contenente il controller dell'applicazione che gestisce le rotte dei
@@ -32,7 +24,7 @@ import it.univpm.CovidForecast.model.MeteoCitta;
  *
  */
 @RestController
-public class FiltriController extends MadreController {
+public class FiltriController extends Controller {
 
 //	@Autowired
 //	/**
@@ -132,14 +124,8 @@ public class FiltriController extends MadreController {
 
 			return EccezioniPersonalizzate.getVCJError();
 			
-		} catch (InputMismatchException e) {
-			  
-		 try { throw new
-		 EccezioniPersonalizzate("Errore di input. InputMismatchException!"); } catch
-		 (EccezioniPersonalizzate E) {
-		 
-		 return EccezioniPersonalizzate.getVCJError(); } }
-
+		}
+		
 		cJVect = new Vector<CittaJSON>();
 		for (int i = 0; i < filtriObj.getCitta().size(); i++) {
 			/* Qui filtra per città */
@@ -190,7 +176,7 @@ public class FiltriController extends MadreController {
 		case "pressione":
 			return fP.getFromPressureFilter(vectPerFiltri, valInit.longValue(), valFin.longValue());
 
-		case "temperatura":
+		case "temp":
 			return fT.getFromTemperatureFilter(vectPerFiltri, valInit, valFin);
 
 		case "tempPercepita":

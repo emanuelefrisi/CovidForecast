@@ -27,7 +27,7 @@ public class ConvertitoreData {
 		
 	}
 	
-	public String covertiDaUnix(long dataUn) {
+	public String convertiDaUnix(long dataUn) {
 		
 		data = new Date(dataUn*1000);
 		return sDF.format(data);

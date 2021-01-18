@@ -20,7 +20,7 @@ import it.univpm.CovidForecast.tools.CreaCittaJSON;
  * @author domenicolaporta00
  *
  */
-public class MadreController {
+public class Controller {
 
 	@Autowired
 	/**

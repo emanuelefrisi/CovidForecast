@@ -10,45 +10,66 @@ import it.univpm.CovidForecast.model.ForecastCitta;
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.service.ForecastCittaService;
 import it.univpm.CovidForecast.service.MeteoCittaService;
+import it.univpm.CovidForecast.tools.ConvertitoreData;
 
-@Service
 public class StatsPrevisionali {
 
-	@Autowired
-	private MeteoCittaService mCS;
-	@Autowired
-	private ForecastCittaService fCS;
-	
-	private List<MeteoCitta> mCList;
-	private List<ForecastCitta> fCList;
 	private Vector<MeteoCitta> mCVect;
 	private Vector<ForecastCitta> fCVect;
 	
-	private static int ora = 9;
-	private static final int giorno = 86400; 
+	private ConvertitoreData cD = new ConvertitoreData();
 	
-	public void creaStat() {
+	private int giorno;
+	private int giornoForecast;
+	private int ora;
+	private static final int oraDefault = 9;
+//	private static final int giornoSec = 86400; 
+	private String data;
+	
+	public void creaStat(Vector<MeteoCitta> vectCitta, Vector<ForecastCitta> vectForecastCitta) {
 		
-		mCList = mCS.getMeteoCittaFromDB();
-		fCList = fCS.getForecastCittaFromDB();
 		mCVect = new Vector<MeteoCitta>();
 		fCVect = new Vector<ForecastCitta>();
 		
-		for(int i = 0; i<mCList.size(); i++) {
-			MeteoCitta mC = mCList.get(i);
-			if(mC.getOra() == ora)
+		for(int i = 0; i<vectCitta.size(); i++) {
+			MeteoCitta mC = vectCitta.get(i);
+			data = cD.convertiDaUnix(mC.getData());
+			ora = Integer.valueOf(data.substring(11, 13));
+			if(ora == oraDefault)
 				mCVect.add(mC);
-			ora+=24;
 		}
 		
-		for(int i = 0; i<fCList.size(); i++) {
+		for(int i = 0; i<vectForecastCitta.size(); i++) {
 			
-			ForecastCitta fC = fCList.get(i);
-			String s = fC.getDataTxt().substring(i, i);
-//			if())
+			ForecastCitta fC = vectForecastCitta.get(i);
+			data = fC.getDataTxt();
+			ora = Integer.valueOf(data.substring(11, 13));
+			if(ora == oraDefault)
+				fCVect.add(fC);
 			
 		}
+		
+		for(int i = 0; i<mCVect.size(); i++) {
+			
+			MeteoCitta mC = mCVect.elementAt(i);
+			giorno = Integer.valueOf(cD.convertiDaUnix(mC.getData()).substring(0, 2));
+//			System.out.println("Meteo: " + giorno);
+			for(int j = 0; j<fCVect.size(); j++) {
+				
+				ForecastCitta fC = fCVect.elementAt(j);
+				giornoForecast = Integer.valueOf(fC.getDataTxt().substring(8, 10));
+//				System.out.println("Forecast: " + giornoForecast);
+				if(giorno == giornoForecast)
+					System.out.println("Controllo " + cD.convertiDaUnix(mC.getData()) + " " + fC.getDataTxt());
+			}
+			
+		}
+		
+//		for(int i = 0; i<fCVect.size(); i++)
+//			System.out.println(fCVect.elementAt(i).getDataTxt());
+//		
+//		for(int i = 0; i<mCVect.size(); i++)
+//			System.out.println(cD.convertiDaUnix(mCVect.elementAt(i).getData()));
 		
 	}
-	
 }

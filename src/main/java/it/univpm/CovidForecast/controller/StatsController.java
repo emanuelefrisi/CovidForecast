@@ -35,7 +35,7 @@ import it.univpm.CovidForecast.stats.StatsUmidita;
  *
  */
 @RestController
-public class StatsController extends MadreController {
+public class StatsController extends Controller {
 
 	@Autowired
 //	/**
