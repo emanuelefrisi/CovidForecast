@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.CovidForecast.exception.EccezioniPersonalizzate;
-import it.univpm.CovidForecast.filters.FilterCity;
-import it.univpm.CovidForecast.filters.FilterData;
+//import it.univpm.CovidForecast.filters.FilterCity;
+//import it.univpm.CovidForecast.filters.FilterData;
 import it.univpm.CovidForecast.filters.FilterFL;
 import it.univpm.CovidForecast.filters.FilterHumidity;
 import it.univpm.CovidForecast.filters.FilterPressure;
@@ -19,40 +19,40 @@ import it.univpm.CovidForecast.filters.FilterTemperature;
 import it.univpm.CovidForecast.model.CittaJSON;
 import it.univpm.CovidForecast.model.Filtri;
 import it.univpm.CovidForecast.model.MeteoCitta;
-import it.univpm.CovidForecast.scanner.CittaScanner;
-import it.univpm.CovidForecast.scanner.VariabileScanner;
-import it.univpm.CovidForecast.tools.ConvertitoreData;
-import it.univpm.CovidForecast.tools.CreaCittaJSON;
+//import it.univpm.CovidForecast.scanner.CittaScanner;
+//import it.univpm.CovidForecast.scanner.VariabileScanner;
+//import it.univpm.CovidForecast.tools.ConvertitoreData;
+//import it.univpm.CovidForecast.tools.CreaCittaJSON;
 
 /**
  * Classe contenente il controller dell'applicazione che gestisce le rotte dei
  * filtri
  * 
- * @author
+ * @author domenicolaporta00
  *
  */
 @RestController
-public class FiltriController {
+public class FiltriController extends MadreController {
 
-	@Autowired
-	/**
-	 * Oggetto FilterCity utile per eseguire il filtraggio per città
-	 */
-	private FilterCity fC = new FilterCity();
-	/**
-	 * Oggetto FilterData utile per eseguire il filtraggio per data
-	 */
-	private FilterData fD = new FilterData();
-	/**
-	 * Oggetto ConvertitoreData utile per convertire la data da un formato Unix a
-	 * formato String o viceversa
-	 */
-	private ConvertitoreData cD = new ConvertitoreData();
-	/**
-	 * Oggetto CreaCittaJSON utile per passare da un oggetto MeteoCitta (data
-	 * formato Unix) a un oggetto CittaJSON (data formato String)
-	 */
-	private CreaCittaJSON cCJ = new CreaCittaJSON();
+//	@Autowired
+//	/**
+//	 * Oggetto FilterCity utile per eseguire il filtraggio per città
+//	 */
+//	private FilterCity fC = new FilterCity();
+//	/**
+//	 * Oggetto FilterData utile per eseguire il filtraggio per data
+//	 */
+//	private FilterData fD = new FilterData();
+//	/**
+//	 * Oggetto ConvertitoreData utile per convertire la data da un formato Unix a
+//	 * formato String o viceversa
+//	 */
+//	private ConvertitoreData cD = new ConvertitoreData();
+//	/**
+//	 * Oggetto CreaCittaJSON utile per passare da un oggetto MeteoCitta (data
+//	 * formato Unix) a un oggetto CittaJSON (data formato String)
+//	 */
+//	private CreaCittaJSON cCJ = new CreaCittaJSON();
 	@Autowired
 	/**
 	 * Oggetto FilterFL utile per eseguire il filtraggio per temperatura percepita
@@ -73,30 +73,30 @@ public class FiltriController {
 	 * Oggetto FilterTemperature utile per eseguire il filtraggio per temperatura
 	 */
 	private FilterTemperature fT = new FilterTemperature();
-	/**
-	 * Vector di CittaJSON contenente gli oggetti filtrati secondo l'input
-	 * dell'utente
-	 */
-	private Vector<CittaJSON> cJVect;
-	/**
-	 * Vector di MeteoCitta contenente gli oggetti filtrati per città
-	 */
-	private Vector<MeteoCitta> vettCitta;
-	/**
-	 * Vector di MeteoCitta contenente gli oggetti filtrati per data
-	 */
-	private Vector<MeteoCitta> vettData;
-
-	/**
-	 * Oggetto CittaScanner utile per controllare se la città data in input è
-	 * presente in quelle disponibili
-	 */
-	private CittaScanner cS = new CittaScanner();
-	/**
-	 * Oggetto VariabileScanner utile per controllare se la variabile data in input
-	 * è presente in quelle disponibili
-	 */
-	private VariabileScanner vS = new VariabileScanner();
+//	/**
+//	 * Vector di CittaJSON contenente gli oggetti filtrati secondo l'input
+//	 * dell'utente
+//	 */
+//	private Vector<CittaJSON> cJVect;
+//	/**
+//	 * Vector di MeteoCitta contenente gli oggetti filtrati per città
+//	 */
+//	private Vector<MeteoCitta> vettCitta;
+//	/**
+//	 * Vector di MeteoCitta contenente gli oggetti filtrati per data
+//	 */
+//	private Vector<MeteoCitta> vettData;
+//
+//	/**
+//	 * Oggetto CittaScanner utile per controllare se la città data in input è
+//	 * presente in quelle disponibili
+//	 */
+//	private CittaScanner cS = new CittaScanner();
+//	/**
+//	 * Oggetto VariabileScanner utile per controllare se la variabile data in input
+//	 * è presente in quelle disponibili
+//	 */
+//	private VariabileScanner vS = new VariabileScanner();
 
 	/**
 	 * Metodo che ritorna un Vector di CittaJSON contenente tutti gli oggetti

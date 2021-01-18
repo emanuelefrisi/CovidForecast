@@ -10,7 +10,7 @@ import it.univpm.CovidForecast.service.ApiKeyService;
  * Classe contenente il controller dell'applicazione che gestisce le rotte delle
  * ApiKeys
  * 
- * @author
+ * @author emanuelefrisi
  *
  */
 @RestController

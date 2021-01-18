@@ -10,7 +10,9 @@ import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.service.MeteoCittaService;
 
 /**
- * Classe che esegue il filtraggio in base alla città 
+ * Classe che esegue il filtraggio in base alla città
+ * 
+ * @author domenicolaporta00
  */
 @Service
 public class FilterCity {

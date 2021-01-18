@@ -15,7 +15,7 @@ import it.univpm.CovidForecast.repository.MeteoCittaRepository;
  * Classe contenente il controller dell'applicazione che gestisce le rotte degli
  * oggetti MeteoCitta
  * 
- * @author
+ * @author emanuelefrisi
  *
  */
 @RestController

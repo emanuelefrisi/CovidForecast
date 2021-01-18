@@ -8,6 +8,8 @@ import it.univpm.CovidForecast.model.MeteoCitta;
 
 /**
  * Classe che esegue il filtraggio in base alla temperatura percepita 
+ * 
+ * @author domenicolaporta00
  */
 @Service
 public class FilterFL {

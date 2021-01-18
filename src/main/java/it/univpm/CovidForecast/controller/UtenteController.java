@@ -11,7 +11,7 @@ import it.univpm.CovidForecast.service.UtenteService;
  * Classe contenente il controller dell'applicazione che gestisce le rotte di
  * dati degli utenti
  * 
- * @author
+ * @author emanuelefrisi
  *
  */
 @RestController

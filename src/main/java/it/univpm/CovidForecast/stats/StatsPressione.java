@@ -12,7 +12,7 @@ import it.univpm.CovidForecast.model.MeteoCitta;
 /**
  * Classe che esegue le stats sulla pressione
  * 
- * @author 
+ * @author domenicolaporta00
  *
  */
 @Service

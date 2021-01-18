@@ -8,7 +8,7 @@ import it.univpm.CovidForecast.model.MeteoCitta;
  * Classe madre da cui ereditano le sottoclassi utili per eseguire le varie
  * stats
  * 
- * @author
+ * @author domenicolaporta00
  *
  */
 public class Stats {

@@ -10,51 +10,51 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.CovidForecast.exception.EccezioniPersonalizzate;
-import it.univpm.CovidForecast.filters.FilterCity;
-import it.univpm.CovidForecast.filters.FilterData;
+//import it.univpm.CovidForecast.filters.FilterCity;
+//import it.univpm.CovidForecast.filters.FilterData;
 import it.univpm.CovidForecast.model.CittaJSON;
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.model.Stats;
-import it.univpm.CovidForecast.scanner.CittaScanner;
+//import it.univpm.CovidForecast.scanner.CittaScanner;
 import it.univpm.CovidForecast.scanner.TipoStatScanner;
-import it.univpm.CovidForecast.scanner.VariabileScanner;
+//import it.univpm.CovidForecast.scanner.VariabileScanner;
 import it.univpm.CovidForecast.stats.StatsPressione;
 import it.univpm.CovidForecast.stats.StatsTemp;
 import it.univpm.CovidForecast.stats.StatsTempMax;
 import it.univpm.CovidForecast.stats.StatsTempMin;
 import it.univpm.CovidForecast.stats.StatsTempPercepita;
 import it.univpm.CovidForecast.stats.StatsUmidita;
-import it.univpm.CovidForecast.tools.ConvertitoreData;
-import it.univpm.CovidForecast.tools.CreaCittaJSON;
+//import it.univpm.CovidForecast.tools.ConvertitoreData;
+//import it.univpm.CovidForecast.tools.CreaCittaJSON;
 
 /**
  * Classe contenente il controller dell'applicazione che gestisce le rotte delle
  * stats
  * 
- * @author
+ * @author domenicolaporta00
  *
  */
 @RestController
-public class StatsController {
+public class StatsController extends MadreController {
 
 	@Autowired
-	/**
-	 * Oggetto FilterCity utile per eseguire il filtraggio per città
-	 */
-	private FilterCity filtroC = new FilterCity();
-	/**
-	 * Oggetto FilterData utile per eseguire il filtraggio per data
-	 */
-	private FilterData filtroD = new FilterData();
-	/**
-	 * Oggetto ConvertitoreData utile per convertire la data da un formato Unix a
-	 * formato String o viceversa
-	 */
-	private ConvertitoreData cD = new ConvertitoreData();
-	/**
-	 * Oggetto FilterFL utile per eseguire il filtraggio per temperatura percepita
-	 */
-	private CreaCittaJSON cCJ = new CreaCittaJSON();
+//	/**
+//	 * Oggetto FilterCity utile per eseguire il filtraggio per città
+//	 */
+//	private FilterCity filtroC = new FilterCity();
+//	/**
+//	 * Oggetto FilterData utile per eseguire il filtraggio per data
+//	 */
+//	private FilterData filtroD = new FilterData();
+//	/**
+//	 * Oggetto ConvertitoreData utile per convertire la data da un formato Unix a
+//	 * formato String o viceversa
+//	 */
+//	private ConvertitoreData cD = new ConvertitoreData();
+//	/**
+//	 * Oggetto FilterFL utile per eseguire il filtraggio per temperatura percepita
+//	 */
+//	private CreaCittaJSON cCJ = new CreaCittaJSON();
 	/**
 	 * Oggetto StatsPressione utile per ricevere stats sulla pressione
 	 */
@@ -80,34 +80,34 @@ public class StatsController {
 	 * Oggetto StatsUmidita utile per ricevere stats sull'umidità
 	 */
 	private StatsUmidita sU = new StatsUmidita();
-	/**
-	 * Vector di CittaJSON contenente gli oggetti filtrati secondo l'input
-	 * dell'utente
-	 */
-	private Vector<CittaJSON> cJVect;
-	/**
-	 * Vector di MeteoCitta contenente gli oggetti filtrati per città
-	 */
-	private Vector<MeteoCitta> vettCitta;
-	/**
-	 * Vector di MeteoCitta contenente gli oggetti filtrati per data
-	 */
-	private Vector<MeteoCitta> vettData;
-
-	/**
-	 * Oggetto CittaScanner utile per controllare se la città data in input è
-	 * presente in quelle disponibili
-	 */
-	private CittaScanner cS = new CittaScanner();
-	/**
-	 * Oggetto VariabileScanner utile per controllare se la variabile data in input
-	 * è presente in quelle disponibili
-	 */
-	private VariabileScanner vS = new VariabileScanner();
-	/**
-	 * Oggetto TipoStatScanner utile per controllare se il tipo di stat dato in
-	 * input è presente in quelli disponibili
-	 */
+//	/**
+//	 * Vector di CittaJSON contenente gli oggetti filtrati secondo l'input
+//	 * dell'utente
+//	 */
+//	private Vector<CittaJSON> cJVect;
+//	/**
+//	 * Vector di MeteoCitta contenente gli oggetti filtrati per città
+//	 */
+//	private Vector<MeteoCitta> vettCitta;
+//	/**
+//	 * Vector di MeteoCitta contenente gli oggetti filtrati per data
+//	 */
+//	private Vector<MeteoCitta> vettData;
+//
+//	/**
+//	 * Oggetto CittaScanner utile per controllare se la città data in input è
+//	 * presente in quelle disponibili
+//	 */
+//	private CittaScanner cS = new CittaScanner();
+//	/**
+//	 * Oggetto VariabileScanner utile per controllare se la variabile data in input
+//	 * è presente in quelle disponibili
+//	 */
+//	private VariabileScanner vS = new VariabileScanner();
+//	/**
+//	 * Oggetto TipoStatScanner utile per controllare se il tipo di stat dato in
+//	 * input è presente in quelli disponibili
+//	 */
 	private TipoStatScanner tSS = new TipoStatScanner();
 
 	/**
@@ -151,7 +151,7 @@ public class StatsController {
 		cJVect = new Vector<CittaJSON>();
 		for (int i = 0; i < statsObj.getCitta().size(); i++) {
 			/* Qui filtra per città */
-			vettCitta = filtroC.getFromCityFilter(statsObj.getCitta().elementAt(i));
+			vettCitta = fC.getFromCityFilter(statsObj.getCitta().elementAt(i));
 			/*
 			 * Qui cambia il formato delle date da giorno-mese-anno a secondi passati dal
 			 * 01/01/1970
@@ -159,7 +159,7 @@ public class StatsController {
 			long dI = cD.convertiDaString(statsObj.getDataInit());
 			long dF = cD.convertiDaString(statsObj.getDataFin());
 			/* Qui filtra il vettore precedentemente filtrato per citta, per data */
-			vettData = filtroD.getFromDataFilter(vettCitta, dI, dF);
+			vettData = fD.getFromDataFilter(vettCitta, dI, dF);
 			/*
 			 * Qui crea un vettore e ci mette il massimo/minimo della statistica data in
 			 * input
@@ -194,13 +194,13 @@ public class StatsController {
 
 		for (int i = 0; i < citta.length; i++) {
 			/* Qui filtra per città */
-			vettCitta = filtroC.getFromCityFilter(citta[i]);
+			vettCitta = fC.getFromCityFilter(citta[i]);
 			/*
 			 * Qui cambia il formato delle date da giorno-mese-anno a secondi passati dal
 			 * 01/01/1970
 			 */
 			/* Qui filtra il vettore precedentemente filtrato per citta, per data */
-			vettData = filtroD.getFromDataFilter(vettCitta, dataInit, dataFin);
+			vettData = fD.getFromDataFilter(vettCitta, dataInit, dataFin);
 			/*
 			 * Qui crea un vettore e ci mette il massimo/minimo della statistica data in
 			 * input

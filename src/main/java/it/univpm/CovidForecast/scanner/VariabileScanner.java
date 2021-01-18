@@ -7,7 +7,7 @@ import java.util.Vector;
  * si possono eseguire stats e filtri e controllare se il parametro dato in
  * input dall'utente sia presente in tale Vector
  * 
- * @author
+ * @author domenicolaporta00
  *
  */
 public class VariabileScanner {

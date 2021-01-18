@@ -7,7 +7,7 @@ import java.util.Vector;
  * dall'utente e controllare se la stat data in input sia presente in tale
  * Vector
  * 
- * @author
+ * @author domenicolaporta00
  *
  */
 public class TipoStatScanner {
