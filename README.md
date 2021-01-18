@@ -29,3 +29,122 @@
 - Diagramma delle sequenze - Statistiche
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20sequenze%20-%20Controller%20Statistiche.png?raw=true">
+
+# Rotte
+
+| Nome rotta | TipoRotta | Descrizione |
+| ----- | ---- | ---------------------- |
+| /stats | POST | Restituisce oggetti riguardanti statistiche ottenute secondo dati ricevuti in input su dati attuali |
+| /filters | POST | Restituisce oggetti riguardanti filtraggi ottenuti secondo dati ricevuti in input su dati attuali |
+| /forecastStats | POST | Restituisce oggetti riguardanti statistiche ottenute secondo dati ricevuti in input su dati previsionali |
+| /citta | GET | Restituisce l'elenco delle città che si sono monitorate e di cui è possibile effettuare le statistiche e i filtraggi |
+| /datiCOVID | GET | Restituisce, per ogni città, i contagiati da COVID |
+
+## Rotta /stats
+
+Body:
+
+```json
+{
+    "citta":["Ancona", "Firenze"],
+    "dataInit":"01-01-2021 23:34",
+    "dataFin":"10-01-2021 12:23",
+    "variabile":"pressione",
+    "tipoStat":"max"
+}
+```
+
+Esempio Responso:
+
+```json
+[
+    {
+        "data": "09-01-2021 01:40",
+        "citta": "Ancona",
+        "nazione": "IT",
+        "pressione": 1016,
+        "temp": 3.24,
+        "tempMax": 4.44,
+        "tempMin": 1.11,
+        "tempPercepita": 0.16,
+        "umidita": 93
+    },
+    {
+        "data": "07-01-2021 04:02",
+        "citta": "Firenze",
+        "nazione": "IT",
+        "pressione": 1015,
+        "temp": 2.67,
+        "tempMax": 3.33,
+        "tempMin": 1.67,
+        "tempPercepita": 0.06,
+        "umidita": 100
+    }
+]
+```
+
+## Rotta /filters
+
+Body:
+
+```json
+{
+    "citta":["Foggia"],
+    "dataInit":"08-01-2021 11:00",
+    "dataFin":"10-01-2021 12:00",
+    "variabile":"pressione",
+    "valInit":1008,
+    "valFin":1010
+}
+```
+
+Esempio Responso:
+
+```json
+[
+    {
+        "data": "08-01-2021 11:19",
+        "citta": "Foggia",
+        "nazione": "IT",
+        "pressione": 1010,
+        "temp": 8.0,
+        "tempMax": 8.0,
+        "tempMin": 8.0,
+        "tempPercepita": 2.76,
+        "umidita": 87
+    },
+    {
+        "data": "08-01-2021 13:02",
+        "citta": "Foggia",
+        "nazione": "IT",
+        "pressione": 1010,
+        "temp": 7.0,
+        "tempMax": 7.0,
+        "tempMin": 7.0,
+        "tempPercepita": 1.19,
+        "umidita": 87
+    },
+    {
+        "data": "08-01-2021 14:47",
+        "citta": "Foggia",
+        "nazione": "IT",
+        "pressione": 1010,
+        "temp": 8.0,
+        "tempMax": 8.0,
+        "tempMin": 8.0,
+        "tempPercepita": 1.82,
+        "umidita": 81
+    },
+    {
+        "data": "08-01-2021 18:40",
+        "citta": "Foggia",
+        "nazione": "IT",
+        "pressione": 1010,
+        "temp": 7.77,
+        "tempMax": 7.77,
+        "tempMin": 7.77,
+        "tempPercepita": 2.49,
+        "umidita": 85
+    }
+]
+```
