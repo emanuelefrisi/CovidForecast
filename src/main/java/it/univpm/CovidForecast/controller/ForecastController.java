@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 import it.univpm.CovidForecast.stats.StatsPrevisionali;
 
 @RestController
-public class ControllerPrevisionale {
+public class ForecastController {
 
 	@Autowired
-	private StatsPrevisionali sP;;
+	private StatsPrevisionali sP;
 	
 	@PostMapping
 	public void statsPrevisionali() {

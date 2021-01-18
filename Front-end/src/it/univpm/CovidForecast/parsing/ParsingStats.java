@@ -54,7 +54,7 @@ public class ParsingStats {
 				citta = (String) jO.get("citta");
 				nazione = (String) jO.get("nazione");
 				valore = Double.parseDouble(jO.get(variabile).toString());
-				this.toStringAlternativo();
+				this.toStringAlternativo(variabile);
 			}
 			
 		} catch (ParseException e) {
@@ -76,9 +76,18 @@ public class ParsingStats {
 		
 	}
 	
-	public String toStringAlternativo() {
+	public String toStringAlternativo(String variabile) {
 		
-		dati += "Città: " + citta + ", " + nazione + "\n\nData: " + data + "\nValore: " + valore + "\n\n";
+		String unit;
+		
+		if(variabile.equals("pressione"))
+			unit = "hPa";
+		else if(variabile.equals("umidita"))
+			unit = "%";
+		else
+			unit = "°C";
+			
+		dati += "Città: " + citta + ", " + nazione + "\n\nData: " + data + "\nValore: " + valore + " " + unit + "\n\n";
 		
 		return dati;
 		

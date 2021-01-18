@@ -38,11 +38,9 @@ public class ChiamataStats {
 			BufferedReader input = new BufferedReader(new InputStreamReader(c.getInputStream()));
 			if(tipoStat.equals("media") || tipoStat.equals("varianza")) {
 				dati = pS.parsingAlternativo(input.readLine(), variabile);
-				System.out.println("Media o varianza");
 			}
 			else {
 				dati = pS.parsing(input.readLine());
-				System.out.println("Altri");
 			}
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block

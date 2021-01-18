@@ -320,6 +320,7 @@ public class CFStats {
 		textArea.setFont(new Font("Arial", Font.PLAIN, 24));
 		textArea.setBackground(new Color(148,96,161));
 		textArea.setForeground(Color.WHITE);
+		textArea.setEditable(false);
 		scroll.setBounds(250, 220, 400, 200);
 		background.add(scroll);
 		
