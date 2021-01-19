@@ -10,23 +10,23 @@
 
 # UML
 
-- Diagramma dei casi d'uso
+## Diagramma dei casi d'uso
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20dei%20casi%20d'uso.png?raw=true">
 
-- Diagramma dei casi d'uso - GUI
+## Diagramma dei casi d'uso - GUI
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20dei%20casi%20d'uso%20GUI.png?raw=true">
 
-- Diagramma delle classi
+## Diagramma delle classi
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20classi.png?raw=true">
 
-- Diagramma delle sequenze - Prima fase
+## Diagramma delle sequenze - Prima fase
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20sequenze%20fase%201.png?raw=true">
 
-- Diagramma delle sequenze - Statistiche
+## Diagramma delle sequenze - Statistiche
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20sequenze%20-%20Controller%20Statistiche.png?raw=true">
 
@@ -173,3 +173,35 @@ Esempio Responso:
 Esempio rotta con body e responso su postman:
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Postman%20-%20Filters.png?raw=true">
+
+## Rotta /forecastStats
+
+Questa rotta permette di effettuare statistiche sulla quatità di previsioni azzeccate usando dati meteorologici e previsionali immagazzinati nel database. Questi dati vengono filtarti per citt e poi per errorein percentuale(massima differenza tra valore reale e previsionale). Questa rotta permette di effettuare la statistica solo per l'umidità
+
+Chiavi:
+- citta: accetta una citta(ovviamente presenti tra quelle monitorate);
+- errore: accetta un errore in percentuale
+
+
+Body:
+
+```json
+{
+    "citta":"Firenze",
+    "errore":"5"
+}
+```
+
+Esempio Responso:
+
+```json
+{
+    "Città": "Firenze",
+    "Numero previsioni azzecate": "72",
+    "Errore": "5%"
+}
+```
+
+Esempio rotta con body e responso su postman:
+
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Postman%20-%20forecastStats.png?raw=true">
