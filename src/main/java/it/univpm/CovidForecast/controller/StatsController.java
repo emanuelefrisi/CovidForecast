@@ -32,23 +32,6 @@ import it.univpm.CovidForecast.stats.StatsUmidita;
 public class StatsController extends Controller {
 
 	@Autowired
-//	/**
-//	 * Oggetto FilterCity utile per eseguire il filtraggio per città
-//	 */
-//	private FilterCity filtroC = new FilterCity();
-//	/**
-//	 * Oggetto FilterData utile per eseguire il filtraggio per data
-//	 */
-//	private FilterData filtroD = new FilterData();
-//	/**
-//	 * Oggetto ConvertitoreData utile per convertire la data da un formato Unix a
-//	 * formato String o viceversa
-//	 */
-//	private ConvertitoreData cD = new ConvertitoreData();
-//	/**
-//	 * Oggetto FilterFL utile per eseguire il filtraggio per temperatura percepita
-//	 */
-//	private CreaCittaJSON cCJ = new CreaCittaJSON();
 	/**
 	 * Oggetto StatsPressione utile per ricevere stats sulla pressione
 	 */
@@ -74,34 +57,10 @@ public class StatsController extends Controller {
 	 * Oggetto StatsUmidita utile per ricevere stats sull'umidità
 	 */
 	private StatsUmidita sU = new StatsUmidita();
-//	/**
-//	 * Vector di CittaJSON contenente gli oggetti filtrati secondo l'input
-//	 * dell'utente
-//	 */
-//	private Vector<CittaJSON> cJVect;
-//	/**
-//	 * Vector di MeteoCitta contenente gli oggetti filtrati per città
-//	 */
-//	private Vector<MeteoCitta> vettCitta;
-//	/**
-//	 * Vector di MeteoCitta contenente gli oggetti filtrati per data
-//	 */
-//	private Vector<MeteoCitta> vettData;
-//
-//	/**
-//	 * Oggetto CittaScanner utile per controllare se la città data in input è
-//	 * presente in quelle disponibili
-//	 */
-//	private CittaScanner cS = new CittaScanner();
-//	/**
-//	 * Oggetto VariabileScanner utile per controllare se la variabile data in input
-//	 * è presente in quelle disponibili
-//	 */
-//	private VariabileScanner vS = new VariabileScanner();
-//	/**
-//	 * Oggetto TipoStatScanner utile per controllare se il tipo di stat dato in
-//	 * input è presente in quelli disponibili
-//	 */
+	/**
+	 * Oggetto TipoStatScanner utile per controllare se il tipo di stat dato in
+	 * input è presente in quelli disponibili
+	 */
 	private TipoStatScanner tSS = new TipoStatScanner();
 
 	/**

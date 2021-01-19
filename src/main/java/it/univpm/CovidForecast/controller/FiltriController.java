@@ -26,25 +26,6 @@ import it.univpm.CovidForecast.model.MeteoCitta;
 @RestController
 public class FiltriController extends Controller {
 
-//	@Autowired
-//	/**
-//	 * Oggetto FilterCity utile per eseguire il filtraggio per città
-//	 */
-//	private FilterCity fC = new FilterCity();
-//	/**
-//	 * Oggetto FilterData utile per eseguire il filtraggio per data
-//	 */
-//	private FilterData fD = new FilterData();
-//	/**
-//	 * Oggetto ConvertitoreData utile per convertire la data da un formato Unix a
-//	 * formato String o viceversa
-//	 */
-//	private ConvertitoreData cD = new ConvertitoreData();
-//	/**
-//	 * Oggetto CreaCittaJSON utile per passare da un oggetto MeteoCitta (data
-//	 * formato Unix) a un oggetto CittaJSON (data formato String)
-//	 */
-//	private CreaCittaJSON cCJ = new CreaCittaJSON();
 	@Autowired
 	/**
 	 * Oggetto FilterFL utile per eseguire il filtraggio per temperatura percepita
@@ -65,30 +46,6 @@ public class FiltriController extends Controller {
 	 * Oggetto FilterTemperature utile per eseguire il filtraggio per temperatura
 	 */
 	private FilterTemperature fT = new FilterTemperature();
-//	/**
-//	 * Vector di CittaJSON contenente gli oggetti filtrati secondo l'input
-//	 * dell'utente
-//	 */
-//	private Vector<CittaJSON> cJVect;
-//	/**
-//	 * Vector di MeteoCitta contenente gli oggetti filtrati per città
-//	 */
-//	private Vector<MeteoCitta> vettCitta;
-//	/**
-//	 * Vector di MeteoCitta contenente gli oggetti filtrati per data
-//	 */
-//	private Vector<MeteoCitta> vettData;
-//
-//	/**
-//	 * Oggetto CittaScanner utile per controllare se la città data in input è
-//	 * presente in quelle disponibili
-//	 */
-//	private CittaScanner cS = new CittaScanner();
-//	/**
-//	 * Oggetto VariabileScanner utile per controllare se la variabile data in input
-//	 * è presente in quelle disponibili
-//	 */
-//	private VariabileScanner vS = new VariabileScanner();
 
 	/**
 	 * Metodo che ritorna un Vector di CittaJSON contenente tutti gli oggetti
@@ -184,15 +141,6 @@ public class FiltriController extends Controller {
 
 		case "umidita":
 			return fH.getFromHumidityFilter(vectPerFiltri, valInit.longValue(), valFin.longValue());
-
-		default: {
-			/*
-			 * Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>(); MeteoCitta mCError =
-			 * new MeteoCitta(0, "Errore di input del tipo di parametro",
-			 * "Errore di input del tipo di parametro", 0, 0, null, null, null, null, 0);
-			 * VMCError.add(mCError); return VMCError;
-			 */
-		}
 
 		}
 		return null;

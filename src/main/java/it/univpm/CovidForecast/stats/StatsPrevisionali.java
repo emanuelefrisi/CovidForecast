@@ -56,14 +56,12 @@ public class StatsPrevisionali {
 				giornoForecast = Integer.valueOf(fC.getDataTxt().substring(8, 10));
 				if(giorno == giornoForecast) {
 					if(Math.abs(mC.getUmidita()-fC.getUmidita())<=errore) {
-					System.out.println("Controllo " + cD.convertiDaUnix(mC.getData()) + " " + fC.getDataTxt() + mC.getUmidita() + fC.getUmidita()	);
 					cont++;
 					}
 				}
 			}
 			
 		}
-		System.out.println(cont);
 		map = new LinkedHashMap<String, String>();
 		map.put("Città", citta);
 		map.put("Numero previsioni azzecate", "" + cont);

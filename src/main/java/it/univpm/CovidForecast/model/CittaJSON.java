@@ -1,7 +1,5 @@
 package it.univpm.CovidForecast.model;
 
-//import javax.persistence.Id;
-
 public class CittaJSON {
 
 	/**

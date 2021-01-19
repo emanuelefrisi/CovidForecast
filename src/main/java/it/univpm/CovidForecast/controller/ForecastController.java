@@ -15,8 +15,8 @@ import it.univpm.CovidForecast.stats.StatsPrevisionali;
 
 /**
  * 
- * Controller la cui rotta restituisci un HashMap contenente le informazioni riguardanti le statistiche previsionali
- * richieste
+ * Controller la cui rotta restituisci un HashMap contenente le informazioni
+ * riguardanti le statistiche previsionali richieste
  * 
  * @author emanuelefrisi
  *
@@ -38,7 +38,12 @@ public class ForecastController {
 	 * Vettore in cui vengono aggiunti oggetti ForecastCitta filtrati per città
 	 */
 	private Vector<ForecastCitta> vettForecastCitta;
-	
+	/**
+	 * Oggetto CittaScanner utile per controllare se la città data in input è
+	 * presente tra quelle disponibili
+	 */
+	//private CittaScanner cS = new CittaScanner();
+
 	/**
 	 * 
 	 * Metodo che restituisce un HashMap inizializzato dal metodo creaStat della classe StatsPrevisionali.
@@ -53,9 +58,11 @@ public class ForecastController {
 	public HashMap<String, String> forecastStats(@RequestBody HashMap<String, String> map) {
 		vettCitta = new Vector<MeteoCitta>();
 		vettForecastCitta = new Vector<ForecastCitta>();
+		
+		//if(!cS.controlloCitta())
 		vettCitta = filtroC.getFromCityFilter(map.get("citta"));
 		vettForecastCitta = filtroC.getFromCityFilterForecast(map.get("citta"));
-		return sP.creaStat(vettCitta, vettForecastCitta, map.get("citta"), Integer.valueOf(map.get("errore")));
+		return sP.creaStat(vettCitta, vettForecastCitta, map.get("citta"), Math.abs(Integer.valueOf(map.get("errore"))));
 	}
-	
+
 }

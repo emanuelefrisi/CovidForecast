@@ -109,13 +109,6 @@ public class StatsTempPercepita extends Stats {
 			VMCMedia.add(mCMedia);
 			return VMCMedia;
 
-		default: {
-			/*Vector<MeteoCitta> VMCError = new Vector<MeteoCitta>();
-			MeteoCitta mCError = new MeteoCitta(0, "Errore di input del tipo di stat",
-					"Errore di input del tipo di stat", 0, 0, null, null, null, null, 0);
-			VMCError.add(mCError);
-			return VMCError;*/
-		}
 		}
 		return null;
 	}
