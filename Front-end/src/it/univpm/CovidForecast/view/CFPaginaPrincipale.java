@@ -152,7 +152,7 @@ public class CFPaginaPrincipale {
 		bordi.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 2, new Color(20, 34, 90)));
 		background.add(bordi);
 		
-		arrayBox = new String[] {username, "Filtri e statistiche", "Logout"};
+		arrayBox = new String[] {username, "Statistiche", "Logout"};
 		cBox = new JComboBox<String>(arrayBox);
 		cBox.setBounds(580, 15, 160, 30);
 		cBox.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -166,7 +166,7 @@ public class CFPaginaPrincipale {
 				if(cBox.getSelectedItem().equals("Logout")) {
 					new CFLogin();
 					frame.setVisible(false);
-				} else if(cBox.getSelectedItem().equals("Filtri e statistiche")) {
+				} else if(cBox.getSelectedItem().equals("Statistiche")) {
 					new CFStats(username, geo, weather);
 					frame.setVisible(false);
 				}

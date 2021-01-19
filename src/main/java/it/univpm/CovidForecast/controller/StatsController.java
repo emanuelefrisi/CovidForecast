@@ -9,23 +9,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.univpm.CovidForecast.exception.EccezioniPersonalizzate;
-//import it.univpm.CovidForecast.filters.FilterCity;
-//import it.univpm.CovidForecast.filters.FilterData;
+import it.univpm.CovidForecast.exception.EccezionePersonalizzata;
 import it.univpm.CovidForecast.model.CittaJSON;
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.model.Stats;
-//import it.univpm.CovidForecast.scanner.CittaScanner;
 import it.univpm.CovidForecast.scanner.TipoStatScanner;
-//import it.univpm.CovidForecast.scanner.VariabileScanner;
 import it.univpm.CovidForecast.stats.StatsPressione;
 import it.univpm.CovidForecast.stats.StatsTemp;
 import it.univpm.CovidForecast.stats.StatsTempMax;
 import it.univpm.CovidForecast.stats.StatsTempMin;
 import it.univpm.CovidForecast.stats.StatsTempPercepita;
 import it.univpm.CovidForecast.stats.StatsUmidita;
-//import it.univpm.CovidForecast.tools.ConvertitoreData;
-//import it.univpm.CovidForecast.tools.CreaCittaJSON;
 
 /**
  * Classe contenente il controller dell'applicazione che gestisce le rotte delle
@@ -128,24 +122,24 @@ public class StatsController extends Controller {
 
 		try {
 			if (!cS.controlloCitta(statsObj.getCitta()))
-				throw new EccezioniPersonalizzate("Errore nell'input della città!");
+				throw new EccezionePersonalizzata("Errore nell'input della città!");
 
 			if (!vS.controlloVariabile(statsObj.getVariabile()))
-				throw new EccezioniPersonalizzate("Errore nell'input del tipo di parametro!");
+				throw new EccezionePersonalizzata("Errore nell'input del tipo di parametro!");
 
 			if (!tSS.controlloTipoStat(statsObj.getTipoStat()))
-				throw new EccezioniPersonalizzate("Errore di input del tipo di stat!");
+				throw new EccezionePersonalizzata("Errore di input del tipo di stat!");
 
 			if (statsObj.getDataFin().charAt(2) != '-' || statsObj.getDataFin().charAt(5) != '-'
 					|| statsObj.getDataInit().charAt(2) != '-' || statsObj.getDataInit().charAt(5) != '-'
 					|| statsObj.getDataInit().charAt(10) != ' ' || statsObj.getDataFin().charAt(10) != ' '
 					|| statsObj.getDataInit().charAt(13) != ':' || statsObj.getDataFin().charAt(13) != ':'
 					|| statsObj.getDataInit().length() != 16 || statsObj.getDataFin().length() != 16)
-				throw new EccezioniPersonalizzate("Errore di input della data!");
+				throw new EccezionePersonalizzata("Errore di input della data!");
 
-		} catch (EccezioniPersonalizzate e) {
+		} catch (EccezionePersonalizzata e) {
 
-			return EccezioniPersonalizzate.getVCJError();
+			return EccezionePersonalizzata.getVCJError();
 		}
 
 		cJVect = new Vector<CittaJSON>();

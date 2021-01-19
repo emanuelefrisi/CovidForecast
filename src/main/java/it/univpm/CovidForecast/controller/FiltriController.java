@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.univpm.CovidForecast.exception.EccezioniPersonalizzate;
+import it.univpm.CovidForecast.exception.EccezionePersonalizzata;
 import it.univpm.CovidForecast.filters.FilterFL;
 import it.univpm.CovidForecast.filters.FilterHumidity;
 import it.univpm.CovidForecast.filters.FilterPressure;
@@ -108,21 +108,21 @@ public class FiltriController extends Controller {
 
 		try {
 			if (!cS.controlloCitta(filtriObj.getCitta()))
-				throw new EccezioniPersonalizzate("Errore nell'input della città!");
+				throw new EccezionePersonalizzata("Errore nell'input della città!");
 
 			if (!vS.controlloVariabile(filtriObj.getVariabile()))
-				throw new EccezioniPersonalizzate("Errore nell'input del tipo di parametro!");
+				throw new EccezionePersonalizzata("Errore nell'input del tipo di parametro!");
 
 			if (filtriObj.getDataFin().charAt(2) != '-' || filtriObj.getDataFin().charAt(5) != '-'
 					|| filtriObj.getDataInit().charAt(2) != '-' || filtriObj.getDataInit().charAt(5) != '-'
 					|| filtriObj.getDataInit().charAt(10) != ' ' || filtriObj.getDataFin().charAt(10) != ' '
 					|| filtriObj.getDataInit().charAt(13) != ':' || filtriObj.getDataFin().charAt(13) != ':'
 					|| filtriObj.getDataInit().length() != 16 || filtriObj.getDataFin().length() != 16)
-				throw new EccezioniPersonalizzate("Errore di input della data!");
+				throw new EccezionePersonalizzata("Errore di input della data!");
 
-		} catch (EccezioniPersonalizzate e) {
+		} catch (EccezionePersonalizzata e) {
 
-			return EccezioniPersonalizzate.getVCJError();
+			return EccezionePersonalizzata.getVCJError();
 			
 		}
 		
