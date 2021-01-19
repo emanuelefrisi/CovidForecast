@@ -1,11 +1,11 @@
 package it.univpm.CovidForecast.controller;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.univpm.CovidForecast.filters.FilterCity;
@@ -22,13 +22,13 @@ public class ForecastController {
 	private Vector<MeteoCitta> vettCitta;
 	private Vector<ForecastCitta> vettForecastCitta;
 	
-	@GetMapping("forecastStats")
-	public void forecastStats(@RequestParam(value="citta") String citta) {
+	@PostMapping("forecastStats")
+	public HashMap<String, String> forecastStats(@RequestBody HashMap<String, String> map) {
 		vettCitta = new Vector<MeteoCitta>();
 		vettForecastCitta = new Vector<ForecastCitta>();
-		vettCitta = filtroC.getFromCityFilter(citta);
-		vettForecastCitta = filtroC.getFromCityFilterForecast(citta);
-		sP.creaStat(vettCitta, vettForecastCitta);
+		vettCitta = filtroC.getFromCityFilter(map.get("citta"));
+		vettForecastCitta = filtroC.getFromCityFilterForecast(map.get("citta"));
+		return sP.creaStat(vettCitta, vettForecastCitta, map.get("citta"), Integer.valueOf(map.get("errore")));
 	}
 	
 }

@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import it.univpm.CovidForecast.api.ChiamataDati;
 import it.univpm.CovidForecast.api.ChiamataStats;
 import it.univpm.CovidForecast.exceptions.CFException;
 
@@ -71,14 +72,17 @@ public class CFStats {
 	private HashMap<String, String> variabileMap = new HashMap<String, String>();
 	private HashMap<String, String> statsMap = new HashMap<String, String>();
 	private String[] stats = new String[] {"Scegliere il tipo di statistica", "Minimo", "Massimo", "Media", "Varianza"};
-	private Vector<String> vettCitta1 = new Vector<String>(Arrays.asList(citta));
-	private Vector<String> vettCitta2 = new Vector<String>(Arrays.asList(citta));
+	private Vector<String> cittaCovid;
+	private Vector<String> vettCitta1 = new Vector<String>();
+	private Vector<String> vettCitta2 = new Vector<String>();
 	
 	
 	
 	private String citta1, citta2, dataInit, dataFin, var, tipoStat;
 	
 	private ChiamataStats chiamata = new ChiamataStats();
+	
+	private ChiamataDati cD = new ChiamataDati();
 	
 	public CFStats(String username, Vector<String> geo, Vector<Vector<String>> weather) {
 		
@@ -178,9 +182,11 @@ public class CFStats {
 		
 		//Prima combobox: prima citta
 		
+		cittaCovid = cD.chiamata();
+		vettCitta1.addAll(cittaCovid);
 		vettCitta1.add(0, "Prima città");
 		cBoxCitta1 = new JComboBox<String>(vettCitta1);
-		cBoxCitta1.setBounds(80, 90, 120, 30);
+		cBoxCitta1.setBounds(60, 90, 160, 30);
 		cBoxCitta1.setFont(new Font("Arial", Font.PLAIN, 18));
 		cBoxCitta1.setForeground(Color.WHITE);
 		cBoxCitta1.setFocusable(false);
@@ -191,8 +197,10 @@ public class CFStats {
 				
 				if(cBoxCitta1.getSelectedItem().equals(vettCitta1.firstElement()))
 					citta1 = null;
-				else
-					citta1 = (String) cBoxCitta1.getSelectedItem();
+				else {
+					int i = cBoxCitta1.getSelectedIndex();
+					citta1 = citta[i-1];
+				}
 				
 			}
 		});
@@ -200,9 +208,10 @@ public class CFStats {
 		
 		//Seconda combobox: seconda citta
 		
+		vettCitta2.addAll(cittaCovid);
 		vettCitta2.add(0, "Seconda città");
 		cBoxCitta2 = new JComboBox<String>(vettCitta2);
-		cBoxCitta2.setBounds(230, 90, 140, 30);
+		cBoxCitta2.setBounds(245, 90, 160, 30);
 		cBoxCitta2.setFont(new Font("Arial", Font.PLAIN, 18));
 		cBoxCitta2.setForeground(Color.WHITE);
 		cBoxCitta2.setFocusable(false);
@@ -213,9 +222,10 @@ public class CFStats {
 						
 				if(cBoxCitta2.getSelectedItem().equals(vettCitta2.firstElement()))
 					citta2 = null;
-				else
-					citta2 = (String) cBoxCitta2.getSelectedItem();
-				
+				else {
+					int i = cBoxCitta2.getSelectedIndex();
+					citta2 = citta[i-1];
+				}
 					}
 					
 			});
@@ -223,7 +233,7 @@ public class CFStats {
 		
 		//Prima textfield: dataInit
 		
-		tField1.setBounds(400, 90, 190, 30);
+		tField1.setBounds(435, 90, 190, 30);
 		tField1.setFont(new Font("Arial", Font.PLAIN, 18));
 		tField1.setBackground(new Color(148,96,161));
 		tField1.setForeground(Color.WHITE);
@@ -243,7 +253,7 @@ public class CFStats {
 		
 		//Seconda textfield: dataFin
 		
-		tField2.setBounds(630, 90, 190, 30);
+		tField2.setBounds(650, 90, 190, 30);
 		tField2.setFont(new Font("Arial", Font.PLAIN, 18));
 		tField2.setBackground(new Color(148,96,161));
 		tField2.setForeground(Color.WHITE);

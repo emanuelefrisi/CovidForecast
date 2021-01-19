@@ -1,21 +1,18 @@
 package it.univpm.CovidForecast.stats;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Vector;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import it.univpm.CovidForecast.model.ForecastCitta;
 import it.univpm.CovidForecast.model.MeteoCitta;
-import it.univpm.CovidForecast.service.ForecastCittaService;
-import it.univpm.CovidForecast.service.MeteoCittaService;
 import it.univpm.CovidForecast.tools.ConvertitoreData;
 
 public class StatsPrevisionali {
 
 	private Vector<MeteoCitta> mCVect;
 	private Vector<ForecastCitta> fCVect;
+	private HashMap<String, String> map;
 	
 	private ConvertitoreData cD = new ConvertitoreData();
 	
@@ -23,13 +20,13 @@ public class StatsPrevisionali {
 	private int giornoForecast;
 	private int ora;
 	private static final int oraDefault = 9;
-//	private static final int giornoSec = 86400; 
 	private String data;
 	
-	public void creaStat(Vector<MeteoCitta> vectCitta, Vector<ForecastCitta> vectForecastCitta) {
+	public HashMap<String, String> creaStat(Vector<MeteoCitta> vectCitta, Vector<ForecastCitta> vectForecastCitta, String citta, int errore) {
 		
 		mCVect = new Vector<MeteoCitta>();
 		fCVect = new Vector<ForecastCitta>();
+		int cont=0;
 		
 		for(int i = 0; i<vectCitta.size(); i++) {
 			MeteoCitta mC = vectCitta.get(i);
@@ -53,23 +50,25 @@ public class StatsPrevisionali {
 			
 			MeteoCitta mC = mCVect.elementAt(i);
 			giorno = Integer.valueOf(cD.convertiDaUnix(mC.getData()).substring(0, 2));
-//			System.out.println("Meteo: " + giorno);
 			for(int j = 0; j<fCVect.size(); j++) {
 				
 				ForecastCitta fC = fCVect.elementAt(j);
 				giornoForecast = Integer.valueOf(fC.getDataTxt().substring(8, 10));
-//				System.out.println("Forecast: " + giornoForecast);
-				if(giorno == giornoForecast)
-					System.out.println("Controllo " + cD.convertiDaUnix(mC.getData()) + " " + fC.getDataTxt());
+				if(giorno == giornoForecast) {
+					if(Math.abs(mC.getUmidita()-fC.getUmidita())<=errore) {
+					System.out.println("Controllo " + cD.convertiDaUnix(mC.getData()) + " " + fC.getDataTxt() + mC.getUmidita() + fC.getUmidita()	);
+					cont++;
+					}
+				}
 			}
 			
 		}
-		
-//		for(int i = 0; i<fCVect.size(); i++)
-//			System.out.println(fCVect.elementAt(i).getDataTxt());
-//		
-//		for(int i = 0; i<mCVect.size(); i++)
-//			System.out.println(cD.convertiDaUnix(mCVect.elementAt(i).getData()));
+		System.out.println(cont);
+		map = new LinkedHashMap<String, String>();
+		map.put("Città", citta);
+		map.put("Numero previsioni azzecate", "" + cont);
+		map.put("Errore", "" + errore + "%");
+		return map;
 		
 	}
 }
