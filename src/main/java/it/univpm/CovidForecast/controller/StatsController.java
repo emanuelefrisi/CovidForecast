@@ -95,39 +95,39 @@ public class StatsController extends Controller {
 					|| statsObj.getDataInit().charAt(13) != ':' || statsObj.getDataFin().charAt(13) != ':'
 					|| statsObj.getDataInit().length() != 16 || statsObj.getDataFin().length() != 16)
 				throw new EccezionePersonalizzata("Errore di input della data!");
+			cJVect = new Vector<CittaJSON>();
+			for (int i = 0; i < statsObj.getCitta().size(); i++) {
+				/* Qui filtra per città */
+				vettCitta = fC.getFromCityFilter(statsObj.getCitta().elementAt(i));
+				/*
+				 * Qui cambia il formato delle date da giorno-mese-anno a secondi passati dal
+				 * 01/01/1970
+				 */
+				long dI = cD.convertiDaString(statsObj.getDataInit());
+				long dF = cD.convertiDaString(statsObj.getDataFin());
+				/* Qui filtra il vettore precedentemente filtrato per citta, per data */
+				vettData = fD.getFromDataFilter(vettCitta, dI, dF);
+				/*
+				 * Qui crea un vettore e ci mette il massimo/minimo della statistica data in
+				 * input
+				 */
+				if(vettData.isEmpty())
+					throw new EccezionePersonalizzata("La ricerca non ha prodotto alcun risultato!");
+				Vector<MeteoCitta> mCVect1 = this.variabile(statsObj.getVariabile(), statsObj.getTipoStat(), vettData);
+				/*
+				 * Qui cambia il formato della data da secondi passati dal 01/01/1970 a
+				 * giorno-mese-anno e aggiunge tutto ad un vettore di CittaJSON (con data
+				 * formato giorno-mese-anno)
+				 */
+				cJVect.addAll(cCJ.getCittaJSON(mCVect1));
+				/*
+				 * Torna indietro e rifà tutto se nel parametro in entrata c'è più di una città
+				 */
+			}
 
 		} catch (EccezionePersonalizzata e) {
 
 			return EccezionePersonalizzata.getVCJError();
-		}
-
-		cJVect = new Vector<CittaJSON>();
-		for (int i = 0; i < statsObj.getCitta().size(); i++) {
-			/* Qui filtra per città */
-			vettCitta = fC.getFromCityFilter(statsObj.getCitta().elementAt(i));
-			/*
-			 * Qui cambia il formato delle date da giorno-mese-anno a secondi passati dal
-			 * 01/01/1970
-			 */
-			long dI = cD.convertiDaString(statsObj.getDataInit());
-			long dF = cD.convertiDaString(statsObj.getDataFin());
-			/* Qui filtra il vettore precedentemente filtrato per citta, per data */
-			vettData = fD.getFromDataFilter(vettCitta, dI, dF);
-			/*
-			 * Qui crea un vettore e ci mette il massimo/minimo della statistica data in
-			 * input
-			 */
-			if(vettData.isEmpty()) return new Vector<CittaJSON>();
-			Vector<MeteoCitta> mCVect1 = this.variabile(statsObj.getVariabile(), statsObj.getTipoStat(), vettData);
-			/*
-			 * Qui cambia il formato della data da secondi passati dal 01/01/1970 a
-			 * giorno-mese-anno e aggiunge tutto ad un vettore di CittaJSON (con data
-			 * formato giorno-mese-anno)
-			 */
-			cJVect.addAll(cCJ.getCittaJSON(mCVect1));
-			/*
-			 * Torna indietro e rifà tutto se nel parametro in entrata c'è più di una città
-			 */
 		}
 
 		/*
@@ -159,6 +159,12 @@ public class StatsController extends Controller {
 			 * Qui crea un vettore e ci mette il massimo/minimo della statistica data in
 			 * input
 			 */
+			try {
+			if(vettData.isEmpty())
+				throw new EccezionePersonalizzata("La ricerca non ha prodotto alcun risultato!");
+			} catch(EccezionePersonalizzata eP) {
+				return EccezionePersonalizzata.getVCJError();
+			}
 			Vector<MeteoCitta> mCVect1 = this.variabile(variabile, tipoStat, vettData);
 			/*
 			 * Qui cambia il formato della data da secondi passati dal 01/01/1970 a

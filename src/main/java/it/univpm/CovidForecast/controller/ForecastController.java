@@ -44,7 +44,11 @@ public class ForecastController {
 	 * presente tra quelle disponibili
 	 */
 	private CittaScanner cS = new CittaScanner();
-
+	/**
+	 * Oggetto HashMap che contiene ciò che il metodo forecastStats deve ritornare
+	 */
+	private HashMap<String, String> returnMap;
+	
 	/**
 	 * 
 	 * Metodo che restituisce un HashMap inizializzato dal metodo creaStat della classe StatsPrevisionali.
@@ -68,7 +72,14 @@ public class ForecastController {
 		}
 		vettCitta = filtroC.getFromCityFilter(map.get("citta"));
 		vettForecastCitta = filtroC.getFromCityFilterForecast(map.get("citta"));
-		return sP.creaStat(vettCitta, vettForecastCitta, map.get("citta"), Math.abs(Integer.valueOf(map.get("errore"))));
+		try {
+		returnMap =sP.creaStat(vettCitta, vettForecastCitta, map.get("citta"), Math.abs(Integer.valueOf(map.get("errore"))));
+		} catch(NumberFormatException nFE) {
+			returnMap = new HashMap<String, String>();
+			returnMap.put("Errore", "La chiave di errore ammette solo numeri interi");
+			return returnMap;
+		}
+		return returnMap;
 	}
 
 }
