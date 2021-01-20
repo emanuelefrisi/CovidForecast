@@ -100,12 +100,18 @@ public class FiltriController extends Controller {
 			 * secondi passati dal 01/01/1970 a giorno-mese-anno e aggiunge tutto ad un
 			 * vettore di CittaJSON (con data formato giorno-mese-anno)
 			 */
-			if (vettData.isEmpty())
-				return new Vector<CittaJSON>();
-			String longOrDouble = filtriObj.getVariabile();
-			Vector<MeteoCitta> mCVect1 = this.variabile(longOrDouble, vettData, filtriObj.getValInit(),
-					filtriObj.getValFin());
-			cJVect.addAll(cCJ.getCittaJSON(mCVect1));
+			try {
+				if (vettData.isEmpty())
+					throw new EccezionePersonalizzata("La ricerca non ha prodotto alcun risultato!");
+				String longOrDouble = filtriObj.getVariabile();
+				Vector<MeteoCitta> mCVect1 = this.variabile(longOrDouble, vettData, filtriObj.getValInit(),
+						filtriObj.getValFin());
+				if (mCVect1.isEmpty())
+					throw new EccezionePersonalizzata("La ricerca non ha prodotto alcun risultato!");
+				cJVect.addAll(cCJ.getCittaJSON(mCVect1));
+			} catch (EccezionePersonalizzata eP) {
+				return EccezionePersonalizzata.getVCJError();
+			}
 			/*
 			 * Torna indietro e rifà tutto se nel parametro in entrata c'è più di una città
 			 */

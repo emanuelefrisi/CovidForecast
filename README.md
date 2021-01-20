@@ -188,7 +188,7 @@ Body:
 ```json
 {
     "citta":"Firenze",
-    "errore":"5"
+    "errore":"5" o (5)
 }
 ```
 

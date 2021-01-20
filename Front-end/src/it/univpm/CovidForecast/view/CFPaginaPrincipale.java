@@ -147,18 +147,18 @@ public class CFPaginaPrincipale {
 		background.add(ricercaButton);
 		
 		bordi = new JLabel();
-		bordi.setBounds(580, 15, 160, 30);/*20, 34, 90*/
+		bordi.setBounds(570, 15, 180, 30);/*20, 34, 90*/
 		bordi.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 3, new Color(148,96,161)));
 		background.add(bordi);
 		
 		bordi = new JLabel();
-		bordi.setBounds(580, 15, 141, 30);
+		bordi.setBounds(570, 15, 161, 30);
 		bordi.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 2, new Color(20, 34, 90)));
 		background.add(bordi);
 		
 		arrayBox = new String[] {username, "Statistiche", "Logout"};
 		cBox = new JComboBox<String>(arrayBox);
-		cBox.setBounds(580, 15, 160, 30);
+		cBox.setBounds(570, 15, 180, 30);
 		cBox.setFont(new Font("Arial", Font.PLAIN, 18));
 		cBox.setForeground(Color.WHITE);
 		cBox.setFocusable(false);
