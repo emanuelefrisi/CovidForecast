@@ -249,3 +249,24 @@ Nel progetto sono presenti due tipi di eccezioni:
 ## Esempio CFException
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Eccezioni/CFException.png?raw=true">
+
+Ci sono molte altre forme di queste eccezioni. Vi invitiamo a cercarle ;)
+
+# Test
+
+All'interno del progetto è presente anche un package di test
+
+- Un test della classe CittaScanner in cui si verifica l'effettivo ritorno del vettore delle città monitorate
+
+- Un test della classe ConvertitoreData che verifica l'effettivo funzionamento dei due metodi della classe
+
+- Due test per verificare se EccezionePersonalizzata viene lanciata correttamente
+
+# Sviluppatori
+
+- Emanuele Frisi - Sviluppo della prima fase e della terza
+
+- Domenico La Porta - Sviluppo dell'UML e della seconda fase
+
+Entrambi gli sviluppatori hanno lavorato sulla parte di testing, javadoc, read me e bug fixes
+
