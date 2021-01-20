@@ -27,8 +27,8 @@ public class ParsingForecastData {
 					weather1D.add((String) jOWeather.get("description"));
 					weather1D.add((String) jOWeather.get("icon"));
 					JSONObject jOMain = (JSONObject) jOList.get("main");
-					weather1D.add(new DecimalFormat("##.#").format((double) jOMain.get("temp_min")));
-					weather1D.add(new DecimalFormat("##.#").format((double) jOMain.get("temp_max")));
+					weather1D.add(new DecimalFormat("##.#").format((double) jOMain.get("temp")));
+					weather1D.add(new DecimalFormat("##.#").format((double) jOMain.get("feels_like")));
 					weather2D.add(weather1D);
 				}
 			}

@@ -1,6 +1,6 @@
 /**
  * 
- * Package contenenti le classi che salvano i dati sul database
+ * Package contenenti le classi che usano i metodi dei relativi repository per salvare o recuperati dati dal database
  * 
  * @author emanuelefrisi&domenicolaporta00
  *

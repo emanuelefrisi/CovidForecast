@@ -5,11 +5,35 @@ import java.util.Vector;
 import it.univpm.CovidForecast.model.CittaJSON;
 import it.univpm.CovidForecast.model.MeteoCitta;
 
+/**
+ * 
+ * Classe che permette di creare un vettore di oggetti CittaJSON
+ * 
+ * @author emanuelefrisi
+ *
+ */
 public class CreaCittaJSON {
 
+	/**
+	 * Oggetto utilizzato per convertire la data, in questo caso da unix a stringa
+	 */
 	private ConvertitoreData cD = new ConvertitoreData();
+	/**
+	 * Vettore di CittaJSON
+	 */
 	private Vector<CittaJSON> cJVect;
 	
+	/**
+	 * 
+	 * Metodo che consente di creare oggetti CittaJSON a partire da oggetti MeteoCitta ed aggiungerli
+	 * ad un vettore che sarà restituito
+	 * 
+	 * @param mCVect
+	 * @return cJVect
+	 * 
+	 * @see ConvertitoreData
+	 * 
+	 */
 	public Vector<CittaJSON> getCittaJSON(Vector<MeteoCitta> mCVect){
 		
 		cJVect = new Vector<CittaJSON>();

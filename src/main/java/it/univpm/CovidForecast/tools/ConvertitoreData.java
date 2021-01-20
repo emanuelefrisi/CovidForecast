@@ -6,12 +6,35 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+/**
+ * 
+ * Classe capace di convertire la data sia da una stringa che da formato unix
+ * 
+ * @author emanuelefrisi
+ *
+ */
 public class ConvertitoreData {
 
+	/**
+	 * Oggetto che permette la formattazione della data
+	 */
 	private SimpleDateFormat sDF = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+	/**
+	 * Oggetto per rappresentare uno specifico formato di data
+	 */
 	private Date data;
+	/**
+	 * Variabile per l'istanziamento della data in formato unix
+	 */
 	private long dataUnix;
 	
+	/**
+	 * 
+	 * Metodo che consente di trasformare una data da stringa in formato unix
+	 * 
+	 * @param dataStr
+	 * @return data in formato unix
+	 */
 	public long convertiDaString(String dataStr) {
 		
 		try {
@@ -27,6 +50,13 @@ public class ConvertitoreData {
 		
 	}
 	
+	/**
+	 * 
+	 * Metodo che consente di trasformare una data dal formato unix ad una stringa
+	 * 
+	 * @param dataUn
+	 * @return data in formato stringa
+	 */
 	public String convertiDaUnix(long dataUn) {
 		
 		data = new Date(dataUn*1000);

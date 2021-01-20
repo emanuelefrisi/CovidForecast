@@ -1,6 +1,6 @@
 /**
  * 
- * Package contenente la classe che effettua le chiamate all'API
+ * Package contenente la classe che effettua le chiamate ad OpenWeather
  * 
  * @author emanuelefrisi&domenicolaporta00
  *

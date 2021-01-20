@@ -10,18 +10,53 @@ import it.univpm.CovidForecast.tools.ConvertitoreData;
 
 public class StatsPrevisionali {
 
+	/**
+	 * Vettore di MeteoCitta
+	 */
 	private Vector<MeteoCitta> mCVect;
+	/**
+	 * Vettore di ForecastCitta
+	 */
 	private Vector<ForecastCitta> fCVect;
+	/**
+	 * HaspMap in cui sia la chiave che il valore sono stringhe
+	 */
 	private HashMap<String, String> map;
-	
+	/**
+	 * Oggetto che permette la conversione della data
+	 */
 	private ConvertitoreData cD = new ConvertitoreData();
-	
+	/**
+	 * Variabile per salvare il giorno degli oggetti MeteoCitta
+	 */
 	private int giorno;
+	/**
+	 * Variabile per salvare il giorno degli oggetti ForecastCitta
+	 */
 	private int giornoForecast;
+	/**
+	 * Variabile utile per il controllo dell'ora in relazione ad oraDefault
+	 */
 	private int ora;
+	/*
+	 * Ora di default
+	 */
 	private static final int oraDefault = 9;
+	/**
+	 * Variabile per salvare la data degli oggetti MeteoCitta e ForecastCitta convertiti da unix a stringa
+	 */
 	private String data;
 	
+	/**
+	 * 
+	 * Metodo per creare la statistica sui dati previsionali che poi viene ritornata tramite un LinkedHashMap
+	 * 
+	 * @param vectCitta
+	 * @param vectForecastCitta
+	 * @param citta
+	 * @param errore
+	 * @return map
+	 */
 	public HashMap<String, String> creaStat(Vector<MeteoCitta> vectCitta, Vector<ForecastCitta> vectForecastCitta, String citta, int errore) {
 		
 		mCVect = new Vector<MeteoCitta>();

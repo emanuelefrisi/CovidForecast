@@ -1,6 +1,6 @@
 /**
  * 
- * Package contenenti le classi che eseguono i filtri
+ * Package contenenti le classi che eseguono i filtraggi
  * 
  * @author emanuelefrisi&domenicolaporta00
  *

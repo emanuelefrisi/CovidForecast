@@ -1,6 +1,6 @@
 /**
  * 
- * Package che contiene le interfacce per lavorare con il database
+ * Package che contiene le interfacce per lavorare con le varie tabelle del database
  * 
  * @author emanuelefrisi&domenicolaporta00
  *

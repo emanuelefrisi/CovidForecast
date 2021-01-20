@@ -1,6 +1,6 @@
 /**
  * 
- * Package contenenti le classi che eseguono le stats
+ * Package contenenti le classi che eseguono le statistiche
  * 
  * @author emanuelefrisi&domenicolaporta00
  *

@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
@@ -44,9 +45,10 @@ public class CFPaginaPrincipale {
 	private JLabel posizioneLabel = new JLabel();
 	private JLabel iconaMeteoLabel;
 	private JLabel descrizioneLabel = new JLabel();
-	private JLabel tempLabel = new JLabel();
-	private JLabel tempMinLabel;
-	private JLabel tempMaxLabel;
+	private JLabel tempLabel;
+	private JLabel tempMinLabel = new JLabel();
+	private JLabel tempMaxLabel = new JLabel();
+	private JLabel tempPercepitaLabel;
 	private JLabel lineaLabel = new JLabel();
 	private JLabel titoloDataLabel = new JLabel("Campionamento effettuato: ");
 	private JLabel dataLabel = new JLabel();
@@ -66,15 +68,17 @@ public class CFPaginaPrincipale {
 	private String data;
 	private String giorno;
 	private String descrizione;
+	private String temp;
 	private String tempMin;
 	private String tempMax;
+	private String tempPercepita;
 	private int nIcona = 0;
 	
 	private JComboBox<String> cBox;
 	
 	public CFPaginaPrincipale(String username, Vector<String> geo, Vector<Vector<String>> weather) {
 		
-		UIManager.put("ComboBox.selectionBackground", new Color(148,96,161)); //lilac
+		UIManager.put("ComboBox.selectionBackground", new Color(148,96,161)); //lilla
 		
 		frame.setTitle("CovidForecast");
 		frame.setSize(900, 507);
@@ -247,8 +251,9 @@ public class CFPaginaPrincipale {
 		iconaMeteoLabel.setBounds(305, 140, 100, 100);
 		background.add(iconaMeteoLabel);
 		
+		tempLabel = new JLabel();
 		tempLabel.setBounds(405, 140, 100, 100);
-		String temp = weather.elementAt(nIcona).elementAt(2);
+		temp = weather.elementAt(nIcona).elementAt(2);
 		tempLabel.setText(temp + "°");
 		tempLabel.setFont(new Font("Arial", Font.PLAIN, 40));
 		tempLabel.setForeground(Color.WHITE);
@@ -301,27 +306,27 @@ public class CFPaginaPrincipale {
 		iconaMeteoLabel.setBounds(50, 350, 100, 100);
 		background.add(iconaMeteoLabel);
 		
-		tempMin = weather.elementAt(nIcona).elementAt(2);
-		tempMinLabel = new JLabel(tempMin + "°");
+		temp = weather.elementAt(nIcona).elementAt(2);
+		tempLabel = new JLabel(temp + "°");
 //		if(tempMin.length()>4)
 //			tempMinLabel.setBounds(524, 135, 80, 60);
 //		else
 //			tempMinLabel.setBounds(540, 135, 80, 60);	
-		tempMinLabel.setBounds(35, 440, 50,30);
-		tempMinLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMinLabel.setForeground(Color.CYAN);
-		background.add(tempMinLabel);
+		tempLabel.setBounds(35, 440, 50, 30);
+		tempLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempLabel.setForeground(Color.WHITE);
+		background.add(tempLabel);
 		
-		tempMax = weather.elementAt(nIcona).elementAt(3);
-		tempMaxLabel = new JLabel(tempMax + "°");
+		tempPercepita = weather.elementAt(nIcona).elementAt(3);
+		tempPercepitaLabel = new JLabel(tempPercepita + "°");
 //		if(tempMax.length()>3)
 //			tempMaxLabel.setBounds(100, 440, 50, 30);
 //		else
 //			tempMaxLabel.setBounds(540, 190, 80, 60);
-		tempMaxLabel.setBounds(110, 440, 50, 30);
-		tempMaxLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMaxLabel.setForeground(Color.RED);
-		background.add(tempMaxLabel);
+		tempPercepitaLabel.setBounds(110, 440, 50, 30);
+		tempPercepitaLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempPercepitaLabel.setForeground(Color.ORANGE);
+		background.add(tempPercepitaLabel);
 		
 		
 		//Secondo elemento previsionale
@@ -338,28 +343,28 @@ public class CFPaginaPrincipale {
 		iconaMeteoLabel.setBounds(220, 350, 100, 100);
 		background.add(iconaMeteoLabel);
 		
-		tempMin = weather.elementAt(nIcona).elementAt(2);
-		tempMinLabel = new JLabel(tempMin + "°");
+		temp = weather.elementAt(nIcona).elementAt(2);
+		tempLabel = new JLabel(temp + "°");
 //		if(tempMin.length()>4)
 //			tempMinLabel.setBounds(524, 135, 80, 60);
 //		else
 //			tempMinLabel.setBounds(540, 135, 80, 60);	
-		tempMinLabel.setBounds(205, 440, 50,30);
-		tempMinLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMinLabel.setForeground(Color.CYAN);
-		background.add(tempMinLabel);
+		tempLabel.setBounds(205, 440, 50, 30);
+		tempLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempLabel.setForeground(Color.WHITE);
+		background.add(tempLabel);
 		
-		tempMax = weather.elementAt(nIcona).elementAt(3);
-		tempMaxLabel = new JLabel(tempMax + "°");
+		
+		tempPercepita = weather.elementAt(nIcona).elementAt(3);
+		tempPercepitaLabel = new JLabel(tempPercepita + "°");
 //		if(tempMax.length()>3)
 //			tempMaxLabel.setBounds(100, 440, 50, 30);
 //		else
 //			tempMaxLabel.setBounds(540, 190, 80, 60);
-		tempMaxLabel.setBounds(280, 440, 50, 30);
-		tempMaxLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMaxLabel.setForeground(Color.RED);
-		background.add(tempMaxLabel);
-		
+		tempPercepitaLabel.setBounds(280, 440, 50, 30);
+		tempPercepitaLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempPercepitaLabel.setForeground(Color.ORANGE);
+		background.add(tempPercepitaLabel);		
 		
 		//Terzo elemento previsionale
 		
@@ -375,27 +380,28 @@ public class CFPaginaPrincipale {
 		iconaMeteoLabel.setBounds(390, 350, 100, 100);
 		background.add(iconaMeteoLabel);
 		
-		tempMin = weather.elementAt(nIcona).elementAt(2);
-		tempMinLabel = new JLabel(tempMin + "°");
+		temp = weather.elementAt(nIcona).elementAt(2);
+		tempLabel = new JLabel(temp + "°");
 //		if(tempMin.length()>4)
 //			tempMinLabel.setBounds(524, 135, 80, 60);
 //		else
 //			tempMinLabel.setBounds(540, 135, 80, 60);	
-		tempMinLabel.setBounds(375, 440, 50,30);
-		tempMinLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMinLabel.setForeground(Color.CYAN);
-		background.add(tempMinLabel);
+		tempLabel.setBounds(375, 440, 50, 30);
+		tempLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempLabel.setForeground(Color.WHITE);
+		background.add(tempLabel);
 		
-		tempMax = weather.elementAt(nIcona).elementAt(3);
-		tempMaxLabel = new JLabel(tempMax + "°");
+		
+		tempPercepita = weather.elementAt(nIcona).elementAt(3);
+		tempPercepitaLabel = new JLabel(tempPercepita + "°");
 //		if(tempMax.length()>3)
 //			tempMaxLabel.setBounds(100, 440, 50, 30);
 //		else
 //			tempMaxLabel.setBounds(540, 190, 80, 60);
-		tempMaxLabel.setBounds(450, 440, 50, 30);
-		tempMaxLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMaxLabel.setForeground(Color.RED);
-		background.add(tempMaxLabel);
+		tempPercepitaLabel.setBounds(450, 440, 50, 30);
+		tempPercepitaLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempPercepitaLabel.setForeground(Color.ORANGE);
+		background.add(tempPercepitaLabel);	
 		
 		
 		//Quarto elemento
@@ -412,27 +418,28 @@ public class CFPaginaPrincipale {
 		iconaMeteoLabel.setBounds(560, 350, 100, 100);
 		background.add(iconaMeteoLabel);
 		
-		tempMin = weather.elementAt(nIcona).elementAt(2);
-		tempMinLabel = new JLabel(tempMin + "°");
+		temp = weather.elementAt(nIcona).elementAt(2);
+		tempLabel = new JLabel(temp + "°");
 //		if(tempMin.length()>4)
 //			tempMinLabel.setBounds(524, 135, 80, 60);
 //		else
 //			tempMinLabel.setBounds(540, 135, 80, 60);	
-		tempMinLabel.setBounds(545, 440, 50,30);
-		tempMinLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMinLabel.setForeground(Color.CYAN);
-		background.add(tempMinLabel);
+		tempLabel.setBounds(545, 440, 50, 30);
+		tempLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempLabel.setForeground(Color.WHITE);
+		background.add(tempLabel);
 		
-		tempMax = weather.elementAt(nIcona).elementAt(3);
-		tempMaxLabel = new JLabel(tempMax + "°");
+		
+		tempPercepita = weather.elementAt(nIcona).elementAt(3);
+		tempPercepitaLabel = new JLabel(tempPercepita + "°");
 //		if(tempMax.length()>3)
 //			tempMaxLabel.setBounds(100, 440, 50, 30);
 //		else
 //			tempMaxLabel.setBounds(540, 190, 80, 60);
-		tempMaxLabel.setBounds(620, 440, 50, 30);
-		tempMaxLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMaxLabel.setForeground(Color.RED);
-		background.add(tempMaxLabel);
+		tempPercepitaLabel.setBounds(620, 440, 50, 30);
+		tempPercepitaLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempPercepitaLabel.setForeground(Color.ORANGE);
+		background.add(tempPercepitaLabel);	
 		
 		
 		//Quinto elemento
@@ -449,26 +456,29 @@ public class CFPaginaPrincipale {
 		iconaMeteoLabel.setBounds(730, 350, 100, 100);
 		background.add(iconaMeteoLabel);
 		
-		tempMin = weather.elementAt(nIcona).elementAt(2);
-		tempMinLabel = new JLabel(tempMin + "°");
-		if(tempMin.length()<3)
-			tempMinLabel.setBounds(735, 440, 50,30);
-		else
-			tempMinLabel.setBounds(715, 440, 50,30);	
-		tempMinLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMinLabel.setForeground(Color.CYAN);
-		background.add(tempMinLabel);
+		temp = weather.elementAt(nIcona).elementAt(2);
+		tempLabel = new JLabel(temp + "°");
+//		if(tempMin.length()>4)
+//			tempMinLabel.setBounds(524, 135, 80, 60);
+//		else
+//			tempMinLabel.setBounds(540, 135, 80, 60);	
+		tempLabel.setBounds(735, 440, 50, 30);
+		tempLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempLabel.setForeground(Color.WHITE);
+		background.add(tempLabel);
 		
-		tempMax = weather.elementAt(nIcona).elementAt(3);
-		tempMaxLabel = new JLabel(tempMax + "°");
+		
+		tempPercepita = weather.elementAt(nIcona).elementAt(3);
+		tempPercepitaLabel = new JLabel(tempPercepita + "°");
 //		if(tempMax.length()>3)
 //			tempMaxLabel.setBounds(100, 440, 50, 30);
 //		else
 //			tempMaxLabel.setBounds(540, 190, 80, 60);
-		tempMaxLabel.setBounds(790, 440, 50, 30);
-		tempMaxLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		tempMaxLabel.setForeground(Color.RED);
-		background.add(tempMaxLabel);
+		tempPercepitaLabel.setBounds(790, 440, 50, 30);
+		tempPercepitaLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		tempPercepitaLabel.setForeground(Color.ORANGE);
+		background.add(tempPercepitaLabel);	
+
 		
 		frame.setVisible(true);
 	

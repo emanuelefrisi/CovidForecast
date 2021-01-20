@@ -32,14 +32,14 @@
 
 # Rotte
 
-| Nome rotta | TipoRotta | Descrizione |
+| Nome rotta | Tipo Rotta | Descrizione |
 | ----- | ---- | ---------------------- |
 | /stats | POST | Restituisce oggetti riguardanti statistiche ottenute secondo dati ricevuti in input su dati attuali |
 | /filters | POST | Restituisce oggetti riguardanti filtraggi ottenuti secondo dati ricevuti in input su dati attuali |
 | /forecastStats | POST | Restituisce oggetti riguardanti statistiche ottenute secondo dati ricevuti in input su dati previsionali |
 | /dati | GET | Restituisce come chiavi l'elenco delle città che si sono monitorate e di cui è possibile effettuare le statistiche e i filtraggi, e come valori il numero di contagiati totali di Covid ad ogni città associati(il numero si riferisce ai contagi per provincia)|
 
-## Rotta /stats
+## Rotta POST /stats
 
 Questa rotta permette di effettuare statistiche sui dati meteorologici(e non previsionali) immagazzinati nel database. Questi dati vengono prima filtarti per città, poi per data(da un instante iniziale ad uno finale). Successivamente è possibile scegliere il tipo di variabile e il tipo di statistica. Tenere conto del fatto che le città sono state monitorate dall'1 gennaio 2021 17:30 al 21 gennaio 23:59
 
@@ -95,7 +95,7 @@ Esempio rotta con body e responso su postman:
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Postaman%20-%20Stats.png?raw=true">
 
-## Rotta /filters
+## Rotta POST /filters
 
 Questa rotta permette di effettuare filtraggi sui dati meteorologici(e non previsionali) immagazzinati nel database. Questi dati vengono prima filtarti per città, poi per data(da un instante iniziale ad uno finale). Successivamente è possibile scegliere il tipo di variabile e il range di valori su cui effettuare il filtraggio. Tenere conto del fatto che le città sono state monitorate dall'1 gennaio 2021 17:30 al 21 gennaio 23:59
 
@@ -174,7 +174,7 @@ Esempio rotta con body e responso su postman:
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Postman%20-%20Filters.png?raw=true">
 
-## Rotta /forecastStats
+## Rotta POST /forecastStats
 
 Questa rotta permette di effettuare statistiche sulla quatità di previsioni azzeccate usando dati meteorologici e previsionali immagazzinati nel database. Questi dati vengono filtarti per citt e poi per errorein percentuale(massima differenza tra valore reale e previsionale). Questa rotta permette di effettuare la statistica solo per l'umidità
 
