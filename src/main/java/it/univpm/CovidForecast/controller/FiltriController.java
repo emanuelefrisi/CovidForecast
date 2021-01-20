@@ -100,6 +100,7 @@ public class FiltriController extends Controller {
 			 * secondi passati dal 01/01/1970 a giorno-mese-anno e aggiunge tutto ad un
 			 * vettore di CittaJSON (con data formato giorno-mese-anno)
 			 */
+			if(vettData.isEmpty()) return new Vector<CittaJSON>();
 			String longOrDouble = filtriObj.getVariabile();
 			Vector<MeteoCitta> mCVect1 = this.variabile(longOrDouble, vettData, filtriObj.getValInit(),
 					filtriObj.getValFin());

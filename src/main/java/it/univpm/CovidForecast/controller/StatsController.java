@@ -117,6 +117,7 @@ public class StatsController extends Controller {
 			 * Qui crea un vettore e ci mette il massimo/minimo della statistica data in
 			 * input
 			 */
+			if(vettData.isEmpty()) return new Vector<CittaJSON>();
 			Vector<MeteoCitta> mCVect1 = this.variabile(statsObj.getVariabile(), statsObj.getTipoStat(), vettData);
 			/*
 			 * Qui cambia il formato della data da secondi passati dal 01/01/1970 a
