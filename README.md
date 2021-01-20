@@ -13,7 +13,9 @@ Si consiglia di usare il cmd per avviare il web service in quanto esso non può 
 
 # UML
 
-## Diagramma dei casi d'uso
+In questa sezione vengono illustrati i diagrammi UML riferiti a varie parti del progetto
+
+## Diagramma dei casi d'uso - Web service
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20dei%20casi%20d'uso.png?raw=true">
 
@@ -250,7 +252,7 @@ Nel progetto sono presenti due tipi di eccezioni:
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Eccezioni/CFException.png?raw=true">
 
-Ci sono molte altre forme di queste eccezioni. Vi invitiamo a cercarle ;)
+:information_source: Ci sono molte altre forme di queste eccezioni. Vi invitiamo a cercarle ;)
 
 # Test
 
@@ -269,4 +271,3 @@ All'interno del progetto è presente anche un package di test
 - Domenico La Porta - Sviluppo dell'UML e della seconda fase
 
 Entrambi gli sviluppatori hanno lavorato sulla parte di testing, javadoc, read me e bug fixes
-
