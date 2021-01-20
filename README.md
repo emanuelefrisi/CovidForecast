@@ -8,6 +8,9 @@
 - Seconda fase: creazione della parte di back-end relativa alle possibili interazioni che l'utente può avere con l'applicativo. Ciò comprende la creazione di statistiche e filtri utilizzando i dati precedentemente raccolti e lo sviluppo di controller con cui l'utente può interfacciarsi con un tester di API(es. Postman)
 - Terza fase(opzionale): creazione di un'interfaccia grafica che l'utente può scegliere di utilizzare per testare l'effettivo funzionamento delle statistiche. Inoltre è possibile accedere all'interno dell'applicazione tramite un'interfaccia di login, sfruttando nuovamente il database o, nel caso in cui si effettui l'accesso per la prima volta, creare un nuovo account. Dopodiché l'applicazione è in grado di eseguire una geolocalizzazione ricevendo e mostrando i dati relativi ad essa.
 
+E' possibile avviare il progetto tramite gli appositi JAR nella cartella applicazioni. Una volta avviato il web service esso può essere usato da postman, oppure da interfaccia grafica avviando il JAR CovidForecastGUI.
+Si consiglia di usare il cmd per avviare il web service in quanto esso non può essere chiuso normalmente se non tramite il task manager. Quindi andare nella cartella applicazioni e scrivere sulla barra degli indirizzi "cmd". Una volta apparso il cmd, scrivere il comando "java -jar CovidForecastWebService.jar" così da far apparire una console.
+
 # UML
 
 ## Diagramma dei casi d'uso
@@ -106,7 +109,7 @@ Chiavi:
 - variabile: accetta una variabile tra [pressione, temp, tempMin, tempMax, tempPercepita, umidita];
 - valInit e valFin: accettano valori numerici. Nel caso in cui non si conoscano i possibili range di valori, è possibile recuperarli usando la rotta /stats
 
-Body:
+Esempio Body:
 
 ```json
 {
@@ -180,15 +183,15 @@ Questa rotta permette di effettuare statistiche sulla quatità di previsioni azz
 
 Chiavi:
 - citta: accetta una citta(ovviamente presenti tra quelle monitorate);
-- errore: accetta un errore in percentuale
+- errore: accetta un errore in percentuale. Accetta la chiave sia come stringa che come valore numerico.
 
 
-Body:
+Esempio Body:
 
 ```json
 {
     "citta":"Firenze",
-    "errore":"5" o (5)
+    "errore":"5"
 }
 ```
 
@@ -205,3 +208,28 @@ Esempio Responso:
 Esempio rotta con body e responso su postman:
 
 <img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Postman%20-%20forecastStats.png?raw=true">
+
+# GUI
+
+Il servizio di GUI comprende vari servizi, tra cui:
+
+- Un interfaccia di login in cui è possibile accedere all'applicazione;
+- Un interfaccia di registrazione in cui è possibile registrarsi, nel caso in cui non lo si fosse
+- Una volta entrati, un'interfaccia che mostra il meteo e le previsioni meteorologiche di una città tramite una geolocalizzazione(sperando sia la vostra ;) )
+- Un'interfaccia in cui è possibile effettuare statistiche proprio come su postman con la rotta /stats
+
+## Login
+
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/CFLogin.png?raw=true">
+
+## Registrazione
+
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/CFRegistrazione.png?raw=true">
+
+## Pagina principale
+
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/CFPaginaPrincipale.png?raw=true">
+
+## Statistiche
+
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/CFStats.png?raw=true">
