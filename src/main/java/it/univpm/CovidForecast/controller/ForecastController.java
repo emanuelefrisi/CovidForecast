@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import it.univpm.CovidForecast.filters.FilterCity;
 import it.univpm.CovidForecast.model.ForecastCitta;
 import it.univpm.CovidForecast.model.MeteoCitta;
+import it.univpm.CovidForecast.scanner.CittaScanner;
 import it.univpm.CovidForecast.stats.StatsPrevisionali;
 
 /**
@@ -42,7 +43,7 @@ public class ForecastController {
 	 * Oggetto CittaScanner utile per controllare se la città data in input è
 	 * presente tra quelle disponibili
 	 */
-	//private CittaScanner cS = new CittaScanner();
+	private CittaScanner cS = new CittaScanner();
 
 	/**
 	 * 
@@ -58,8 +59,13 @@ public class ForecastController {
 	public HashMap<String, String> forecastStats(@RequestBody HashMap<String, String> map) {
 		vettCitta = new Vector<MeteoCitta>();
 		vettForecastCitta = new Vector<ForecastCitta>();
-		
-		//if(!cS.controlloCitta())
+		Vector<String> vS = new Vector<String>();
+		vS.add(map.get("citta"));
+		if(!cS.controlloCitta(vS)) {
+			HashMap<String, String> HMError = new HashMap<String, String>();
+			HMError.put("Errore!", "Il nome della città inserita non è corretto!");
+			return HMError;
+		}
 		vettCitta = filtroC.getFromCityFilter(map.get("citta"));
 		vettForecastCitta = filtroC.getFromCityFilterForecast(map.get("citta"));
 		return sP.creaStat(vettCitta, vettForecastCitta, map.get("citta"), Math.abs(Integer.valueOf(map.get("errore"))));
