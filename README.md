@@ -4,8 +4,8 @@
 
 # Descrizione progetto
  Benvenuti in CovidForecast. Questo è un web service realizzato per l'esame di programmazione ad oggetti dell'anno accademico 2020/21. Il progetto, che comprende all'incirca 60 classi, si divide in tre principali fasi:
-- Prima fase: raccolta giornaliera di dati attuali e previsionali riguardanti 10 città (Ancona, Cagliari, Firenze, Foggia, Milano, Napoli, Palermo, Perugia, Torino, Venezia). Le chiamate richieste all'API esterna OpenWeather sono state effettuate grazie ad uno scheduler all'interno del progetto che permette di richiedere questi dati una volta ogni 60 minuti. Essi poi vengono salvati all'interno di un database MySQL. Per automatizzare il processo senza dover necessariamente tenere attivo h24 un hardware, si è distribuito il codice sotto forma di archivio jar(Java ARchive) sulla piattaforma AWS(Amazon Web Service)
-- Seconda fase: creazione della parte di back-end relativa alle possibili interazioni che l'utente può avere con l'applicativo. Ciò comprende la creazione di statistiche e filtri utilizzando i dati precedentemente raccolti e lo sviluppo di controller con cui l'utente può interfacciarsi con un tester di API(es. Postman)
+- Prima fase: raccolta giornaliera di dati attuali e previsionali riguardanti 10 città (Ancona, Cagliari, Firenze, Foggia, Milano, Napoli, Palermo, Perugia, Torino, Venezia). Le chiamate richieste all'API esterna OpenWeather sono state effettuate grazie ad uno scheduler all'interno del progetto che permette di richiedere questi dati una volta ogni 60 minuti. Essi poi vengono salvati all'interno di un database MySQL. Per automatizzare il processo senza dover necessariamente tenere attivo h24 un hardware, si è distribuito il codice sotto forma di archivio jar(Java ARchive) sulla piattaforma AWS(Amazon Web Service);
+- Seconda fase: creazione della parte di back-end relativa alle possibili interazioni che l'utente può avere con l'applicativo. Ciò comprende la creazione di statistiche e filtri utilizzando i dati precedentemente raccolti e lo sviluppo di controller con cui l'utente può interfacciarsi con un tester di API(es. Postman);
 - Terza fase(opzionale): creazione di un'interfaccia grafica che l'utente può scegliere di utilizzare per testare l'effettivo funzionamento delle statistiche. Inoltre è possibile accedere all'interno dell'applicazione tramite un'interfaccia di login, sfruttando nuovamente il database o, nel caso in cui si effettui l'accesso per la prima volta, creare un nuovo account. Dopodiché l'applicazione è in grado di eseguire una geolocalizzazione ricevendo e mostrando i dati relativi ad essa.
 
 E' possibile avviare il progetto tramite gli appositi JAR nella cartella applicazioni. Una volta avviato il web service esso può essere usato da postman, oppure da interfaccia grafica avviando il JAR CovidForecastGUI.
@@ -96,7 +96,7 @@ Esempio Responso:
 
 Esempio rotta con body e responso su postman:
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Postaman%20-%20Stats.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Rotte/Postaman%20-%20Stats.png?raw=true">
 
 ## Rotta POST /filters
 
@@ -107,7 +107,7 @@ Chiavi:
 - dataInit: accetta una data nel formato "dd-MM-yyyy HH:mm"; dd sta per giorno, MM sta per mese, yyyy per anno, HH per ora(0-23), mm per minuti;
 - dataFin: accetta una data nel formato "dd-MM-yyyy HH:mm"; dd sta per giorno, MM sta per mese, yyyy per anno, HH per ora(0-23), mm per minuti;
 - variabile: accetta una variabile tra [pressione, temp, tempMin, tempMax, tempPercepita, umidita];
-- valInit e valFin: accettano valori numerici. Nel caso in cui non si conoscano i possibili range di valori, è possibile recuperarli usando la rotta /stats
+- valInit e valFin: accettano valori numerici. Nel caso in cui non si conoscano i possibili range di valori, è possibile recuperarli usando la rotta /stats.
 
 Esempio Body:
 
@@ -175,7 +175,7 @@ Esempio Responso:
 
 Esempio rotta con body e responso su postman:
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Postman%20-%20Filters.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Rotte/Postman%20-%20Filters.png?raw=true">
 
 ## Rotta POST /forecastStats
 
@@ -207,29 +207,45 @@ Esempio Responso:
 
 Esempio rotta con body e responso su postman:
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Postman%20-%20forecastStats.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Rotte/Postman%20-%20forecastStats.png?raw=true">
 
 # GUI
 
-Il servizio di GUI comprende vari servizi, tra cui:
+Le interfacce grafiche implementate comprendondo vari servizi, tra cui:
 
 - Un interfaccia di login in cui è possibile accedere all'applicazione;
-- Un interfaccia di registrazione in cui è possibile registrarsi, nel caso in cui non lo si fosse
-- Una volta entrati, un'interfaccia che mostra il meteo e le previsioni meteorologiche di una città tramite una geolocalizzazione(sperando sia la vostra ;) )
-- Un'interfaccia in cui è possibile effettuare statistiche proprio come su postman con la rotta /stats
+- Un interfaccia di registrazione in cui è possibile registrarsi, nel caso in cui non lo si fosse;
+- Una volta entrati, un'interfaccia che mostra le condizioni meteorologiche di una città tramite un servizio di geolocalizzazione(sperando sia la vostra ;) ). E' inoltre possbile cercare le condizioni meteorologiche di una qualunque città tramite la barra di ricerca;
+- Un'interfaccia in cui è possibile effettuare statistiche proprio come su postman con la rotta /stats.
 
 ## Login
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/CFLogin.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/GUI/CFLogin.png?raw=true">
 
 ## Registrazione
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/CFRegistrazione.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/GUI/CFRegistrazione.png?raw=true">
 
 ## Pagina principale
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/CFPaginaPrincipale.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/GUI/CFPaginaPrincipale.png?raw=true">
 
 ## Statistiche
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/CFStats.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/GUI/CFStats.png?raw=true">
+
+# Eccezioni
+
+Nel progetto sono presenti due tipi di eccezioni:
+
+- EccezionePersonalizzata: essa viene lanciata nel momento in cui l'input immesso dall'utente nel chiamare le rotte risulti errato
+
+- CFException: essa viene lanciata sotto forma di JOptionPane nei vari controlli delle GUI
+
+## Esempio EccezionePersonalizzata
+
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Eccezioni/EccezionePersonalizzata.png?raw=true">
+
+## Esempio CFException
+
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/Eccezioni/CFException.png?raw=true">
