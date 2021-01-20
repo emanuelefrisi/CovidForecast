@@ -70,19 +70,19 @@ public class FiltriController extends Controller {
 			if (!vS.controlloVariabile(filtriObj.getVariabile()))
 				throw new EccezionePersonalizzata("Errore nell'input del tipo di parametro!");
 
-			if (filtriObj.getDataFin().charAt(2) != '-' || filtriObj.getDataFin().charAt(5) != '-'
+			if (filtriObj.getDataInit().length() != 16 || filtriObj.getDataFin().length() != 16
+					|| filtriObj.getDataFin().charAt(2) != '-' || filtriObj.getDataFin().charAt(5) != '-'
 					|| filtriObj.getDataInit().charAt(2) != '-' || filtriObj.getDataInit().charAt(5) != '-'
 					|| filtriObj.getDataInit().charAt(10) != ' ' || filtriObj.getDataFin().charAt(10) != ' '
-					|| filtriObj.getDataInit().charAt(13) != ':' || filtriObj.getDataFin().charAt(13) != ':'
-					|| filtriObj.getDataInit().length() != 16 || filtriObj.getDataFin().length() != 16)
+					|| filtriObj.getDataInit().charAt(13) != ':' || filtriObj.getDataFin().charAt(13) != ':')
 				throw new EccezionePersonalizzata("Errore di input della data!");
 
 		} catch (EccezionePersonalizzata e) {
 
 			return EccezionePersonalizzata.getVCJError();
-			
+
 		}
-		
+
 		cJVect = new Vector<CittaJSON>();
 		for (int i = 0; i < filtriObj.getCitta().size(); i++) {
 			/* Qui filtra per città */
@@ -100,7 +100,8 @@ public class FiltriController extends Controller {
 			 * secondi passati dal 01/01/1970 a giorno-mese-anno e aggiunge tutto ad un
 			 * vettore di CittaJSON (con data formato giorno-mese-anno)
 			 */
-			if(vettData.isEmpty()) return new Vector<CittaJSON>();
+			if (vettData.isEmpty())
+				return new Vector<CittaJSON>();
 			String longOrDouble = filtriObj.getVariabile();
 			Vector<MeteoCitta> mCVect1 = this.variabile(longOrDouble, vettData, filtriObj.getValInit(),
 					filtriObj.getValFin());

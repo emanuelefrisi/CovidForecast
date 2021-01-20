@@ -89,11 +89,11 @@ public class StatsController extends Controller {
 			if (!tSS.controlloTipoStat(statsObj.getTipoStat()))
 				throw new EccezionePersonalizzata("Errore di input del tipo di stat!");
 
-			if (statsObj.getDataFin().charAt(2) != '-' || statsObj.getDataFin().charAt(5) != '-'
+			if (statsObj.getDataInit().length() != 16 || statsObj.getDataFin().length() != 16
+					|| statsObj.getDataFin().charAt(2) != '-' || statsObj.getDataFin().charAt(5) != '-'
 					|| statsObj.getDataInit().charAt(2) != '-' || statsObj.getDataInit().charAt(5) != '-'
 					|| statsObj.getDataInit().charAt(10) != ' ' || statsObj.getDataFin().charAt(10) != ' '
-					|| statsObj.getDataInit().charAt(13) != ':' || statsObj.getDataFin().charAt(13) != ':'
-					|| statsObj.getDataInit().length() != 16 || statsObj.getDataFin().length() != 16)
+					|| statsObj.getDataInit().charAt(13) != ':' || statsObj.getDataFin().charAt(13) != ':')
 				throw new EccezionePersonalizzata("Errore di input della data!");
 			cJVect = new Vector<CittaJSON>();
 			for (int i = 0; i < statsObj.getCitta().size(); i++) {
@@ -111,7 +111,7 @@ public class StatsController extends Controller {
 				 * Qui crea un vettore e ci mette il massimo/minimo della statistica data in
 				 * input
 				 */
-				if(vettData.isEmpty())
+				if (vettData.isEmpty())
 					throw new EccezionePersonalizzata("La ricerca non ha prodotto alcun risultato!");
 				Vector<MeteoCitta> mCVect1 = this.variabile(statsObj.getVariabile(), statsObj.getTipoStat(), vettData);
 				/*
@@ -160,9 +160,9 @@ public class StatsController extends Controller {
 			 * input
 			 */
 			try {
-			if(vettData.isEmpty())
-				throw new EccezionePersonalizzata("La ricerca non ha prodotto alcun risultato!");
-			} catch(EccezionePersonalizzata eP) {
+				if (vettData.isEmpty())
+					throw new EccezionePersonalizzata("La ricerca non ha prodotto alcun risultato!");
+			} catch (EccezionePersonalizzata eP) {
 				return EccezionePersonalizzata.getVCJError();
 			}
 			Vector<MeteoCitta> mCVect1 = this.variabile(variabile, tipoStat, vettData);
@@ -189,8 +189,8 @@ public class StatsController extends Controller {
 	 * (formato data String). A seconda del var dato in input, parte una funzione
 	 * che genera le stats di tale var
 	 * 
-	 * @param var String
-	 * @param tipoStat String
+	 * @param var          String
+	 * @param tipoStat     String
 	 * @param vectPerStats Vector<MeteoCitta>
 	 * @return
 	 */
