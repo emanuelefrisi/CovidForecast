@@ -17,23 +17,23 @@ In questa sezione vengono illustrati i diagrammi UML riferiti a varie parti del 
 
 ## Diagramma dei casi d'uso - Web service
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20dei%20casi%20d'uso.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20dei%20casi%20d'uso.jpg?raw=true">
 
 ## Diagramma dei casi d'uso - GUI
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20dei%20casi%20d'uso%20GUI.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20dei%20casi%20d'uso%20GUI.jpg?raw=true">
 
 ## Diagramma delle classi
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20classi.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20classi.jpg?raw=true">
 
 ## Diagramma delle sequenze - Prima fase
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20sequenze%20fase%201.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20sequenze%20fase%201.jpg?raw=true">
 
 ## Diagramma delle sequenze - Statistiche
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20sequenze%20-%20Controller%20Statistiche.png?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20sequenze%20-%20Controller%20Statistiche.jpg ?raw=true">
 
 # Rotte
 
