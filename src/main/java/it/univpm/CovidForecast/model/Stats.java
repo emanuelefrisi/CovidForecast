@@ -35,7 +35,7 @@ public class Stats {
 	}
 
 	public String getDataFin() {
-		return dataFin;
+		return dataFin; 
 	}
 
 	public void setDataFin(String dataFin) {

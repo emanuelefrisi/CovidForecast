@@ -28,7 +28,7 @@ public class ParsingStats {
 				tempMax = Double.parseDouble(jO.get("tempMax").toString());
 				tempMin = Double.parseDouble(jO.get("tempMin").toString());
 				tempPercepita = Double.parseDouble(jO.get("tempPercepita").toString());
-				umidita = (long) jO.get("umidita");	
+				umidita = (long) jO.get("umidita");
 				this.toString();
 			}
 			
