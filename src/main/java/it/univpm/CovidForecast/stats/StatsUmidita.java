@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import it.univpm.CovidForecast.model.MeteoCitta;
 
 /**
- * Classe che esegue le stats sull'umidità
+ * Classe che esegue le stats sull'umidita
  * 
  * @author domenicolaporta00
  *
@@ -19,7 +19,7 @@ import it.univpm.CovidForecast.model.MeteoCitta;
 public class StatsUmidita extends Stats {
 
 	/**
-	 * Metodo che trova il tipo di statistica desiderata sull'umidità
+	 * Metodo che trova il tipo di statistica desiderata sull'umidita
 	 * 
 	 * @param tipoStat     String
 	 * @param vectPerStats Vector<MeteoCitta>

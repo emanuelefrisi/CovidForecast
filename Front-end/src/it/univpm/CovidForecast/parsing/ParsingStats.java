@@ -35,6 +35,9 @@ public class ParsingStats {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch(NullPointerException nPE) {
+			dati ="Errore:\n"
+					+ "La ricerca non ha prodotto alcun risultato!";
 		}
 		
 		return dati;
@@ -52,6 +55,8 @@ public class ParsingStats {
 				JSONObject jO = (JSONObject) jA.get(i);
 				data = (String) jO.get("data");
 				citta = (String) jO.get("citta");
+				if(citta.equals("La ricerca non ha prodotto alcun risultato!"))
+					throw new NullPointerException();
 				nazione = (String) jO.get("nazione");
 				valore = Double.parseDouble(jO.get(variabile).toString());
 				this.toStringAlternativo(variabile, tipoStat);
@@ -60,6 +65,9 @@ public class ParsingStats {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch(NullPointerException nPE) {
+			dati ="Errore:\n"
+					+ "La ricerca non ha prodotto alcun risultato!";
 		}
 		
 		return dati;

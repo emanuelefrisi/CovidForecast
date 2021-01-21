@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import it.univpm.CovidForecast.api.OpenWeatherData;
 
 /**
- * Classe che è servita per salvare i dati attuali e previsionali di ogni città sul database
+ * Classe che e' servita per salvare i dati attuali e previsionali di ogni città sul database
  * 
  * @author emanuelefrisi
  *

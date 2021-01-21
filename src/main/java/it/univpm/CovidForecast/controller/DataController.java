@@ -13,7 +13,7 @@ import it.univpm.CovidForecast.scanner.CovidScanner;
 /**
  * 
  * Controller il cui metodo GET restituisce un hashmap contentente
- * le città come chiave e i dati relativi al covid come valore
+ * le citta come chiave e i dati relativi al covid come valore
  * 
  * @author emanuelefrisi
  *

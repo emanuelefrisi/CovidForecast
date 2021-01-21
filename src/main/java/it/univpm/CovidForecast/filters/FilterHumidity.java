@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import it.univpm.CovidForecast.model.MeteoCitta;
 
 /**
- * Classe che esegue il filtraggio in base all'umidità 
+ * Classe che esegue il filtraggio in base all'umidita
  * 
  * @author domenicolaporta00
  */

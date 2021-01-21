@@ -4,37 +4,89 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * Classe che descrive i valori che vengono salvati sul database riguardanti le chiamate previsionali ad OpenWeather
+ * 
+ * @author emanuelefrisi
+ *
+ */
 @Entity
 @Table(name = "forecast_citta")
 public class ForecastCitta {
 
+	/**
+	 * Data nella quale sono state fatte le misurazioni(Unix Time Stamp)
+	 */
 	@Id
 	private long data;
 	
+	/**
+	 * Data a cui si riferisce la misurazione effettuata da OpenWeather
+	 */
 	private String dataTxt;
 	
+	/**
+	 * Nome della città
+	 */
 	private String citta;
-	
+	/**
+	 * Prefisso internazionale
+	 */
 	private String nazione;
-	
+	/**
+	 * Ora di riferimento
+	 */
 	private int ora;
-	
+	/**
+	 * Pressione atmosferica(misurata in ettopascal)
+	 */
 	private long pressione;
-	
+	/**
+	 * Temperatura(misurata in Celsius)
+	 */
 	private Double temp;
-	
+	/**
+	 * Temperatura massima(misurata in Celsius)
+	 */
 	private Double tempMax;
-	
+	/**
+	 * Temperatura minima(misurata in Celsius)
+	 */
 	private Double tempMin;
-	
+	/**
+	 * Temperatura perpepita(misurata in Celsius)
+	 */
 	private Double tempPercepita;
-	
+	/**
+	 * Umidità in percentuale
+	 */
 	private long umidita;
 	
+	/**
+	 * Costruttore vuoto
+	 */
 	public ForecastCitta() {
 		
 	}
 	
+	/**
+	 * 
+	 * Costruttore che prende in ingresso tutti i parametri di questa classe
+	 * 
+	 * @param d data
+	 * @param dT datatTxt
+	 * @param c citta
+	 * @param n nazione
+	 * @param o ora
+	 * @param p pressione
+	 * @param t temp
+	 * @param tM tempMax
+	 * @param tm tempMin
+	 * @param tP tempPercepita
+	 * @param u umidita
+	 * 
+	 */
 	public ForecastCitta(long d, String dT, String c, String n, int o, long p, Double t, Double tM, Double tm, Double tP, long u) {
 		this.data=d;
 		this.dataTxt=dT;
@@ -67,10 +119,20 @@ public class ForecastCitta {
 		this.data = d;
 	}
 	
+	/**
+	 * Metodo getter dell'attributo dataTxt
+	 * 
+	 * @return datatTxt
+	 */
 	public String getDataTxt() {
 		return dataTxt;
 	}
 	
+	/**
+	 * Metodo setter dell'attributo dataTxt
+	 * 
+	 * @param dT
+	 */
 	public void setDataTxt(String dT) {
 		this.dataTxt = dT;
 	}

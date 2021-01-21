@@ -1,0 +1,13 @@
+it.univpm.CovidForecast
+it.univpm.CovidForecast.api
+it.univpm.CovidForecast.controller
+it.univpm.CovidForecast.exception
+it.univpm.CovidForecast.filters
+it.univpm.CovidForecast.model
+it.univpm.CovidForecast.parsing
+it.univpm.CovidForecast.repository
+it.univpm.CovidForecast.scanner
+it.univpm.CovidForecast.scheduler
+it.univpm.CovidForecast.service
+it.univpm.CovidForecast.stats
+it.univpm.CovidForecast.tools

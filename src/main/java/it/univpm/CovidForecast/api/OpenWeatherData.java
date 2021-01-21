@@ -19,7 +19,7 @@ import it.univpm.CovidForecast.service.ApiKeyService;
 /**
  * 
  * Classe che esegue la chiamata all'API di OpenWeather riguardante i dati
- * attuali e previsionali per ogni città che viene letta dallo scanner
+ * attuali e previsionali per ogni citta che viene letta dallo scanner
  * 
  * @author emanuelefrisi
  * 

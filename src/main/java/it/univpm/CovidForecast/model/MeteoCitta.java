@@ -6,12 +6,11 @@ import javax.persistence.Table;
 
 /**
  * 
- * Classe che descrive i valori che vengono salvati sul database
+ * Classe che descrive i valori che vengono salvati sul database riguardanti le chiamate attuali ad OpenWeather
  * 
  * @author emanuelefrisi
  *
  */
-
 @Entity
 @Table(name = "meteo_citta")
 public class MeteoCitta {
@@ -57,6 +56,9 @@ public class MeteoCitta {
 	 */
 	private long umidita;
 	
+	/**
+	 * Costruttore vuoto
+	 */
 	public MeteoCitta() {
 		
 	}
@@ -65,10 +67,10 @@ public class MeteoCitta {
 	 * 
 	 * Costruttore che prende in ingresso tutti i parametri di questa classe
 	 * 
-	 * @param o ora
 	 * @param d data
 	 * @param c citta
 	 * @param n nazione
+	 * @param o ora
 	 * @param p pressione
 	 * @param t temp
 	 * @param tM tempMax
@@ -144,10 +146,20 @@ public class MeteoCitta {
 		this.nazione = n;
 	}
 
+	/**
+	 * Metodo getter dell'attributo ora
+	 * 
+	 * @return ora
+	 */
 	public int getOra() {
 		return ora;
 	}
 
+	/**
+	 * Metodo setter dell'attributo ora
+	 * 
+	 * @param o
+	 */
 	public void setOra(int o) {
 		this.ora=o;
 	}

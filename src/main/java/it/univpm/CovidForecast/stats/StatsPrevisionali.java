@@ -8,6 +8,13 @@ import it.univpm.CovidForecast.model.ForecastCitta;
 import it.univpm.CovidForecast.model.MeteoCitta;
 import it.univpm.CovidForecast.tools.ConvertitoreData;
 
+/**
+ * 
+ * Classe che esegue statistiche sui dati previsionali
+ * 
+ * @author emanuelefrisi
+ *
+ */
 public class StatsPrevisionali {
 
 	/**

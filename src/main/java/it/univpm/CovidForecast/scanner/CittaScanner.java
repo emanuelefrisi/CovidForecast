@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 /**
- * Classe che fa da scanner per le città utili per effettuare le chiamate ad OpenWeather
+ * Classe che fa da scanner per le citta utili per effettuare le chiamate ad OpenWeather
  * 
  * @author emanuelefrisi
  *

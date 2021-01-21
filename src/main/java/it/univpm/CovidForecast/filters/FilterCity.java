@@ -12,7 +12,7 @@ import it.univpm.CovidForecast.service.ForecastCittaService;
 import it.univpm.CovidForecast.service.MeteoCittaService;
 
 /**
- * Classe che esegue il filtraggio in base alla città 
+ * Classe che esegue il filtraggio in base alla citta
  * 
  * @author domenicolaporta00
  * 

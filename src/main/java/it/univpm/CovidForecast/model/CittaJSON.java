@@ -1,5 +1,12 @@
 package it.univpm.CovidForecast.model;
 
+/**
+ * 
+ * Classe utile per il ritorno degli oggetti MeteoCitta nei controller con le date convertite da long a String
+ * 
+ * @author emanuelefrisi
+ *
+ */
 public class CittaJSON {
 
 	/**
@@ -43,7 +50,6 @@ public class CittaJSON {
 	 * 
 	 * Costruttore che prende in ingresso tutti i parametri di questa classe
 	 * 
-	 * @param o ora
 	 * @param d data
 	 * @param c citta
 	 * @param n nazione
