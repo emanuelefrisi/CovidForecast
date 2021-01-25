@@ -38,7 +38,7 @@ In questa sezione vengono illustrati i diagrammi UML riferiti a varie parti del 
 
 ## Diagramma delle sequenze - Statistiche
 
-<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20sequenze%20-%20Controller%20Statistiche.jpg ?raw=true">
+<img src="https://github.com/emanuelefrisi/CovidForecast/blob/master/images/UML/Diagramma%20delle%20sequenze%20-%20Controller%20Statistiche.jpg?raw=true">
 
 # Rotte
 
